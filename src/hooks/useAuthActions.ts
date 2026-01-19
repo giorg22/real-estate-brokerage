@@ -1,38 +1,40 @@
-// hooks/useAuth.ts
 import { useMutation } from '@tanstack/react-query';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useRouter } from 'next/navigation';
 
-const API_URL = "https://your-api.com/auth";
+const API_BASE = "https://localhost:7075"; // Your custom backend URL
 
-export function useAuth() {
+export function useAuthActions() {
   const setAuth = useAuthStore((state) => state.setAuth);
   const router = useRouter();
 
-  // Login Mutation
   const loginMutation = useMutation({
     mutationFn: async (credentials: any) => {
-      const res = await fetch(`${API_URL}/login`, {
+      console.log("Logging in with credentials:", credentials);
+      const res = await fetch(`${API_BASE}/account/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials),
       });
-      if (!res.ok) throw new Error("Invalid credentials");
+      if (!res.ok) throw new Error("Login failed");
       return res.json();
     },
     onSuccess: (data) => {
-      setAuth(data.user); // Save to Zustand
+      const user = {
+        ...data.me,
+        token: data.token
+      };
+      setAuth(user);
       router.push("/dashboard");
     },
   });
 
-  // Register Mutation
   const registerMutation = useMutation({
-    mutationFn: async (userData: any) => {
-      const res = await fetch(`${API_URL}/register`, {
+    mutationFn: async (data: any) => {
+      const res = await fetch(`${API_BASE}/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userData),
+        body: JSON.stringify(data),
       });
       if (!res.ok) throw new Error("Registration failed");
       return res.json();
@@ -43,8 +45,5 @@ export function useAuth() {
     },
   });
 
-  return { 
-    login: loginMutation, 
-    register: registerMutation 
-  };
+  return { loginMutation, registerMutation };
 }
