@@ -11,26 +11,52 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
 
+// --- SCHEMAS ---
+
 const authSchema = z.object({
+  email: z.string().email("Invalid email"),
+  password: z.string().min(8, "Min 8 characters"),
+});
+
+const registerSchema = z.object({
   name: z.string().min(2, "Name required").optional(),
   email: z.string().email("Invalid email"),
   password: z.string().min(8, "Min 8 characters"),
+  confirmPassword: z.string().min(8, "Min 8 characters")
+}).refine((data) => data.password === data.confirmPassword, {
+  message: "Passwords don't match",
+  path: ["confirmPassword"], // Error will point to this field
 });
 
 export default function AuthPage() {
   const { loginMutation, registerMutation } = useAuthActions();
   
-  const form = useForm<z.infer<typeof authSchema>>({
+  // 1. Login Form Setup
+  const Loginform = useForm<z.infer<typeof authSchema>>({
     resolver: zodResolver(authSchema),
-    defaultValues: { email: "", password: "", name: "" },
+    defaultValues: { email: "", password: "" },
   });
 
-  const onSubmit = (values: z.infer<typeof authSchema>, mode: 'login' | 'register') => {
-    if (mode === 'login') {
-      loginMutation.mutate({ email: values.email, password: values.password });
-    } else {
-      registerMutation.mutate(values);
-    }
+  // 2. Register Form Setup (FIXED RESOLVER)
+  const Registerform = useForm<z.infer<typeof registerSchema>>({
+    resolver: zodResolver(registerSchema), // Corrected from authSchema
+    mode: "onChange", // Validates as the user types
+    defaultValues: { email: "", name: "", password: "", confirmPassword: "" },
+  });
+
+  // --- SUBMIT HANDLERS ---
+
+  const onLoginSubmit = (values: z.infer<typeof authSchema>) => {
+    loginMutation.mutate({ email: values.email, password: values.password });
+  };
+
+  const onRegisterSubmit = (values: z.infer<typeof registerSchema>) => {
+    // FIXED: Use registerMutation instead of loginMutation
+    registerMutation.mutate({ 
+      email: values.email, 
+      password: values.password,
+      name: values.name 
+    });
   };
 
   const isPending = loginMutation.isPending || registerMutation.isPending;
@@ -43,7 +69,7 @@ export default function AuthPage() {
           <TabsTrigger value="register">Register</TabsTrigger>
         </TabsList>
 
-        {/* LOGIN FORM */}
+        {/* --- LOGIN FORM --- */}
         <TabsContent value="login">
           <Card>
             <CardHeader>
@@ -51,8 +77,8 @@ export default function AuthPage() {
               <CardDescription>Welcome back to the portal.</CardDescription>
             </CardHeader>
             <CardContent>
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit((v) => onSubmit(v, 'login'))} className="space-y-4">
+              <Form {...Loginform}>
+                <form onSubmit={Loginform.handleSubmit(onLoginSubmit)} className="space-y-4">
                   <FormField name="email" render={({ field }) => (
                     <FormItem>
                       <FormLabel>Email</FormLabel>
@@ -63,7 +89,7 @@ export default function AuthPage() {
                   <FormField name="password" render={({ field }) => (
                     <FormItem>
                       <FormLabel>Password</FormLabel>
-                      <FormControl><Input type="password" {...field} /></FormControl>
+                      <FormControl><Input type="password" placeholder="••••••••" {...field} /></FormControl>
                       <FormMessage />
                     </FormItem>
                   )} />
@@ -76,13 +102,16 @@ export default function AuthPage() {
           </Card>
         </TabsContent>
 
-        {/* REGISTER FORM */}
+        {/* --- REGISTER FORM --- */}
         <TabsContent value="register">
           <Card>
-            <CardHeader><CardTitle>Register</CardTitle></CardHeader>
+            <CardHeader>
+              <CardTitle>Register</CardTitle>
+              <CardDescription>Create an account to get started.</CardDescription>
+            </CardHeader>
             <CardContent>
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit((v) => onSubmit(v, 'register'))} className="space-y-4">
+              <Form {...Registerform}>
+                <form onSubmit={Registerform.handleSubmit(onRegisterSubmit)} className="space-y-4">
                   <FormField name="name" render={({ field }) => (
                     <FormItem>
                       <FormLabel>Full Name</FormLabel>
@@ -90,7 +119,27 @@ export default function AuthPage() {
                       <FormMessage />
                     </FormItem>
                   )} />
-                  {/* ... repeat email/password fields ... */}
+                  <FormField name="email" render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl><Input type="email" placeholder="email@example.com" {...field} /></FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )} />
+                  <FormField name="password" render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Password</FormLabel>
+                      <FormControl><Input type="password" placeholder="••••••••" {...field} /></FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )} />
+                  <FormField name="confirmPassword" render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Confirm Password</FormLabel>
+                      <FormControl><Input type="password" placeholder="••••••••" {...field} /></FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )} />
                   <Button type="submit" className="w-full" disabled={isPending}>
                     {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />} Create Account
                   </Button>

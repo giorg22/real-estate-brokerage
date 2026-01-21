@@ -21,18 +21,22 @@ const navigation = [
   { name: "Contact", href: "/contact" },
 ];
 
-export async function Navbar() {
+// REMOVED 'async' keyword here
+export function Navbar() {
   const pathname = usePathname();
-
   const t = useTranslations('Navbar');
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header 
+      // Added hydration suppression here as well
+      suppressHydrationWarning 
+      className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+    >
       <nav className="container flex h-16 items-center justify-between px-4 mx-auto">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
           <Building2 className="h-6 w-6" />
-          <span className="font-bold">Elite Brokerage</span>
+          <span className="font-bold text-xl">Elite Brokerage</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -79,6 +83,7 @@ export async function Navbar() {
                   <Link
                     key={item.name}
                     href={item.href}
+                    onClick={() => {/* Close sheet logic if needed */}}
                     className={`text-sm font-medium transition-colors hover:text-primary p-2 rounded-lg ${
                       pathname === item.href
                         ? "text-primary bg-primary/10"

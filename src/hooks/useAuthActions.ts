@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useRouter } from 'next/navigation';
 
-const API_BASE = "https://localhost:7075"; // Your custom backend URL
+const API_BASE = "https://localhost:7075";
 
 export function useAuthActions() {
   const setAuth = useAuthStore((state) => state.setAuth);
@@ -25,13 +25,13 @@ export function useAuthActions() {
         token: data.token
       };
       setAuth(user);
-      router.push("/dashboard");
+      router.push("/dashboard/add");
     },
   });
 
   const registerMutation = useMutation({
     mutationFn: async (data: any) => {
-      const res = await fetch(`${API_BASE}/register`, {
+      const res = await fetch(`${API_BASE}/account/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -41,7 +41,7 @@ export function useAuthActions() {
     },
     onSuccess: (data) => {
       setAuth(data.user);
-      router.push("/dashboard");
+      router.push("/dashboard/add");
     },
   });
 
