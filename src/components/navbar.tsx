@@ -10,17 +10,21 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useTranslations } from 'next-intl';
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Services", href: "/services" },
+  { name: "Add Apartment", href: "/dashboard/add" },
+  { name: "Login", href: "/account/login" },
   { name: "Listings", href: "/listings" },
+  { name: "My Listings", href: "/my-listings" },
   { name: "Contact", href: "/contact" },
 ];
 
-export function Navbar() {
+export async function Navbar() {
   const pathname = usePathname();
+
+  const t = useTranslations('Navbar');
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -52,7 +56,7 @@ export function Navbar() {
         <div className="hidden md:flex items-center space-x-4">
           <ThemeToggle />
           <Button asChild variant="ghost">
-            <Link href="/contact">Contact Us</Link>
+            <Link href="/contact">{t("contact-us")}</Link>
           </Button>
           <Button asChild>
             <Link href="/listings">View Listings</Link>

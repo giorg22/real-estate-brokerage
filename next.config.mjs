@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin();
+
 const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true
@@ -7,7 +11,8 @@ const nextConfig = {
     ignoreBuildErrors: true
   },
   images: {
-    domains: ['images.unsplash.com', 'plus.unsplash.com'],
+    // Note: 'domains' is deprecated in favor of 'remotePatterns' 
+    // but I'll keep your config logic intact.
     remotePatterns: [
       {
         protocol: 'https',
@@ -16,9 +21,13 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'plus.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
       }
     ]
   }
 };
 
-module.exports = nextConfig;
+export default withNextIntl(nextConfig);
