@@ -1,0 +1,80 @@
+{
+    "status": [
+        {
+            "id": 0,
+            "name": "Newly constructed"
+        },
+        {
+            "id": 1,
+            "name": "Under Construction"
+        },
+        {
+            "id": 2,
+            "name": "Old constructed"
+        }
+    ],
+    "condition": [
+        {
+            "id": 0,
+            "name": "White Frame"
+        },
+        {
+            "id": 1,
+            "name": "Black Frame"
+        },
+        {
+            "id": 2,
+            "name": "Renovated"
+        },
+        {
+            "id": 3,
+            "name": "Not renovated"
+        },
+        {
+            "id": 4,
+            "name": "Old renovated"
+        }
+    ],
+    "project": [
+        {
+            "id": 0,
+            "name": "Leningrad project"
+        },
+        {
+            "id": 1,
+            "name": "Lviv project"
+        },
+        {
+            "id": 2,
+            "name": "Yugoslavian"
+        },
+        {
+            "id": 3,
+            "name": "Non-standard project"
+        },
+        {
+            "id": 4,
+            "name": "Czech project"
+        },
+                {
+            "id": 5,
+            "name": "Moscow project"
+        },
+        {
+            "id": 6,
+            "name": "Kiev project"
+        },
+        {
+            "id": 7,
+            "name": "Khrushcov project"
+        },
+        {
+            "id": 8,
+            "name": "Lviv project"
+        },
+        {
+            "id": 9,
+            "name": "Tsukhareli project"
+        }
+    ]
+}
