@@ -6,7 +6,9 @@ import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import {
   Check, ChevronsUpDown, MapPin, FileText,
-  Camera, Loader2, X, Home, GripVertical
+  Camera, Loader2, X, Home, GripVertical,
+  Building2, Warehouse, Leaf, Store, BedSingle, 
+  Tag, Calendar, CalendarClock, FileBadge, FileKey2
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import * as z from "zod";
@@ -41,6 +43,22 @@ import { zodResolver } from "@hookform/resolvers/zod";
 // --- TYPES ---
 interface LocationItem { id: number; title: string; type: "city" | "municipality"; group: string; isSuburb: boolean; districts?: any[]; }
 interface ImageItem { id: string; file: File; url?: string; publicId?: string; isUploading: boolean; }
+
+const propertyTypes = [
+  { id: 0, label: "Apartment", icon: Building2 },
+  { id: 1, label: "House", icon: Home },
+  { id: 2, label: "Summer cottage", icon: Warehouse },
+  { id: 3, label: "Land", icon: Leaf },
+  { id: 4, label: "Commercial real estate", icon: Store },
+  { id: 5, label: "Hotel", icon: BedSingle },
+];
+
+const dealTypes = [
+  { id: 0, name: "For sale", icon: Tag },
+  { id: 1, name: "For rent", icon: Calendar },
+  { id: 2, name: "Daily rent", icon: CalendarClock },
+  { id: 3, name: "Leasehold Mortgage", icon: FileKey2 },
+];
 
 // --- MAP COMPONENT ---
 function MapPicker({
@@ -175,7 +193,7 @@ function SortablePhoto({ item, index, onRemove }: { item: ImageItem, index: numb
 const apartmentSchema = z.object({
   title: z.string().min(5, "Title required"),
   description: z.string().min(5, "Min 5 character").optional(),
-  listngType: z.coerce.number(),
+  listingType: z.coerce.number(),
   type: z.coerce.number(),
   price: z.coerce.number(),
   area: z.coerce.number(),
@@ -222,7 +240,7 @@ export default function AddApartmentPage() {
   const form = useForm<z.infer<typeof apartmentSchema>>({
     resolver: zodResolver(apartmentSchema),
     defaultValues: {
-      title: "", description: "", type: 1,
+      title: "", description: "",
       address: {
         coords: null
       }
@@ -231,6 +249,8 @@ export default function AddApartmentPage() {
 
   const selectedLocId = form.watch("address.locationId");
   const selectedStrId = form.watch("address.streetId");
+  const type = form.watch("type");
+  const listingType = form.watch("listingType");
 
 
   useEffect(() => {
@@ -309,6 +329,7 @@ export default function AddApartmentPage() {
       });
     }
   };
+  
 
   console.log(form.formState.errors);
 
@@ -354,43 +375,249 @@ export default function AddApartmentPage() {
       <h1 className="text-3xl font-bold mb-8 text-foreground/90 tracking-tight">Add New Listing</h1>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+<Card className="border-primary/20 shadow-md">
+  <CardContent className="space-y-10 pt-6">
+    {/* SECTION 1: PROPERTY TYPE */}
+    <div className="space-y-4">
+      <h3 className="text-lg font-bold tracking-tight">Select a property type</h3>
+      <FormField
+        control={form.control}
+        name="type"
+        render={({ field }) => (
+          <FormItem>
+            <FormControl>
+              <ToggleGroup
+                type="single"
+                /* Grid-cols-3 ensures all 6 items take up two even rows */
+                className="grid grid-cols-2 md:grid-cols-6 gap-4"
+                value={field.value?.toString()}
+                onValueChange={(val) => { if (val) field.onChange(parseInt(val)); }}
+              >
+                {propertyTypes.map((item) => (
+                  <ToggleGroupItem
+                    key={item.id}
+                    value={item.id.toString()}
+                    className={cn(
+                      "group flex flex-col items-start justify-between p-3 h-28 w-full border-2 rounded-xl transition-all text-left bg-slate-50/50",
+                      "hover:bg-slate-100 border-transparent",
+                      "data-[state=on]:border-blue-600 data-[state=on]:bg-blue-50 data-[state=on]:text-slate-900"
+                    )}
+                  >
+                    <item.icon className={cn("h-6 w-6 transition-colors", field.value === item.id ? "text-blue-600" : "text-slate-500")} />
+                    <div className="flex-1 flex items-center w-full">
+                      <span className="text-sm group-data-[state=on]:text-blue-600">{item.label}</span>
+                    </div>                  
+                    </ToggleGroupItem>
+                ))}
+              </ToggleGroup>
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+    </div>
+
+    {/* SECTION 2: DEAL TYPE */}
+    <div className="space-y-4">
+      <h3 className="text-lg font-bold tracking-tight">Select deal type</h3>
+      <FormField
+        control={form.control}
+        name="listingType"
+        render={({ field }) => (
+          <FormItem>
+            <FormControl>
+              <ToggleGroup
+                type="single"
+                /* Grid-cols-4 ensures all 4 items take up one clean row on desktop */
+                className="grid grid-cols-2 md:grid-cols-4 gap-4"
+                value={field.value?.toString()}
+                onValueChange={(val) => { if (val) field.onChange(parseInt(val)); }}
+              >
+                {dealTypes.map((item) => (
+                  <ToggleGroupItem
+                    key={item.id}
+                    value={item.id.toString()}
+                    /* Exact same h-32 and styling as above for perfect consistency */
+                    className={cn(
+                      "group flex flex-col items-start justify-between p-3 h-28 w-full border-2 rounded-xl transition-all text-left bg-slate-50/50",
+                      "hover:bg-slate-100 border-transparent",
+                      "data-[state=on]:border-blue-600 data-[state=on]:bg-white data-[state=on]:shadow-md"
+                    )}
+                  >
+                    <item.icon className={cn("h-6 w-6 transition-colors", field.value === item.id ? "text-blue-600" : "text-slate-500")} />
+                    <div className="flex-1 flex items-center w-full">
+                      <span className="text-sm group-data-[state=on]:text-blue-600">{item.name}</span>
+                    </div>
+                  </ToggleGroupItem>
+                ))}
+              </ToggleGroup>
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+    </div>
+  </CardContent>
+</Card>
+
+
+
 
           <Card>
-            <CardHeader><CardTitle className="flex gap-2 text-lg items-center"><FileText className="h-5 w-5 text-primary" /> Listing Details</CardTitle></CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <FormField control={form.control} name="listngType" render={({ field }) => (
-                  <FormItem>
-                    <Select onValueChange={field.onChange} defaultValue={"0"}>
-                      <FormControl><SelectTrigger><SelectValue placeholder="Select type" /></SelectTrigger></FormControl>
-                      <SelectContent><SelectItem value="0">For sale</SelectItem><SelectItem value="1">For rent</SelectItem><SelectItem value="2">Daily rent</SelectItem></SelectContent>
-                    </Select>
+            <CardHeader><CardTitle className="flex gap-2 text-lg items-center"><Home className="h-5 w-5 text-primary" /> Specifications</CardTitle></CardHeader>
+            <CardContent>
+              <FormField
+                control={form.control}
+                name="rooms"
+                render={({ field }) => (
+                  <FormItem className="space-y-3">
+                    <FormLabel className="text-base font-semibold">Total Rooms *</FormLabel>
+                    <FormControl>
+                      <ToggleGroup
+                        type="single"
+                        variant="outline"
+                        className="flex flex-wrap justify-start gap-2"
+                        value={field.value?.toString()}
+                        onValueChange={(val) => val && field.onChange(parseInt(val))}
+                      >
+                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                          <ToggleGroupItem
+                            key={num}
+                            value={num.toString()}
+                            className={cn(
+                              "w-12 h-12 flex items-center justify-center border rounded-md transition-all text-sm font-medium",
+                              "data-[state=on]:border-blue-900 data-[state=on]:bg-blue-50 data-[state=on]:text-blue-900"
+                            )}
+                          >
+                            {num === 10 ? "10+" : num}
+                          </ToggleGroupItem>
+                        ))}
+                      </ToggleGroup>
+                    </FormControl>
                     <FormMessage />
                   </FormItem>
-                )} />
-                <FormField control={form.control} name="type" render={({ field }) => (
-                  <FormItem>
-                    <Select onValueChange={field.onChange} defaultValue={"0"}>
-                      <FormControl><SelectTrigger><SelectValue placeholder="Select type" /></SelectTrigger></FormControl>
-                      <SelectContent><SelectItem value="0">Apartment</SelectItem><SelectItem value="1">House</SelectItem><SelectItem value="2">Cottage</SelectItem><SelectItem value="3">Land</SelectItem></SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )} />
-              </div>
-              <FormField control={form.control} name="title" render={({ field }) => (
-                <FormItem><FormLabel>Title</FormLabel><FormControl><Input placeholder="e.g. Modern Apartment in Vera" {...field} /></FormControl><FormMessage /></FormItem>
+                )}
+              />
+            </CardContent>
+            <CardContent className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <FormField control={form.control} name="area" render={({ field }) => (
+                <FormItem><FormLabel>Area (m²) *</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
               )} />
-              <div className="grid grid-cols-2 gap-4">
-                <FormField control={form.control} name="price" render={({ field }) => (
-                  <FormItem><FormLabel>Price (₾)</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
-                )} />
-              </div>
-              <FormField control={form.control} name="description" render={({ field }) => (
-                <FormItem><FormLabel>Description</FormLabel><FormControl><Textarea rows={4} placeholder="Tell us about the property..." {...field} /></FormControl><FormMessage /></FormItem>
+              {type != 0 && (
+              <FormField control={form.control} name="kitchenArea" render={({ field }) => (
+                <FormItem><FormLabel>Kitchen Area (m²)</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
+              )} />)}
+            </CardContent>
+            <CardContent className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <FormField control={form.control} name="bedrooms" render={({ field }) => (
+                <FormItem><FormLabel>Bedrooms</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
               )} />
             </CardContent>
+            <CardContent className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <FormField control={form.control} name="floor" render={({ field }) => (
+                <FormItem><FormLabel>Floor *</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
+              )} />
+              <FormField control={form.control} name="totalFloors" render={({ field }) => (
+                <FormItem><FormLabel>Total floors *</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
+              )} />
+            </CardContent>
+            <CardContent>
+              <FormField
+                control={form.control}
+                name="status"
+                render={({ field }) => (
+                  <FormItem className="space-y-3">
+                    <FormLabel className="text-base font-semibold">Status *</FormLabel>
+                    <FormControl>
+                      <ToggleGroup
+                        type="single"
+                        variant="outline"
+                        className="flex flex-wrap justify-start items-start gap-2"
+                        value={field.value?.toString()}
+                        onValueChange={(val) => val && field.onChange(parseInt(val))}
+                      >
+                        {statusData.status.map((item) => (
+                          <ToggleGroupItem
+                            key={item.id}
+                            value={item.id.toString()}
+                            className="data-[state=on]:border-blue-900 flex gap-2"
+                          >
+                            {item.name}
+                          </ToggleGroupItem>
+                        ))}
+                      </ToggleGroup>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </CardContent>
+            <CardContent>
+              <FormField
+                control={form.control}
+                name="condition"
+                render={({ field }) => (
+                  <FormItem className="space-y-3">
+                    <FormLabel className="text-base font-semibold">Condition *</FormLabel>
+                    <FormControl>
+                      <ToggleGroup
+                        type="single"
+                        variant="outline"
+                        className="flex flex-wrap justify-start items-start gap-2"
+                        value={field.value?.toString()}
+                        onValueChange={(val) => val && field.onChange(parseInt(val))}
+                      >
+                        {statusData.condition.map((item) => (
+                          <ToggleGroupItem
+                            key={item.id}
+                            value={item.id.toString()}
+                            className="data-[state=on]:border-blue-900 flex gap-2"
+                          >
+                            {item.name}
+                          </ToggleGroupItem>
+                        ))}
+                      </ToggleGroup>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+            </CardContent>
+            <CardContent>
+              <FormField
+                control={form.control}
+                name="project"
+                render={({ field }) => (
+                  <FormItem className="space-y-3">
+                    <FormLabel className="text-base font-semibold">Project</FormLabel>
+                    <FormControl>
+                      <ToggleGroup
+                        type="single"
+                        variant="outline"
+                        className="flex flex-wrap justify-start items-start gap-2"
+                        value={field.value?.toString()}
+                        onValueChange={(val) => val && field.onChange(parseInt(val))}
+                      >
+                        {statusData.project.map((item) => (
+                          <ToggleGroupItem
+                            key={item.id}
+                            value={item.id.toString()}
+                            className="data-[state=on]:border-blue-900 flex gap-2"
+                          >
+                            {item.name}
+                          </ToggleGroupItem>
+                        ))}
+                      </ToggleGroup>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+            </CardContent>
           </Card>
+
 
           <Card>
             <CardHeader><CardTitle className="flex gap-2 text-lg items-center"><Camera className="h-5 w-5 text-primary" /> Media</CardTitle></CardHeader>
@@ -425,125 +652,39 @@ export default function AddApartmentPage() {
           </Card>
 
           <Card>
-            <CardHeader><CardTitle className="flex gap-2 text-lg items-center"><Home className="h-5 w-5 text-primary" /> Specifications</CardTitle></CardHeader>
-            <CardContent className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <FormField control={form.control} name="area" render={({ field }) => (
-                <FormItem><FormLabel>Area (m²) *</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
-              )} />
-              <FormField control={form.control} name="kitchenArea" render={({ field }) => (
-                <FormItem><FormLabel>Kitchen Area (m²)</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
-              )} />
-            </CardContent>
-            <CardContent className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <FormField control={form.control} name="rooms" render={({ field }) => (
-                <FormItem><FormLabel>Rooms *</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
-              )} />
-              <FormField control={form.control} name="bedrooms" render={({ field }) => (
-                <FormItem><FormLabel>Bedrooms</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
-              )} />
-            </CardContent>
-            <CardContent className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <FormField control={form.control} name="floor" render={({ field }) => (
-                <FormItem><FormLabel>Floor *</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
-              )} />
-              <FormField control={form.control} name="totalFloors" render={({ field }) => (
-                <FormItem><FormLabel>Total floors *</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
-              )} />
-            </CardContent>
-            <CardContent>
-              <FormField
-                control={form.control}
-                name="status"
-                render={({ field }) => (
-                  <FormItem className="space-y-3">
-                    <FormLabel className="text-base font-semibold">Status *</FormLabel>
-                    <FormControl>
-                      <ToggleGroup
-                        type="single"
-                        variant="outline"
-                        className="flex flex-wrap justify-start items-start gap-2"
-                        value={field.value?.toString()}
-                        onValueChange={(val) => val && field.onChange(parseInt(val))}
-                      >
-                        {statusData.status.map((item) => (
-                          <ToggleGroupItem
-                            key={item.id}
-                            value={item.id.toString()}
-                            className="data-[state=on]:border-blue-900 flex gap-2" 
-                          >
-                            {item.name}
-                          </ToggleGroupItem>
-                        ))}
-                      </ToggleGroup>
-                    </FormControl>
+            <CardHeader><CardTitle className="flex gap-2 text-lg items-center"><FileText className="h-5 w-5 text-primary" /> Listing Details</CardTitle></CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <FormField control={form.control} name="listingType" render={({ field }) => (
+                  <FormItem>
+                    <Select onValueChange={field.onChange} defaultValue={"0"}>
+                      <FormControl><SelectTrigger><SelectValue placeholder="Select type" /></SelectTrigger></FormControl>
+                      <SelectContent><SelectItem value="0">For sale</SelectItem><SelectItem value="1">For rent</SelectItem><SelectItem value="2">Daily rent</SelectItem></SelectContent>
+                    </Select>
                     <FormMessage />
                   </FormItem>
-                )}
-              />
-            </CardContent>
-            <CardContent>
-              <FormField
-                control={form.control}
-                name="condition"
-                render={({ field }) => (
-                  <FormItem className="space-y-3">
-                    <FormLabel className="text-base font-semibold">Condition *</FormLabel>
-                    <FormControl>
-                      <ToggleGroup
-                        type="single"
-                        variant="outline"
-                        className="flex flex-wrap justify-start items-start gap-2"
-                        value={field.value?.toString()}
-                        onValueChange={(val) => val && field.onChange(parseInt(val))}
-                      >
-                        {statusData.condition.map((item) => (
-                          <ToggleGroupItem
-                            key={item.id}
-                            value={item.id.toString()}
-                            className="data-[state=on]:border-blue-900 flex gap-2" 
-                          >
-                            {item.name}
-                          </ToggleGroupItem>
-                        ))}
-                      </ToggleGroup>
-                    </FormControl>
+                )} />
+                <FormField control={form.control} name="type" render={({ field }) => (
+                  <FormItem>
+                    <Select onValueChange={field.onChange} defaultValue={"0"}>
+                      <FormControl><SelectTrigger><SelectValue placeholder="Select type" /></SelectTrigger></FormControl>
+                      <SelectContent><SelectItem value="0">Apartment</SelectItem><SelectItem value="1">House</SelectItem><SelectItem value="2">Cottage</SelectItem><SelectItem value="3">Land</SelectItem></SelectContent>
+                    </Select>
                     <FormMessage />
                   </FormItem>
-                )}
-              />
-
-            </CardContent>
-            <CardContent>
-              <FormField
-                control={form.control}
-                name="project"
-                render={({ field }) => (
-                  <FormItem className="space-y-3">
-                    <FormLabel className="text-base font-semibold">Project</FormLabel>
-                    <FormControl>
-                      <ToggleGroup
-                        type="single"
-                        variant="outline"
-                        className="flex flex-wrap justify-start items-start gap-2"
-                        value={field.value?.toString()}
-                        onValueChange={(val) => val && field.onChange(parseInt(val))}
-                      >
-                        {statusData.project.map((item) => (
-                          <ToggleGroupItem
-                            key={item.id}
-                            value={item.id.toString()}
-                            className="data-[state=on]:border-blue-900 flex gap-2" 
-                          >
-                            {item.name}
-                          </ToggleGroupItem>
-                        ))}
-                      </ToggleGroup>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
+                )} />
+              </div>
+              <FormField control={form.control} name="title" render={({ field }) => (
+                <FormItem><FormLabel>Title</FormLabel><FormControl><Input placeholder="e.g. Modern Apartment in Vera" {...field} /></FormControl><FormMessage /></FormItem>
+              )} />
+              <div className="grid grid-cols-2 gap-4">
+                <FormField control={form.control} name="price" render={({ field }) => (
+                  <FormItem><FormLabel>Price (₾)</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
+                )} />
+              </div>
+              <FormField control={form.control} name="description" render={({ field }) => (
+                <FormItem><FormLabel>Description</FormLabel><FormControl><Textarea rows={4} placeholder="Tell us about the property..." {...field} /></FormControl><FormMessage /></FormItem>
+              )} />
             </CardContent>
           </Card>
 
