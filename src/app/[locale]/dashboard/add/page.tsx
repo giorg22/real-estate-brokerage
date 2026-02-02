@@ -2,16 +2,17 @@
 
 import React, { useState, useMemo, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
-import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import {
   Check, ChevronsUpDown, MapPin, FileText,
   Camera, Loader2, X, Home, GripVertical,
-  Building2, Warehouse, Leaf, Store, BedSingle, 
-  Tag, Calendar, CalendarClock, FileBadge, FileKey2
+  Building2, Warehouse, Leaf, Store, BedSingle,
+  Tag, Calendar, CalendarClock, FileBadge, FileKey2, PlusSquare, Plus
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import * as z from "zod";
+import { apartmentSchema } from "@/lib/validations";
+import { MapPicker } from "@/components/map/MapPicker";
 
 // DnD Kit
 import {
@@ -20,6 +21,7 @@ import {
 } from "@dnd-kit/core";
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, rectSortingStrategy, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { SortablePhoto, ImageItem } from "@/components/forms/ImageUploader";
 
 // Hooks & UI
 import { useUploadImage } from "@/hooks/useCloudinary";
@@ -34,190 +36,17 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
+import { useApartmentForm } from "@/hooks/useApartmentForm";
 
 import locationData from "@/data/locations.json";
 import statusData from "@/data/status.json";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { propertyTypes, dealTypes, LocationItem } from "@/lib/property-config";
 
-// --- TYPES ---
-interface LocationItem { id: number; title: string; type: "city" | "municipality"; group: string; isSuburb: boolean; districts?: any[]; }
-interface ImageItem { id: string; file: File; url?: string; publicId?: string; isUploading: boolean; }
-
-const propertyTypes = [
-  { id: 0, label: "Apartment", icon: Building2 },
-  { id: 1, label: "House", icon: Home },
-  { id: 2, label: "Summer cottage", icon: Warehouse },
-  { id: 3, label: "Land", icon: Leaf },
-  { id: 4, label: "Commercial real estate", icon: Store },
-  { id: 5, label: "Hotel", icon: BedSingle },
-];
-
-const dealTypes = [
-  { id: 0, name: "For sale", icon: Tag },
-  { id: 1, name: "For rent", icon: Calendar },
-  { id: 2, name: "Daily rent", icon: CalendarClock },
-  { id: 3, name: "Leasehold Mortgage", icon: FileKey2 },
-];
-
-// --- MAP COMPONENT ---
-function MapPicker({
-  value,
-  onChange,
-  flyToCoords
-}: {
-  value: { lat: number; lng: number } | null | undefined;
-  onChange: (coords: { lat: number; lng: number }) => void;
-  flyToCoords?: { lat: number; lng: number }
-}) {
-  const mapContainer = useRef<HTMLDivElement>(null);
-  const map = useRef<maplibregl.Map | null>(null);
-  const marker = useRef<maplibregl.Marker | null>(null);
-
-  const DEFAULT_VIEW = { lat: 41.7151, lng: 44.8271 };
-
-  useEffect(() => {
-    if (!mapContainer.current) return;
-
-    map.current = new maplibregl.Map({
-      container: mapContainer.current,
-      style: 'https://tiles.openfreemap.org/styles/liberty',
-      center: [value?.lng || DEFAULT_VIEW.lng, value?.lat || DEFAULT_VIEW.lat],
-      zoom: value ? 14 : 11,
-      trackResize: true
-    });
-
-    map.current.on('load', () => {
-      map.current?.resize();
-    });
-
-    // Initialize Marker
-    marker.current = new maplibregl.Marker({ draggable: true });
-
-    // If we have an initial value, add it to the map immediately
-    if (value && map.current) {
-      marker.current.setLngLat([value.lng, value.lat]).addTo(map.current);
-    }
-
-    marker.current.on('dragend', () => {
-      const lngLat = marker.current?.getLngLat();
-      if (lngLat) {
-        onChange({ lat: lngLat.lat, lng: lngLat.lng });
-      }
-    });
-
-    map.current.on('click', (e) => {
-      if (!map.current || !marker.current) return;
-
-      marker.current.setLngLat(e.lngLat);
-      marker.current.addTo(map.current);
-
-      onChange({ lat: e.lngLat.lat, lng: e.lngLat.lng });
-    });
-
-    return () => {
-      map.current?.remove();
-      map.current = null;
-    };
-  }, []);
-
-  useEffect(() => {
-    if (map.current && marker.current && flyToCoords) {
-      map.current.flyTo({
-        center: [flyToCoords.lng, flyToCoords.lat],
-        zoom: 15,
-        essential: true
-      });
-
-      // Visual update only
-      if (!marker.current.getElement().parentNode) {
-        marker.current.addTo(map.current);
-      }
-      marker.current.setLngLat([flyToCoords.lng, flyToCoords.lat]);
-    }
-  }, [flyToCoords]);
-
-  return (
-    <div className="space-y-2">
-      <div
-        ref={mapContainer}
-        className="h-[350px] w-full rounded-xl border shadow-inner bg-slate-100 overflow-hidden"
-      />
-      <div className="flex justify-between items-center px-1">
-        <p className="text-[11px] text-muted-foreground italic flex gap-1 items-center">
-          <MapPin className="h-3 w-3" />
-          {value ? "Location set! Drag pin to refine." : "Click map to set exact location"}
-        </p>
-        {value && (
-          <p className="text-[10px] font-mono text-muted-foreground">
-            {value.lat.toFixed(4)}, {value.lng.toFixed(4)}
-          </p>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// --- SORTABLE IMAGE COMPONENT ---
-function SortablePhoto({ item, index, onRemove }: { item: ImageItem, index: number, onRemove: (id: string) => void }) {
-  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: item.id });
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-    zIndex: isDragging ? 50 : 0,
-    touchAction: "none"
-  };
-
-  return (
-    <div ref={setNodeRef} style={style} className={cn("relative group border rounded-xl p-2 bg-card shadow-sm", isDragging && "ring-2 ring-primary opacity-50")}>
-      <div className="relative aspect-square rounded-lg overflow-hidden bg-muted">
-        <img src={item.url || (item.file ? URL.createObjectURL(item.file) : "")} className={cn("object-cover w-full h-full", item.isUploading && "opacity-30")} alt="preview" />
-        <div {...attributes} {...listeners} className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 cursor-grab bg-black/20 transition-opacity">
-          <GripVertical className="text-white h-8 w-8" />
-        </div>
-        {!item.isUploading && (
-          <button type="button" onClick={() => onRemove(item.id)} className="absolute top-1 right-1 bg-destructive text-white rounded-full p-1 z-10"><X className="h-3 w-3" /></button>
-        )}
-        {item.isUploading && <div className="absolute inset-0 flex items-center justify-center"><Loader2 className="animate-spin text-primary h-6 w-6" /></div>}
-      </div>
-      <div className="mt-2 text-center text-[10px] font-bold uppercase tracking-wider">
-        <span className={cn("px-2 py-0.5 rounded-full", index === 0 ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground")}>
-          {index === 0 ? "Cover" : `Photo ${index + 1}`}
-        </span>
-      </div>
-    </div>
-  );
-}
+import PricingCard from "@/components/forms/PricingCard";
 
 
-const apartmentSchema = z.object({
-  title: z.string().min(5, "Title required"),
-  description: z.string().min(5, "Min 5 character").optional(),
-  listingType: z.coerce.number(),
-  type: z.coerce.number(),
-  price: z.coerce.number(),
-  area: z.coerce.number(),
-  kitchenArea: z.coerce.number(),
-  rooms: z.coerce.number(),
-  bedrooms: z.coerce.number(),
-  floor: z.coerce.number(),
-  totalFloors: z.coerce.number(),
-  condition: z.coerce.number(),
-  status: z.coerce.number(),
-  project: z.coerce.number().optional(),
-  address: z.object({
-    locationId: z.number({ required_error: "Location required" }).nullable(),
-    streetId: z.number().nullable(),
-    coords: z.any().nullable()
-  }),
-  images: z.array(z.object({
-    url: z.string(),
-    publicId: z.string(),
-  })).min(0, "You must upload at least one photo"),
-});
-
-
-// --- MAIN PAGE ---
 export default function AddApartmentPage() {
   const [previews, setPreviews] = useState<ImageItem[]>([]);
   const [cityOpen, setCityOpen] = useState(false);
@@ -235,23 +64,59 @@ export default function AddApartmentPage() {
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
   );
 
-
-
-  const form = useForm<z.infer<typeof apartmentSchema>>({
-    resolver: zodResolver(apartmentSchema),
-    defaultValues: {
-      title: "", description: "",
-      address: {
-        coords: null
-      }
-    },
-  });
+  const form = useApartmentForm();
 
   const selectedLocId = form.watch("address.locationId");
   const selectedStrId = form.watch("address.streetId");
   const type = form.watch("type");
   const listingType = form.watch("listingType");
+  const rooms = form.watch("rooms");
 
+  const generateDynamicTitle = (values: any) => {
+    const { rooms, type, listingType, address } = values;
+
+    // 1. Logic for "Studio" vs "X Room"
+    const roomCount = Number(rooms);
+    const roomText = roomCount === 0 ? "Studio" : `${roomCount} room`;
+
+    // 2. Get Label from your propertyTypes JSON
+    const typeLabel = propertyTypes.find(p => p.id === Number(type))?.label || "";
+
+    // 3. Get Deal Name (For sale / For rent) from your dealTypes JSON
+    const dealLabel = dealTypes.find(d => d.id === Number(listingType))?.name.toLowerCase() || "";
+
+    // 4. Get Location Name (from your street search logic)
+    const streetName = groupedStreets
+      .flatMap(g => g.streets)
+      .find(s => s.streetId === address?.streetId)?.streetTitle || "";
+
+    // Construct the result
+    return `${roomText} ${typeLabel} ${dealLabel} in ${streetName}`.trim();
+};
+
+
+const watchedValues = form.watch(["rooms", "type", "listingType", "address.streetId"]);
+
+useEffect(() => {
+  const { rooms, type, listingType, address } = form.getValues();
+  
+  // Find labels from your TypeScript constants/JSON
+  const typeLabel = propertyTypes.find(t => t.id === Number(type))?.label || "";
+  const dealLabel = dealTypes.find(d => d.id === Number(listingType))?.name || "";
+  const streetLabel = groupedStreets
+    .flatMap(g => g.streets)
+    .find(s => s.streetId === address?.streetId)?.streetTitle || "";
+
+  // Formatting logic
+  const roomText = rooms ? `${rooms} room` : "";
+  const generatedTitle = `${roomText} ${typeLabel} ${dealLabel} ${streetLabel ? `in ${streetLabel}` : ""}`.trim();
+
+  // 2. Only update if the user hasn't manually changed the title yet
+  // or if the title field is currently empty
+  if (generatedTitle && (!form.getValues("title") || form.getFieldState("title").isDirty === false)) {
+    form.setValue("title", generatedTitle.replace(/\s+/g, ' '));
+  }
+}, [watchedValues, form]);
 
   useEffect(() => {
     const uploadedImages = previews
@@ -329,198 +194,451 @@ export default function AddApartmentPage() {
       });
     }
   };
-  
+
 
   console.log(form.formState.errors);
 
-  const onSubmit = async (values: any) => {
-    try {
-      if (previews.some(p => p.isUploading)) return;
-      const streetTitle = groupedStreets.flatMap(g => g.streets).find(s => s.streetId === values.address.streetId)?.streetTitle || "";
+const onSubmit = async (values: any) => {
+  try {
+    if (previews.some(p => p.isUploading)) return;
 
-      const payload = {
-        title: values.title,
-        description: values.description,
-        price: Number(values.price),
-        address: {
-          street: streetTitle, city: currentCity?.title || "",
-          state: currentCity?.group || "", country: "Georgia",
-          zipCode: "", latitude: values.address.coords.lat, longitude: values.address.coords.lng
-        },
-        specifications: {
-          condition: Number(values.condition), status: Number(values.status),
-          area: Number(values.area), bedrooms: Number(values.bedrooms),
-          rooms: Number(values.bathrooms), floor: Number(values.floor),
-          totalFloors: Number(values.totalFloors), yearBuilt: 2026,
-          furnished: values.furnished === "true"
-        },
+    const streetTitle = groupedStreets
+      .flatMap(g => g.streets)
+      .find(s => s.streetId === values.address.streetId)?.streetTitle || "";
+
+    const payload = {
+      title: values.title,
+      description: values.description,
+      price: Number(values.price),
+      type: Number(values.type),
+      status: Number(values.status), // Listing Status (Draft/Published)
+      
+      address: {
+        street: streetTitle,
+        city: currentCity?.title || "",
+        state: currentCity?.group || "",
+        country: "Georgia",
+        zipCode: "",
+        latitude: values.address.coords.lat,
+        longitude: values.address.coords.lng
+      },
+
+      specifications: {
+        // --- Core Numeric Fields ---
+        listingType: Number(values.listingType),
         type: Number(values.type),
-        images: previews.map((p, i) => ({
-          url: p.url || "", publicId: p.publicId || "",
-          displayOrder: i, isPrimary: i === 0
-        }))
-      };
+        area: Number(values.area),
+        rooms: Number(values.rooms),
+        bedrooms: Number(values.bedrooms),
+        floor: Number(values.floor),
+        totalFloors: Number(values.totalFloors),
+        condition: Number(values.condition),
+        status: Number(values.status), // Property Status (Renovated/Black Frame etc)
 
-      await createMutation.mutateAsync(payload);
-      toast({ title: "Listing Created Successfully!" });
-      // form.reset();
-      // setPreviews([]);
-    } catch (error) {
-      toast({ title: "Submission Error", variant: "destructive" });
-    }
-  };
+        // --- Optional Numeric/Area Fields ---
+        yardArea: values.yardArea ? Number(values.yardArea) : null,
+        kitchenArea: values.kitchenArea ? Number(values.kitchenArea) : null,
+        bathrooms: values.bathrooms ? Number(values.bathrooms) : null,
+        balconyCount: values.balconyCount ? Number(values.balconyCount) : null,
+        balconyArea: values.balconyArea ? Number(values.balconyArea) : null,
+        verandaArea: values.verandaArea ? Number(values.verandaArea) : null,
+        loggiaArea: values.loggiaArea ? Number(values.loggiaArea) : null,
+        waitingArea: values.waitingArea ? Number(values.waitingArea) : null,
+        buildYear: values.buildYear ? Number(values.buildYear) : null,
+        ceilingHeight: values.ceilingHeight ? Number(values.ceilingHeight) : null,
+        livingRoomArea: values.livingRoomArea ? Number(values.livingRoomArea) : null,
+        storageArea: values.storageArea ? Number(values.storageArea) : null,
+
+        // --- Single Select / Toggle Integers ---
+        period: values.period ? Number(values.period) : null,
+        project: values.project ? Number(values.project) : null,
+        leaseType: values.leaseType ? Number(values.leaseType) : null,
+        typeofCRE: values.typeofCRE ? Number(values.typeofCRE) : null,
+        parking: values.parking ? Number(values.parking) : null,
+        heating: values.heating ? Number(values.heating) : null,
+        hotWater: values.hotWater ? Number(values.hotWater) : null,
+        buildingMaterial: values.buildingMaterial ? Number(values.buildingMaterial) : null,
+        doorWindow: values.doorWindow ? Number(values.doorWindow) : null,
+
+        // --- Bitwise Sums (Already numbers from our ToggleGroup logic) ---
+        propertyCharacteristics: values.propertyCharacteristics || 0,
+        furnitureAndAppliances: values.furnitureAndAppliances || 0,
+        buldingParameters: values.buldingParameters || 0,
+        badges: values.badges || 0,
+      },
+
+      images: previews.map((p, i) => ({
+        url: p.url || "",
+        publicId: p.publicId || "",
+        displayOrder: i,
+        isPrimary: i === 0
+      }))
+    };
+
+    await createMutation.mutateAsync(payload);
+    toast({ title: "Listing Created Successfully!" });
+    
+    // Optional: form.reset(); setPreviews([]);
+  } catch (error) {
+    console.error("Submission Error:", error);
+    toast({ title: "Submission Error", variant: "destructive" });
+  }
+};
 
   return (
     <div className="max-w-4xl mx-auto py-10 px-4">
       <h1 className="text-3xl font-bold mb-8 text-foreground/90 tracking-tight">Add New Listing</h1>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-<Card className="border-primary/20 shadow-md">
-  <CardContent className="space-y-10 pt-6">
-    {/* SECTION 1: PROPERTY TYPE */}
-    <div className="space-y-4">
-      <h3 className="text-lg font-bold tracking-tight">Select a property type</h3>
-      <FormField
-        control={form.control}
-        name="type"
-        render={({ field }) => (
-          <FormItem>
-            <FormControl>
-              <ToggleGroup
-                type="single"
-                /* Grid-cols-3 ensures all 6 items take up two even rows */
-                className="grid grid-cols-2 md:grid-cols-6 gap-4"
-                value={field.value?.toString()}
-                onValueChange={(val) => { if (val) field.onChange(parseInt(val)); }}
-              >
-                {propertyTypes.map((item) => (
-                  <ToggleGroupItem
-                    key={item.id}
-                    value={item.id.toString()}
-                    className={cn(
-                      "group flex flex-col items-start justify-between p-3 h-28 w-full border-2 rounded-xl transition-all text-left bg-slate-50/50",
-                      "hover:bg-slate-100 border-transparent",
-                      "data-[state=on]:border-blue-600 data-[state=on]:bg-blue-50 data-[state=on]:text-slate-900"
+          <Card className="border-primary/20 shadow-md">
+            <CardContent className="space-y-10 pt-6">
+              {/* SECTION 1: PROPERTY TYPE */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-bold tracking-tight">Select a property type</h3>
+                <FormField
+                  control={form.control}
+                  name="type"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <ToggleGroup
+                          type="single"
+                          /* Grid-cols-3 ensures all 6 items take up two even rows */
+                          className="grid grid-cols-2 md:grid-cols-6 gap-4"
+                          value={field.value?.toString()}
+                          onValueChange={(val) => { if (val) field.onChange(parseInt(val)); }}
+                        >
+                          {propertyTypes.map((item) => (
+                            <ToggleGroupItem
+                              key={item.id}
+                              value={item.id.toString()}
+                              className={cn(
+                                "group flex flex-col items-start justify-between p-3 h-28 w-full border-2 rounded-xl transition-all text-left bg-slate-50/50",
+                                "hover:bg-slate-100 border-transparent",
+                                "data-[state=on]:border-blue-600 data-[state=on]:bg-blue-50 data-[state=on]:text-slate-900"
+                              )}
+                            >
+                              <item.icon className={cn("h-6 w-6 transition-colors", field.value === item.id ? "text-blue-600" : "text-slate-500")} />
+                              <div className="flex-1 flex items-center w-full">
+                                <span className="text-sm group-data-[state=on]:text-blue-600">{item.label}</span>
+                              </div>
+                            </ToggleGroupItem>
+                          ))}
+                        </ToggleGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              {/* SECTION 2: DEAL TYPE */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-bold tracking-tight">Select deal type</h3>
+                <FormField
+                  control={form.control}
+                  name="listingType"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <ToggleGroup
+                          type="single"
+                          /* Grid-cols-4 ensures all 4 items take up one clean row on desktop */
+                          className="grid grid-cols-2 md:grid-cols-4 gap-4"
+                          value={field.value?.toString()}
+                          onValueChange={(val) => { if (val) field.onChange(parseInt(val)); }}
+                        >
+                          {dealTypes.map((item) => (
+                            <ToggleGroupItem
+                              key={item.id}
+                              value={item.id.toString()}
+                              /* Exact same h-32 and styling as above for perfect consistency */
+                              className={cn(
+                                "group flex flex-col items-start justify-between p-3 h-28 w-full border-2 rounded-xl transition-all text-left bg-slate-50/50",
+                                "hover:bg-slate-100 border-transparent",
+                                "data-[state=on]:border-blue-600 data-[state=on]:bg-white data-[state=on]:shadow-md"
+                              )}
+                            >
+                              <item.icon className={cn("h-6 w-6 transition-colors", field.value === item.id ? "text-blue-600" : "text-slate-500")} />
+                              <div className="flex-1 flex items-center w-full">
+                                <span className="text-sm group-data-[state=on]:text-blue-600">{item.name}</span>
+                              </div>
+                            </ToggleGroupItem>
+                          ))}
+                        </ToggleGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </CardContent>
+            {[1].includes(listingType) && (
+              <CardContent>
+                <FormField
+                  control={form.control}
+                  name="period"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-base font-semibold">Rent Period *</FormLabel>
+                      <FormControl>
+                        <ToggleGroup
+                          type="single"
+                          variant="outline"
+                          className="flex flex-wrap justify-start gap-2"
+                          value={field.value?.toString()}
+                          onValueChange={(val) => val && field.onChange(parseInt(val))}
+                        >
+                          {[1, 2, 3, 4, 5, 6, 9, 12, 15, 18].map((num) => (
+                            <ToggleGroupItem
+                              key={num}
+                              value={num.toString()}
+                              className="data-[state=on]:border-blue-900 flex gap-2"
+                            >
+                              {num} months
+                            </ToggleGroupItem>
+                          ))}
+                        </ToggleGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>)}
+            {[2].includes(listingType) && (
+              <CardContent>
+                <FormField
+                  control={form.control}
+                  name="period"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-base font-semibold">How many people is it intended for?</FormLabel>
+                      <FormControl>
+                        <ToggleGroup
+                          type="single"
+                          variant="outline"
+                          className="flex flex-wrap justify-start gap-2"
+                          value={field.value?.toString()}
+                          onValueChange={(val) => val && field.onChange(parseInt(val))}
+                        >
+                          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                            <ToggleGroupItem
+                              key={num}
+                              value={num.toString()}
+                              className={cn(
+                                "w-12 h-12 flex items-center justify-center border rounded-md transition-all text-sm font-medium",
+                                "data-[state=on]:border-blue-900 data-[state=on]:bg-blue-50 data-[state=on]:text-blue-900"
+                              )}
+                            >
+                              {num === 10 ? "10+" : num}
+                            </ToggleGroupItem>
+                          ))}
+                        </ToggleGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>)}
+            {[3].includes(listingType) && (
+              <>
+                <CardContent>
+                  <FormField
+                    control={form.control}
+                    name="period"
+                    render={({ field }) => (
+                      <FormItem className="space-y-3">
+                        <FormLabel className="text-base font-semibold">Lease Period</FormLabel>
+                        <FormControl>
+                          <ToggleGroup
+                            type="single"
+                            variant="outline"
+                            className="flex flex-wrap justify-start gap-2"
+                            value={field.value?.toString()}
+                            onValueChange={(val) => val && field.onChange(parseInt(val))}
+                          >
+                            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                              <ToggleGroupItem
+                                key={num}
+                                value={num.toString()}
+                                className="data-[state=on]:border-blue-900 flex gap-2"
+                              >
+                                {num} Years
+                              </ToggleGroupItem>
+                            ))}
+                          </ToggleGroup>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
                     )}
-                  >
-                    <item.icon className={cn("h-6 w-6 transition-colors", field.value === item.id ? "text-blue-600" : "text-slate-500")} />
-                    <div className="flex-1 flex items-center w-full">
-                      <span className="text-sm group-data-[state=on]:text-blue-600">{item.label}</span>
-                    </div>                  
-                    </ToggleGroupItem>
-                ))}
-              </ToggleGroup>
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-    </div>
-
-    {/* SECTION 2: DEAL TYPE */}
-    <div className="space-y-4">
-      <h3 className="text-lg font-bold tracking-tight">Select deal type</h3>
-      <FormField
-        control={form.control}
-        name="listingType"
-        render={({ field }) => (
-          <FormItem>
-            <FormControl>
-              <ToggleGroup
-                type="single"
-                /* Grid-cols-4 ensures all 4 items take up one clean row on desktop */
-                className="grid grid-cols-2 md:grid-cols-4 gap-4"
-                value={field.value?.toString()}
-                onValueChange={(val) => { if (val) field.onChange(parseInt(val)); }}
-              >
-                {dealTypes.map((item) => (
-                  <ToggleGroupItem
-                    key={item.id}
-                    value={item.id.toString()}
-                    /* Exact same h-32 and styling as above for perfect consistency */
-                    className={cn(
-                      "group flex flex-col items-start justify-between p-3 h-28 w-full border-2 rounded-xl transition-all text-left bg-slate-50/50",
-                      "hover:bg-slate-100 border-transparent",
-                      "data-[state=on]:border-blue-600 data-[state=on]:bg-white data-[state=on]:shadow-md"
+                  />
+                </CardContent>
+                <CardContent>
+                  <FormField
+                    control={form.control}
+                    name="leaseType"
+                    render={({ field }) => (
+                      <FormItem className="space-y-3">
+                        <FormLabel className="text-base font-semibold">Lease Type</FormLabel>
+                        <FormControl>
+                          <ToggleGroup
+                            type="single"
+                            variant="outline"
+                            className="flex flex-wrap justify-start gap-2"
+                            value={field.value?.toString()}
+                            onValueChange={(val) => val && field.onChange(parseInt(val))}
+                          >
+                            <ToggleGroupItem
+                              key={0}
+                              value={"0"}
+                              className="data-[state=on]:border-blue-900 flex gap-2"
+                            >
+                              Mortgagor's right of living
+                            </ToggleGroupItem>
+                            <ToggleGroupItem
+                              key={1}
+                              value={"1"}
+                              className="data-[state=on]:border-blue-900 flex gap-2"
+                            >
+                              Owner's right of living
+                            </ToggleGroupItem>
+                          </ToggleGroup>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
                     )}
-                  >
-                    <item.icon className={cn("h-6 w-6 transition-colors", field.value === item.id ? "text-blue-600" : "text-slate-500")} />
-                    <div className="flex-1 flex items-center w-full">
-                      <span className="text-sm group-data-[state=on]:text-blue-600">{item.name}</span>
-                    </div>
-                  </ToggleGroupItem>
-                ))}
-              </ToggleGroup>
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-    </div>
-  </CardContent>
-</Card>
-
-
-
+                  />
+                </CardContent>
+              </>)}
+          </Card>
 
           <Card>
             <CardHeader><CardTitle className="flex gap-2 text-lg items-center"><Home className="h-5 w-5 text-primary" /> Specifications</CardTitle></CardHeader>
-            <CardContent>
-              <FormField
-                control={form.control}
-                name="rooms"
-                render={({ field }) => (
-                  <FormItem className="space-y-3">
-                    <FormLabel className="text-base font-semibold">Total Rooms *</FormLabel>
-                    <FormControl>
-                      <ToggleGroup
-                        type="single"
-                        variant="outline"
-                        className="flex flex-wrap justify-start gap-2"
-                        value={field.value?.toString()}
-                        onValueChange={(val) => val && field.onChange(parseInt(val))}
-                      >
-                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-                          <ToggleGroupItem
-                            key={num}
-                            value={num.toString()}
-                            className={cn(
-                              "w-12 h-12 flex items-center justify-center border rounded-md transition-all text-sm font-medium",
-                              "data-[state=on]:border-blue-900 data-[state=on]:bg-blue-50 data-[state=on]:text-blue-900"
-                            )}
+            {[4].includes(type) && (
+              <CardContent>
+                <FormField
+                  control={form.control}
+                  name="typeofCRE"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-base font-semibold">Type of commercial real estate *</FormLabel>
+                      <FormControl>
+                        <ToggleGroup
+                          type="single"
+                          variant="outline"
+                          className="flex flex-wrap justify-start items-start gap-2"
+                          value={field.value?.toString()}
+                          onValueChange={(val) => val && field.onChange(parseInt(val))}
+                        >
+                          {statusData.typeOfCRE.map((item) => (
+                            <ToggleGroupItem
+                              key={item.id}
+                              value={item.id.toString()}
+                              className="data-[state=on]:border-blue-900 flex gap-2"
+                            >
+                              {item.name}
+                            </ToggleGroupItem>
+                          ))}
+                        </ToggleGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>)}
+            {![3].includes(type) && (
+              <>
+                <CardContent>
+                  <FormField
+                    control={form.control}
+                    name="rooms"
+                    render={({ field }) => (
+                      <FormItem className="space-y-3">
+                        <FormLabel className="text-base font-semibold">Total Rooms *</FormLabel>
+                        <FormControl>
+                          <ToggleGroup
+                            type="single"
+                            variant="outline"
+                            className="flex flex-wrap justify-start gap-2"
+                            value={field.value?.toString()}
+                            onValueChange={(val) => val && field.onChange(parseInt(val))}
                           >
-                            {num === 10 ? "10+" : num}
-                          </ToggleGroupItem>
-                        ))}
-                      </ToggleGroup>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+                            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                              <ToggleGroupItem
+                                key={num}
+                                value={num.toString()}
+                                className={cn(
+                                  "w-12 h-12 flex items-center justify-center border rounded-md transition-all text-sm font-medium",
+                                  "data-[state=on]:border-blue-900 data-[state=on]:bg-blue-50 data-[state=on]:text-blue-900"
+                                )}
+                              >
+                                {num === 10 ? "10+" : num}
+                              </ToggleGroupItem>
+                            ))}
+                          </ToggleGroup>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </CardContent>
+                {rooms && (
+                  <CardContent>
+                    <FormField
+                      control={form.control}
+                      name="bedrooms"
+                      render={({ field }) => (
+                        <FormItem className="space-y-3">
+                          <FormLabel className="text-base font-semibold">Bedrooms *</FormLabel>
+                          <FormControl>
+                            <ToggleGroup
+                              type="single"
+                              variant="outline"
+                              className="flex flex-wrap justify-start gap-2"
+                              value={field.value?.toString()}
+                              onValueChange={(val) => val && field.onChange(parseInt(val))}
+                            >
+                              {Array.from({ length: rooms }, (_, i) => i + 1).map((num) => (
+                                <ToggleGroupItem
+                                  key={num}
+                                  value={num.toString()}
+                                  className={cn(
+                                    "w-12 h-12 flex items-center justify-center border rounded-md transition-all text-sm font-medium",
+                                    "data-[state=on]:border-blue-900 data-[state=on]:bg-blue-50 data-[state=on]:text-blue-900"
+                                  )}
+                                >
+                                  {num === 10 ? "10+" : num}
+                                </ToggleGroupItem>
+                              ))}
+                            </ToggleGroup>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </CardContent>
                 )}
-              />
-            </CardContent>
-            <CardContent className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <FormField control={form.control} name="area" render={({ field }) => (
-                <FormItem><FormLabel>Area (m²) *</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
-              )} />
-              {type != 0 && (
-              <FormField control={form.control} name="kitchenArea" render={({ field }) => (
-                <FormItem><FormLabel>Kitchen Area (m²)</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
-              )} />)}
-            </CardContent>
-            <CardContent className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <FormField control={form.control} name="bedrooms" render={({ field }) => (
-                <FormItem><FormLabel>Bedrooms</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
-              )} />
-            </CardContent>
-            <CardContent className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <FormField control={form.control} name="floor" render={({ field }) => (
-                <FormItem><FormLabel>Floor *</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
-              )} />
-              <FormField control={form.control} name="totalFloors" render={({ field }) => (
-                <FormItem><FormLabel>Total floors *</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
-              )} />
-            </CardContent>
+              </>
+            )}
+            {![3].includes(type) && (<>
+              <CardContent className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <FormField control={form.control} name="area" render={({ field }) => (
+                  <FormItem><FormLabel>Area (m²) *</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
+                )} />
+                {[1, 2].includes(type) && (
+                  <FormField control={form.control} name="yardArea" render={({ field }) => (
+                    <FormItem><FormLabel>Yard Area (m²)</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
+                  )} />)}
+              </CardContent>
+              <CardContent className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {[0, 4, 5].includes(type) && (
+                  <FormField control={form.control} name="floor" render={({ field }) => (
+                    <FormItem><FormLabel>Floor *</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
+                  )} />)}
+                <FormField control={form.control} name="totalFloors" render={({ field }) => (
+                  <FormItem><FormLabel>Total floors *</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
+                )} />
+              </CardContent></>)}
             <CardContent>
               <FormField
                 control={form.control}
@@ -536,7 +654,7 @@ export default function AddApartmentPage() {
                         value={field.value?.toString()}
                         onValueChange={(val) => val && field.onChange(parseInt(val))}
                       >
-                        {statusData.status.map((item) => (
+                        {(type !== 3 ? statusData.status.slice(0, 3) : statusData.status.slice(3)).map((item) => (
                           <ToggleGroupItem
                             key={item.id}
                             value={item.id.toString()}
@@ -552,73 +670,486 @@ export default function AddApartmentPage() {
                 )}
               />
             </CardContent>
-            <CardContent>
-              <FormField
-                control={form.control}
-                name="condition"
-                render={({ field }) => (
-                  <FormItem className="space-y-3">
-                    <FormLabel className="text-base font-semibold">Condition *</FormLabel>
-                    <FormControl>
-                      <ToggleGroup
-                        type="single"
-                        variant="outline"
-                        className="flex flex-wrap justify-start items-start gap-2"
-                        value={field.value?.toString()}
-                        onValueChange={(val) => val && field.onChange(parseInt(val))}
-                      >
-                        {statusData.condition.map((item) => (
-                          <ToggleGroupItem
-                            key={item.id}
-                            value={item.id.toString()}
-                            className="data-[state=on]:border-blue-900 flex gap-2"
-                          >
-                            {item.name}
-                          </ToggleGroupItem>
-                        ))}
-                      </ToggleGroup>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-            </CardContent>
-            <CardContent>
-              <FormField
-                control={form.control}
-                name="project"
-                render={({ field }) => (
-                  <FormItem className="space-y-3">
-                    <FormLabel className="text-base font-semibold">Project</FormLabel>
-                    <FormControl>
-                      <ToggleGroup
-                        type="single"
-                        variant="outline"
-                        className="flex flex-wrap justify-start items-start gap-2"
-                        value={field.value?.toString()}
-                        onValueChange={(val) => val && field.onChange(parseInt(val))}
-                      >
-                        {statusData.project.map((item) => (
-                          <ToggleGroupItem
-                            key={item.id}
-                            value={item.id.toString()}
-                            className="data-[state=on]:border-blue-900 flex gap-2"
-                          >
-                            {item.name}
-                          </ToggleGroupItem>
-                        ))}
-                      </ToggleGroup>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-            </CardContent>
+            {![3].includes(type) && (
+              <CardContent>
+                <FormField
+                  control={form.control}
+                  name="condition"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-base font-semibold">Condition *</FormLabel>
+                      <FormControl>
+                        <ToggleGroup
+                          type="single"
+                          variant="outline"
+                          className="flex flex-wrap justify-start items-start gap-2"
+                          value={field.value?.toString()}
+                          onValueChange={(val) => val && field.onChange(parseInt(val))}
+                        >
+                          {statusData.condition.map((item) => (
+                            <ToggleGroupItem
+                              key={item.id}
+                              value={item.id.toString()}
+                              className="data-[state=on]:border-blue-900 flex gap-2"
+                            >
+                              {item.name}
+                            </ToggleGroupItem>
+                          ))}
+                        </ToggleGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>)}
+            {[0, 5].includes(type) && (
+              <CardContent>
+                <FormField
+                  control={form.control}
+                  name="project"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-base font-semibold">Project</FormLabel>
+                      <FormControl>
+                        <ToggleGroup
+                          type="single"
+                          variant="outline"
+                          className="flex flex-wrap justify-start items-start gap-2"
+                          value={field.value?.toString()}
+                          onValueChange={(val) => val && field.onChange(parseInt(val))}
+                        >
+                          {statusData.project.map((item) => (
+                            <ToggleGroupItem
+                              key={item.id}
+                              value={item.id.toString()}
+                              className="data-[state=on]:border-blue-900 flex gap-2"
+                            >
+                              {item.name}
+                            </ToggleGroupItem>
+                          ))}
+                        </ToggleGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>)}
           </Card>
 
 
+
+          <Card className="relative overflow-hidden transition-all duration-100">
+            <CardHeader>
+              <CardTitle className="flex gap-2 text-lg items-center">
+                <PlusSquare className="h-5 w-5 text-primary" />
+                Additional Features
+              </CardTitle>
+            </CardHeader>
+
+            {/* 1. THE HIDDEN CONTROLLER */}
+            <input type="checkbox" id="reveal-toggle" className="peer hidden" />
+
+            {/* 2. THE CONTENT AREA */}
+            <div className="
+    relative transition-all duration-700 ease-in-out
+    max-h-[350px] peer-checked:max-h-[2000px] 
+    overflow-hidden
+    [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]
+    peer-checked:[mask-image:none]
+  ">
+              <CardContent className="space-y-6">
+                {/* Bathroom Group (Visible in "Half" mode) */}
+                <FormField control={form.control} name="bathrooms" render={({ field }) => (
+                  <FormItem className="space-y-3">
+                    <FormLabel>Bathroom</FormLabel>
+                    <ToggleGroup type="single" variant="outline" className="flex justify-start gap-2" value={field.value?.toString()} onValueChange={(val) => val && field.onChange(parseInt(val))}>
+                      {["1", "2", "3+", "General"].map((opt) => (
+                        <ToggleGroupItem key={opt} value={opt} className="px-4 py-2 border rounded-md data-[state=on]:border-blue-600 data-[state=on]:bg-blue-50 data-[state=on]:text-slate-900">
+                          {opt}
+                        </ToggleGroupItem>
+                      ))}
+                    </ToggleGroup>
+                  </FormItem>
+                )} />
+
+                {/* Grid of inputs (Visible in "Half" mode) */}
+                <div className="grid grid-cols-2 gap-4">
+                  <FormField control={form.control} name="balconyCount" render={({ field }) => (
+                    <FormItem><FormLabel>Balcony</FormLabel><Input placeholder="Total balconies" {...field} /></FormItem>
+                  )} />
+                  <FormField control={form.control} name="balconyArea" render={({ field }) => (
+                    <FormItem><FormLabel>&nbsp;</FormLabel><div className="relative"><Input placeholder="Area" {...field} /><span className="absolute right-3 top-2 text-sm text-muted-foreground">m2</span></div></FormItem>
+                  )} />
+                </div>
+                {/* --- CONTENT BELOW THIS LINE WILL BE FADED OUT INITIALLY --- */}
+
+                <div className="grid grid-cols-2 gap-4">
+                  <FormField control={form.control} name="verandaArea" render={({ field }) => (
+                    <FormItem><FormLabel>Veranda</FormLabel><div className="relative"><Input placeholder="Area" {...field} /><span className="absolute right-3 top-2 text-sm text-muted-foreground">m2</span></div></FormItem>
+                  )} />
+                  <FormField name="loggiaArea" render={({ field }) => (
+                    <FormItem><FormLabel>Loggia</FormLabel><div className="relative"><Input placeholder="Area" {...field} /><span className="absolute right-3 top-2 text-sm text-muted-foreground">m2</span></div></FormItem>
+                  )} />
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <FormField name="livingRoomArea" render={({ field }) => (
+                    <FormItem><FormLabel>Living Room</FormLabel><div className="relative"><Input placeholder="Area" {...field} /><span className="absolute right-3 top-2 text-sm text-muted-foreground">m2</span></div></FormItem>
+                  )} />
+                  <FormField name="storage" render={({ field }) => (
+                    <FormItem><FormLabel>Storage</FormLabel><div className="relative"><Input placeholder="Area" {...field} /><span className="absolute right-3 top-2 text-sm text-muted-foreground">m2</span></div></FormItem>
+                  )} />
+                </div>
+
+              </CardContent>
+              <CardContent>
+                <FormField
+                  control={form.control}
+                  name="parking"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-base font-semibold">Parking</FormLabel>
+                      <FormControl>
+                        <ToggleGroup
+                          type="single"
+                          variant="outline"
+                          className="flex flex-wrap justify-start items-start gap-2"
+                          value={field.value?.toString()}
+                          onValueChange={(val) => val && field.onChange(parseInt(val))}
+                        >
+                          {statusData.parking.map((item) => (
+                            <ToggleGroupItem
+                              key={item.id}
+                              value={item.id.toString()}
+                              className="data-[state=on]:border-blue-900 flex gap-2"
+                            >
+                              {item.name}
+                            </ToggleGroupItem>
+                          ))}
+                        </ToggleGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>
+              <CardContent>
+                <FormField
+                  control={form.control}
+                  name="heating"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-base font-semibold">Heating</FormLabel>
+                      <FormControl>
+                        <ToggleGroup
+                          type="single"
+                          variant="outline"
+                          className="flex flex-wrap justify-start items-start gap-2"
+                          value={field.value?.toString()}
+                          onValueChange={(val) => val && field.onChange(parseInt(val))}
+                        >
+                          {statusData.heating.map((item) => (
+                            <ToggleGroupItem
+                              key={item.id}
+                              value={item.id.toString()}
+                              className="data-[state=on]:border-blue-900 flex gap-2"
+                            >
+                              {item.name}
+                            </ToggleGroupItem>
+                          ))}
+                        </ToggleGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>
+              <CardContent>
+                <FormField
+                  control={form.control}
+                  name="hotWater"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-base font-semibold">Hot water</FormLabel>
+                      <FormControl>
+                        <ToggleGroup
+                          type="single"
+                          variant="outline"
+                          className="flex flex-wrap justify-start items-start gap-2"
+                          value={field.value?.toString()}
+                          onValueChange={(val) => val && field.onChange(parseInt(val))}
+                        >
+                          {statusData.hotWater.map((item) => (
+                            <ToggleGroupItem
+                              key={item.id}
+                              value={item.id.toString()}
+                              className="data-[state=on]:border-blue-900 flex gap-2"
+                            >
+                              {item.name}
+                            </ToggleGroupItem>
+                          ))}
+                        </ToggleGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>
+              <CardContent>
+                <FormField
+                  control={form.control}
+                  name="buildingMaterial"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-base font-semibold">Building material</FormLabel>
+                      <FormControl>
+                        <ToggleGroup
+                          type="single"
+                          variant="outline"
+                          className="flex flex-wrap justify-start items-start gap-2"
+                          value={field.value?.toString()}
+                          onValueChange={(val) => val && field.onChange(parseInt(val))}
+                        >
+                          {statusData.buildingMaterial.map((item) => (
+                            <ToggleGroupItem
+                              key={item.id}
+                              value={item.id.toString()}
+                              className="data-[state=on]:border-blue-900 flex gap-2"
+                            >
+                              {item.name}
+                            </ToggleGroupItem>
+                          ))}
+                        </ToggleGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>
+              <CardContent>
+                <FormField
+                  control={form.control}
+                  name="doorWindow"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-base font-semibold">Door Window</FormLabel>
+                      <FormControl>
+                        <ToggleGroup
+                          type="single"
+                          variant="outline"
+                          className="flex flex-wrap justify-start items-start gap-2"
+                          value={field.value?.toString()}
+                          onValueChange={(val) => val && field.onChange(parseInt(val))}
+                        >
+                          {statusData.doorWindowMaterial.map((item) => (
+                            <ToggleGroupItem
+                              key={item.id}
+                              value={item.id.toString()}
+                              className="data-[state=on]:border-blue-900 flex gap-2"
+                            >
+                              {item.name}
+                            </ToggleGroupItem>
+                          ))}
+                        </ToggleGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>
+              <CardContent>
+                <FormField
+                  control={form.control}
+                  name="propertyCharacteristics"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-base font-semibold">Property Characteristics</FormLabel>
+                      <FormControl>
+                        <ToggleGroup
+                          type="multiple"
+                          variant="outline"
+                          className="flex flex-wrap justify-start items-start gap-2"
+                          value={statusData.propertyCharacteristics
+                            .filter(item => (Number(field.value) & item.id) !== 0)
+                            .map(item => item.id.toString())}
+                          onValueChange={(vals) => {
+                            const sum = vals.reduce((acc, val) => acc + parseInt(val), 0);
+                            field.onChange(sum);
+                          }}
+                        >
+                          {statusData.propertyCharacteristics.map((item) => (
+                            <ToggleGroupItem
+                              key={item.id}
+                              value={item.id.toString()}
+                              className="data-[state=on]:border-blue-900 flex gap-2"
+                            >
+                              {item.name}
+                            </ToggleGroupItem>
+                          ))}
+                        </ToggleGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>
+              <CardContent>
+                <FormField
+                  control={form.control}
+                  name="furnitureAndAppliances"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-base font-semibold">Furniture and appliances</FormLabel>
+                      <FormControl>
+                        <ToggleGroup
+                          type="multiple"
+                          variant="outline"
+                          className="flex flex-wrap justify-start items-start gap-2"
+                          value={statusData.furnitureAndAppliances
+                            .filter(item => (Number(field.value) & item.id) !== 0)
+                            .map(item => item.id.toString())}
+                          onValueChange={(vals) => {
+                            const sum = vals.reduce((acc, val) => acc + parseInt(val), 0);
+                            field.onChange(sum);
+                          }}
+                        >
+                          {statusData.furnitureAndAppliances.map((item) => (
+                            <ToggleGroupItem
+                              key={item.id}
+                              value={item.id.toString()}
+                              className="data-[state=on]:border-blue-900 flex gap-2"
+                            >
+                              {item.name}
+                            </ToggleGroupItem>
+                          ))}
+                        </ToggleGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>
+              <CardContent>
+                <FormField
+                  control={form.control}
+                  name="buldingParameters"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-base font-semibold">Building parameters</FormLabel>
+                      <FormControl>
+                        <ToggleGroup
+                          type="multiple"
+                          variant="outline"
+                          className="flex flex-wrap justify-start items-start gap-2"
+                          value={statusData.buldingParameters
+                            .filter(item => (Number(field.value) & item.id) !== 0)
+                            .map(item => item.id.toString())}
+                          onValueChange={(vals) => {
+                            const sum = vals.reduce((acc, val) => acc + parseInt(val), 0);
+                            field.onChange(sum);
+                          }}
+                        >
+                          {statusData.buldingParameters.map((item) => (
+                            <ToggleGroupItem
+                              key={item.id}
+                              value={item.id.toString()}
+                              className="data-[state=on]:border-blue-900 flex gap-2"
+                            >
+                              {item.name}
+                            </ToggleGroupItem>
+                          ))}
+                        </ToggleGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>
+              <CardContent>
+                <FormField
+                  control={form.control}
+                  name="badges"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-base font-semibold">Badges</FormLabel>
+                      <FormControl>
+                        <ToggleGroup
+                          type="multiple"
+                          variant="outline"
+                          className="flex flex-wrap justify-start items-start gap-2"
+                          value={statusData.badges
+                            .filter(item => (Number(field.value) & item.id) !== 0)
+                            .map(item => item.id.toString())}
+                          onValueChange={(vals) => {
+                            const sum = vals.reduce((acc, val) => acc + parseInt(val), 0);
+                            field.onChange(sum);
+                          }}
+                        >
+                          {statusData.badges.map((item) => (
+                            <ToggleGroupItem
+                              key={item.id}
+                              value={item.id.toString()}
+                              className="data-[state=on]:border-blue-900 flex gap-2"
+                            >
+                              {item.name}
+                            </ToggleGroupItem>
+                          ))}
+                        </ToggleGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>
+            </div>
+
+            {/* 3. THE TOGGLE BUTTON (Floating at the bottom) */}
+            <div className="flex justify-center pb-6 pt-2 bg-white relative z-10">
+              <label
+                htmlFor="reveal-toggle"
+                className="cursor-pointer bg-[#2D3139] text-white px-8 py-2.5 rounded-lg flex items-center gap-2 hover:bg-slate-900 transition-all select-none shadow-lg"
+              >
+                <Plus className="h-4 w-4 transition-transform duration-100 peer-checked:rotate-45" />
+                <span className="peer-checked:hidden">Every parameter</span>
+                <span className="hidden peer-checked:inline">Show less</span>
+              </label>
+            </div>
+          </Card>
+
+
+          <Card>
+            <CardHeader>
+                <CardTitle className="flex gap-2 text-lg items-center">
+                  <FileText className="h-5 w-5 text-primary" /> Listing Title
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <FormField
+                  control={form.control}
+                  name="title" // Changed from description to title
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Title</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="e.g. 3 room Apartment for Sale in Tbilisi" 
+                          {...field} 
+                        />
+                      </FormControl>
+                      <p className="text-[10px] text-muted-foreground mt-1">
+                        Tip: A clear title helps your property sell faster.
+                      </p>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>
+            <CardHeader><CardTitle className="flex gap-2 text-lg items-center"><FileText className="h-5 w-5 text-primary" /> Listing Details</CardTitle></CardHeader>
+            <CardContent className="space-y-4">
+              <FormField control={form.control} name="description" render={({ field }) => (
+                <FormItem><FormLabel>Description</FormLabel><FormControl><Textarea rows={4} placeholder="Tell us about the property..." {...field} /></FormControl><FormMessage /></FormItem>
+              )} />
+            </CardContent>
+          </Card>
           <Card>
             <CardHeader><CardTitle className="flex gap-2 text-lg items-center"><Camera className="h-5 w-5 text-primary" /> Media</CardTitle></CardHeader>
             <CardContent className="space-y-4">
@@ -633,7 +1164,6 @@ export default function AddApartmentPage() {
                   <p className="text-xs text-muted-foreground">Drag to reorder. First image is the cover.</p>
                 </div>
               </div>
-
               <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
                 <SortableContext items={previews} strategy={rectSortingStrategy}>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
@@ -650,44 +1180,7 @@ export default function AddApartmentPage() {
               </DndContext>
             </CardContent>
           </Card>
-
-          <Card>
-            <CardHeader><CardTitle className="flex gap-2 text-lg items-center"><FileText className="h-5 w-5 text-primary" /> Listing Details</CardTitle></CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <FormField control={form.control} name="listingType" render={({ field }) => (
-                  <FormItem>
-                    <Select onValueChange={field.onChange} defaultValue={"0"}>
-                      <FormControl><SelectTrigger><SelectValue placeholder="Select type" /></SelectTrigger></FormControl>
-                      <SelectContent><SelectItem value="0">For sale</SelectItem><SelectItem value="1">For rent</SelectItem><SelectItem value="2">Daily rent</SelectItem></SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )} />
-                <FormField control={form.control} name="type" render={({ field }) => (
-                  <FormItem>
-                    <Select onValueChange={field.onChange} defaultValue={"0"}>
-                      <FormControl><SelectTrigger><SelectValue placeholder="Select type" /></SelectTrigger></FormControl>
-                      <SelectContent><SelectItem value="0">Apartment</SelectItem><SelectItem value="1">House</SelectItem><SelectItem value="2">Cottage</SelectItem><SelectItem value="3">Land</SelectItem></SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )} />
-              </div>
-              <FormField control={form.control} name="title" render={({ field }) => (
-                <FormItem><FormLabel>Title</FormLabel><FormControl><Input placeholder="e.g. Modern Apartment in Vera" {...field} /></FormControl><FormMessage /></FormItem>
-              )} />
-              <div className="grid grid-cols-2 gap-4">
-                <FormField control={form.control} name="price" render={({ field }) => (
-                  <FormItem><FormLabel>Price (₾)</FormLabel><FormControl><Input type="number" {...field} /></FormControl><FormMessage /></FormItem>
-                )} />
-              </div>
-              <FormField control={form.control} name="description" render={({ field }) => (
-                <FormItem><FormLabel>Description</FormLabel><FormControl><Textarea rows={4} placeholder="Tell us about the property..." {...field} /></FormControl><FormMessage /></FormItem>
-              )} />
-            </CardContent>
-          </Card>
-
+  <PricingCard form={form} />
           <Card>
             <CardHeader><CardTitle className="flex gap-2 text-lg items-center"><MapPin className="h-5 w-5 text-primary" /> Location</CardTitle></CardHeader>
             <CardContent className="space-y-4">
@@ -702,9 +1195,6 @@ export default function AddApartmentPage() {
                             <CommandItem key={l.id} onSelect={() => {
                               field.onChange(l.id);
                               setCityOpen(false);
-                              if (l.title === "Tbilisi") setMapFlyCoords({ lat: 41.7151, lng: 44.8271 });
-                              if (l.title === "Batumi") setMapFlyCoords({ lat: 41.6168, lng: 41.6367 });
-                              if (l.title === "Kutaisi") setMapFlyCoords({ lat: 42.2662, lng: 42.7180 });
                             }}>
                               <Check className={cn("mr-2 h-4 w-4", field.value === l.id ? "opacity-100" : "opacity-0")} /> {l.title}
                             </CommandItem>
@@ -716,8 +1206,6 @@ export default function AddApartmentPage() {
                   <FormMessage />
                 </FormItem>
               )} />
-
-
               <>
                 {currentCity?.type == "city" && (
                   <FormField name="address.streetId" render={({ field }) => (
@@ -748,11 +1236,6 @@ export default function AddApartmentPage() {
 
             </CardContent>
           </Card>
-
-
-
-
-
           <Button type="submit" size="lg" className="w-full h-14 text-lg font-bold" disabled={createMutation.isPending || previews.some(p => p.isUploading)}>
             {createMutation.isPending ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Creating...</> : "Publish Property"}
           </Button>

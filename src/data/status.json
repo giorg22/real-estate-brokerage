@@ -1,80 +1,342 @@
 {
-    "status": [
-        {
-            "id": 0,
-            "name": "Newly constructed"
-        },
-        {
-            "id": 1,
-            "name": "Under Construction"
-        },
-        {
-            "id": 2,
-            "name": "Old constructed"
-        }
-    ],
-    "condition": [
-        {
-            "id": 0,
-            "name": "White Frame"
-        },
-        {
-            "id": 1,
-            "name": "Black Frame"
-        },
-        {
-            "id": 2,
-            "name": "Renovated"
-        },
-        {
-            "id": 3,
-            "name": "Not renovated"
-        },
-        {
-            "id": 4,
-            "name": "Old renovated"
-        }
-    ],
-    "project": [
-        {
-            "id": 0,
-            "name": "Leningrad project"
-        },
-        {
-            "id": 1,
-            "name": "Lviv project"
-        },
-        {
-            "id": 2,
-            "name": "Yugoslavian"
-        },
-        {
-            "id": 3,
-            "name": "Non-standard project"
-        },
-        {
-            "id": 4,
-            "name": "Czech project"
-        },
-                {
-            "id": 5,
-            "name": "Moscow project"
-        },
-        {
-            "id": 6,
-            "name": "Kiev project"
-        },
-        {
-            "id": 7,
-            "name": "Khrushcov project"
-        },
-        {
-            "id": 8,
-            "name": "Lviv project"
-        },
-        {
-            "id": 9,
-            "name": "Tsukhareli project"
-        }
-    ]
+  "types": [
+    { "id": 0, "label": "Apartment", "iconName": "Building2" },
+    { "id": 1, "label": "House", "iconName": "Home" },
+    { "id": 2, "label": "Summer cottage", "iconName": "Warehouse" },
+    { "id": 3, "label": "Land", "iconName": "Leaf" },
+    { "id": 4, "label": "Commercial real estate", "iconName": "Store" },
+    { "id": 5, "label": "Hotel", "iconName": "BedSingle" }
+  ],
+  "dealTypes": [
+    { "id": 0, "name": "For sale", "iconName": "Tag" },
+    { "id": 1, "name": "For rent", "iconName": "Calendar" },
+    { "id": 2, "name": "Daily rent", "iconName": "CalendarClock" },
+    { "id": 3, "name": "Leasehold Mortgage", "iconName": "FileKey2" }
+  ],
+  "status": [
+    {
+      "id": 0,
+      "name": "Newly constructed"
+    },
+    {
+      "id": 1,
+      "name": "Under Construction"
+    },
+    {
+      "id": 2,
+      "name": "Old constructed"
+    },
+    {
+      "id": 3,
+      "name": "Agricultural"
+    },
+    {
+      "id": 4,
+      "name": "Non-agricultural"
+    },
+    {
+      "id": 5,
+      "name": "Commercial"
+    },
+    {
+      "id": 6,
+      "name": "Special"
+    },
+    {
+      "id": 7,
+      "name": "Investment / for construction"
+    },
+    {
+      "id": 8,
+      "name": "Farm"
+    }
+  ],
+  "typeOfCRE": [
+    {
+      "id": 0,
+      "name": "Warehouse"
+    },
+    {
+      "id": 1,
+      "name": "Office"
+    },
+    {
+      "id": 2,
+      "name": "Food object"
+    },
+    {
+      "id": 3,
+      "name": "Garage"
+    },
+    {
+      "id": 4,
+      "name": "Basement"
+    },
+    {
+      "id": 5,
+      "name": "Shopping facility"
+    },
+    {
+      "id": 6,
+      "name": "Trade"
+    },
+    {
+      "id": 7,
+      "name": "Autoservice"
+    },
+    {
+      "id": 8,
+      "name": "Car wash"
+    },
+    {
+      "id": 9,
+      "name": "Full building"
+    },
+    {
+      "id": 10,
+      "name": "Universal"
+    }
+  ],
+  "condition": [
+    {
+      "id": 0,
+      "name": "White Frame"
+    },
+    {
+      "id": 1,
+      "name": "Black Frame"
+    },
+    {
+      "id": 2,
+      "name": "Renovated"
+    },
+    {
+      "id": 3,
+      "name": "Not renovated"
+    },
+    {
+      "id": 4,
+      "name": "Old renovated"
+    }
+  ],
+  "project": [
+    {
+      "id": 0,
+      "name": "Leningrad project"
+    },
+    {
+      "id": 1,
+      "name": "Lviv project"
+    },
+    {
+      "id": 2,
+      "name": "Yugoslavian"
+    },
+    {
+      "id": 3,
+      "name": "Non-standard project"
+    },
+    {
+      "id": 4,
+      "name": "Czech project"
+    },
+    {
+      "id": 5,
+      "name": "Moscow project"
+    },
+    {
+      "id": 6,
+      "name": "Kiev project"
+    },
+    {
+      "id": 7,
+      "name": "Khrushcov project"
+    },
+    {
+      "id": 8,
+      "name": "Lviv project"
+    },
+    {
+      "id": 9,
+      "name": "Tsukhareli project"
+    }
+  ],
+  "parking": [
+    {
+      "id": 0,
+      "name": "Underground"
+    },
+    {
+      "id": 1,
+      "name": "Garage"
+    },
+    {
+      "id": 2,
+      "name": "Parking space"
+    },
+    {
+      "id": 3,
+      "name": "Yard parking"
+    },
+    {
+      "id": 4,
+      "name": "Paid parking"
+    },
+    {
+      "id": 5,
+      "name": "Without parking"
+    }
+  ],
+  "heating": [
+    {
+      "id": 0,
+      "name": "Central Heating"
+    },
+    {
+      "id": 1,
+      "name": "Gas Heater"
+    },
+    {
+      "id": 2,
+      "name": "Electric heaters"
+    },
+    {
+      "id": 3,
+      "name": "Central+floor heating"
+    },
+    {
+      "id": 4,
+      "name": "Individual"
+    },
+    {
+      "id": 5,
+      "name": "Floor heating"
+    },
+    {
+      "id": 6,
+      "name": "Without heating"
+    }
+  ],
+  "hotWater": [
+    {
+      "id": 0,
+      "name": "Electric heater"
+    },
+    {
+      "id": 1,
+      "name": "Gas heater"
+    },
+    {
+      "id": 2,
+      "name": "Tank"
+    },
+    {
+      "id": 3,
+      "name": "Solar Heater"
+    },
+    {
+      "id": 4,
+      "name": "Central hot water"
+    },
+    {
+      "id": 5,
+      "name": "Natural Hot Water"
+    },
+    {
+      "id": 6,
+      "name": "Individual"
+    },
+    {
+      "id": 7,
+      "name": "Without hot water"
+    }
+  ],
+  "buildingMaterial": [
+    {
+      "id": 0,
+      "name": "Reinforced concrete"
+    },
+    {
+      "id": 1,
+      "name": "Combined"
+    },
+    {
+      "id": 2,
+      "name": "block"
+    },
+    {
+      "id": 3,
+      "name": "brick"
+    },
+    {
+      "id": 4,
+      "name": "wood"
+    }
+  ],
+  "doorWindowMaterial": [
+    {
+      "id": 0,
+      "name": "Wooden"
+    },
+    {
+      "id": 1,
+      "name": "Plastic"
+    },
+    {
+      "id": 2,
+      "name": "Aluminum"
+    }
+  ],
+  "propertyCharacteristics": [
+    { "id": 1, "name": "Internet" },
+    { "id": 2, "name": "TV" },
+    { "id": 4, "name": "Natural gas" },
+    { "id": 8, "name": "Fireplace" },
+    { "id": 16, "name": "Living room" },
+    { "id": 32, "name": "Water" },
+    { "id": 64, "name": "Sewerage" },
+    { "id": 128, "name": "Electricity" },
+    { "id": 256, "name": "Telephone" },
+    { "id": 512, "name": "Kitchen + Appliances" },
+    { "id": 1024, "name": "Storage type" }
+  ],
+  "furnitureAndAppliances": [
+    { "id": 1, "name": "Furniture" },
+    { "id": 2, "name": "Bed" },
+    { "id": 4, "name": "Sofa" },
+    { "id": 8, "name": "Table" },
+    { "id": 16, "name": "Chairs" },
+    { "id": 32, "name": "Stove (gas / electric)" },
+    { "id": 64, "name": "Oven" },
+    { "id": 128, "name": "Conditioner" },
+    { "id": 256, "name": "Refrigerator" },
+    { "id": 512, "name": "Washing machine" },
+    { "id": 1024, "name": "Dishwasher" }
+  ],
+  "buldingParameters": [
+    { "id": 1, "name": "Spa" },
+    { "id": 2, "name": "Eleveator" },
+    { "id": 4, "name": "Cargo lift" },
+    { "id": 8, "name": "Bar" },
+    { "id": 16, "name": "Gym" },
+    { "id": 32, "name": "Grill" },
+    { "id": 64, "name": "Jacuzzi" },
+    { "id": 128, "name": "Closed swimming pool" },
+    { "id": 256, "name": "schlagbaum" },
+    { "id": 512, "name": "Fire system" },
+    { "id": 1024, "name": "Concierge" },
+    { "id": 2048, "name": "Open swimming pool" },
+    { "id": 4096, "name": "Sauna" },
+    { "id": 8192, "name": "Alarm" },
+    { "id": 16384, "name": "Ventilation" },
+    { "id": 32768, "name": "Guard" }
+  ],
+  "badges": [
+    { "id": 1, "name": "Hot Deal" },
+    { "id": 2, "name": "New Listing" },
+    { "id": 4, "name": "Price Reduced" },
+    { "id": 8, "name": "Featured" },
+    { "id": 16, "name": "Investment" },
+    { "id": 32, "name": "PWD" }
+  ]
 }
