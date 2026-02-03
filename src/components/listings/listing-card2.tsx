@@ -44,7 +44,7 @@ export function ListingCard2({ listing, onViewDetails }: ListingCardProps) {
       {/* Image Container */}
       <div className="relative h-64 cursor-pointer" onClick={() => onViewDetails(listing.id)}>
         <Image
-          src={listing.images[currentImageIndex].url}
+          src={listing.images[currentImageIndex]?.url}
           alt={listing.title}
           fill
           className="object-cover transition-transform group-hover:scale-105"

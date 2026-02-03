@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import * as z from "zod";
 import { apartmentSchema } from "@/lib/validations";
 import { MapPicker } from "@/components/map/MapPicker";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // DnD Kit
 import {
@@ -92,31 +93,31 @@ export default function AddApartmentPage() {
 
     // Construct the result
     return `${roomText} ${typeLabel} ${dealLabel} in ${streetName}`.trim();
-};
+  };
 
 
-const watchedValues = form.watch(["rooms", "type", "listingType", "address.streetId"]);
+  const watchedValues = form.watch(["rooms", "type", "listingType", "address.streetId"]);
 
-useEffect(() => {
-  const { rooms, type, listingType, address } = form.getValues();
-  
-  // Find labels from your TypeScript constants/JSON
-  const typeLabel = propertyTypes.find(t => t.id === Number(type))?.label || "";
-  const dealLabel = dealTypes.find(d => d.id === Number(listingType))?.name || "";
-  const streetLabel = groupedStreets
-    .flatMap(g => g.streets)
-    .find(s => s.streetId === address?.streetId)?.streetTitle || "";
+  useEffect(() => {
+    const { rooms, type, listingType, address } = form.getValues();
 
-  // Formatting logic
-  const roomText = rooms ? `${rooms} room` : "";
-  const generatedTitle = `${roomText} ${typeLabel} ${dealLabel} ${streetLabel ? `in ${streetLabel}` : ""}`.trim();
+    // Find labels from your TypeScript constants/JSON
+    const typeLabel = propertyTypes.find(t => t.id === Number(type))?.label || "";
+    const dealLabel = dealTypes.find(d => d.id === Number(listingType))?.name || "";
+    const streetLabel = groupedStreets
+      .flatMap(g => g.streets)
+      .find(s => s.streetId === address?.streetId)?.streetTitle || "";
 
-  // 2. Only update if the user hasn't manually changed the title yet
-  // or if the title field is currently empty
-  if (generatedTitle && (!form.getValues("title") || form.getFieldState("title").isDirty === false)) {
-    form.setValue("title", generatedTitle.replace(/\s+/g, ' '));
-  }
-}, [watchedValues, form]);
+    // Formatting logic
+    const roomText = rooms ? `${rooms} room` : "";
+    const generatedTitle = `${roomText} ${typeLabel} ${dealLabel} ${streetLabel ? `in ${streetLabel}` : ""}`.trim();
+
+    // 2. Only update if the user hasn't manually changed the title yet
+    // or if the title field is currently empty
+    if (generatedTitle && (!form.getValues("title") || form.getFieldState("title").isDirty === false)) {
+      form.setValue("title", generatedTitle.replace(/\s+/g, ' '));
+    }
+  }, [watchedValues, form]);
 
   useEffect(() => {
     const uploadedImages = previews
@@ -198,92 +199,97 @@ useEffect(() => {
 
   console.log(form.formState.errors);
 
-const onSubmit = async (values: any) => {
-  try {
-    if (previews.some(p => p.isUploading)) return;
+  const onSubmit = async (values: any) => {
+    try {
+      if (previews.some(p => p.isUploading)) return;
 
-    const streetTitle = groupedStreets
-      .flatMap(g => g.streets)
-      .find(s => s.streetId === values.address.streetId)?.streetTitle || "";
+      const streetTitle = groupedStreets
+        .flatMap(g => g.streets)
+        .find(s => s.streetId === values.address.streetId)?.streetTitle || "";
 
-    const payload = {
-      title: values.title,
-      description: values.description,
-      price: Number(values.price),
-      type: Number(values.type),
-      status: Number(values.status), // Listing Status (Draft/Published)
-      
-      address: {
-        street: streetTitle,
-        city: currentCity?.title || "",
-        state: currentCity?.group || "",
-        country: "Georgia",
-        zipCode: "",
-        latitude: values.address.coords.lat,
-        longitude: values.address.coords.lng
-      },
-
-      specifications: {
-        // --- Core Numeric Fields ---
-        listingType: Number(values.listingType),
+      const payload = {
+        title: values.title,
+        price: Number(values.price),
         type: Number(values.type),
-        area: Number(values.area),
-        rooms: Number(values.rooms),
-        bedrooms: Number(values.bedrooms),
-        floor: Number(values.floor),
-        totalFloors: Number(values.totalFloors),
-        condition: Number(values.condition),
-        status: Number(values.status), // Property Status (Renovated/Black Frame etc)
+        status: Number(values.status), // Listing Status (Draft/Published)
 
-        // --- Optional Numeric/Area Fields ---
-        yardArea: values.yardArea ? Number(values.yardArea) : null,
-        kitchenArea: values.kitchenArea ? Number(values.kitchenArea) : null,
-        bathrooms: values.bathrooms ? Number(values.bathrooms) : null,
-        balconyCount: values.balconyCount ? Number(values.balconyCount) : null,
-        balconyArea: values.balconyArea ? Number(values.balconyArea) : null,
-        verandaArea: values.verandaArea ? Number(values.verandaArea) : null,
-        loggiaArea: values.loggiaArea ? Number(values.loggiaArea) : null,
-        waitingArea: values.waitingArea ? Number(values.waitingArea) : null,
-        buildYear: values.buildYear ? Number(values.buildYear) : null,
-        ceilingHeight: values.ceilingHeight ? Number(values.ceilingHeight) : null,
-        livingRoomArea: values.livingRoomArea ? Number(values.livingRoomArea) : null,
-        storageArea: values.storageArea ? Number(values.storageArea) : null,
+        address: {
+          street: streetTitle,
+          city: currentCity?.title || "",
+          state: currentCity?.group || "",
+          country: "Georgia",
+          zipCode: "",
+          latitude: values.address.coords.lat,
+          longitude: values.address.coords.lng
+        },
 
-        // --- Single Select / Toggle Integers ---
-        period: values.period ? Number(values.period) : null,
-        project: values.project ? Number(values.project) : null,
-        leaseType: values.leaseType ? Number(values.leaseType) : null,
-        typeofCRE: values.typeofCRE ? Number(values.typeofCRE) : null,
-        parking: values.parking ? Number(values.parking) : null,
-        heating: values.heating ? Number(values.heating) : null,
-        hotWater: values.hotWater ? Number(values.hotWater) : null,
-        buildingMaterial: values.buildingMaterial ? Number(values.buildingMaterial) : null,
-        doorWindow: values.doorWindow ? Number(values.doorWindow) : null,
+        description: {
+          en: values.description.en || "",
+          ka: values.description.ka || "",
+          ru: values.description.ru || ""
+        },
 
-        // --- Bitwise Sums (Already numbers from our ToggleGroup logic) ---
-        propertyCharacteristics: values.propertyCharacteristics || 0,
-        furnitureAndAppliances: values.furnitureAndAppliances || 0,
-        buldingParameters: values.buldingParameters || 0,
-        badges: values.badges || 0,
-      },
+        specifications: {
+          // --- Core Numeric Fields ---
+          listingType: Number(values.listingType),
+          type: Number(values.type),
+          area: Number(values.area),
+          rooms: Number(values.rooms),
+          bedrooms: Number(values.bedrooms),
+          floor: Number(values.floor),
+          totalFloors: Number(values.totalFloors),
+          condition: Number(values.condition),
+          status: Number(values.status), // Property Status (Renovated/Black Frame etc)
 
-      images: previews.map((p, i) => ({
-        url: p.url || "",
-        publicId: p.publicId || "",
-        displayOrder: i,
-        isPrimary: i === 0
-      }))
-    };
+          // --- Optional Numeric/Area Fields ---
+          yardArea: values.yardArea ? Number(values.yardArea) : null,
+          kitchenArea: values.kitchenArea ? Number(values.kitchenArea) : null,
+          bathrooms: values.bathrooms ? Number(values.bathrooms) : null,
+          balconyCount: values.balconyCount ? Number(values.balconyCount) : null,
+          balconyArea: values.balconyArea ? Number(values.balconyArea) : null,
+          verandaArea: values.verandaArea ? Number(values.verandaArea) : null,
+          loggiaArea: values.loggiaArea ? Number(values.loggiaArea) : null,
+          waitingArea: values.waitingArea ? Number(values.waitingArea) : null,
+          buildYear: values.buildYear ? Number(values.buildYear) : null,
+          ceilingHeight: values.ceilingHeight ? Number(values.ceilingHeight) : null,
+          livingRoomArea: values.livingRoomArea ? Number(values.livingRoomArea) : null,
+          storageArea: values.storageArea ? Number(values.storageArea) : null,
 
-    await createMutation.mutateAsync(payload);
-    toast({ title: "Listing Created Successfully!" });
-    
-    // Optional: form.reset(); setPreviews([]);
-  } catch (error) {
-    console.error("Submission Error:", error);
-    toast({ title: "Submission Error", variant: "destructive" });
-  }
-};
+          // --- Single Select / Toggle Integers ---
+          period: values.period ? Number(values.period) : null,
+          project: values.project ? Number(values.project) : null,
+          leaseType: values.leaseType ? Number(values.leaseType) : null,
+          typeofCRE: values.typeofCRE ? Number(values.typeofCRE) : null,
+          parking: values.parking ? Number(values.parking) : null,
+          heating: values.heating ? Number(values.heating) : null,
+          hotWater: values.hotWater ? Number(values.hotWater) : null,
+          buildingMaterial: values.buildingMaterial ? Number(values.buildingMaterial) : null,
+          doorWindow: values.doorWindow ? Number(values.doorWindow) : null,
+
+          // --- Bitwise Sums (Already numbers from our ToggleGroup logic) ---
+          propertyCharacteristics: values.propertyCharacteristics || 0,
+          furnitureAndAppliances: values.furnitureAndAppliances || 0,
+          buldingParameters: values.buldingParameters || 0,
+          badges: values.badges || 0,
+        },
+
+        images: previews.map((p, i) => ({
+          url: p.url || "",
+          publicId: p.publicId || "",
+          displayOrder: i,
+          isPrimary: i === 0
+        }))
+      };
+
+      await createMutation.mutateAsync(payload);
+      toast({ title: "Listing Created Successfully!" });
+
+      // Optional: form.reset(); setPreviews([]);
+    } catch (error) {
+      console.error("Submission Error:", error);
+      toast({ title: "Submission Error", variant: "destructive" });
+    }
+  };
 
   return (
     <div className="max-w-4xl mx-auto py-10 px-4">
@@ -1114,40 +1120,83 @@ const onSubmit = async (values: any) => {
               </label>
             </div>
           </Card>
-
-
           <Card>
             <CardHeader>
-                <CardTitle className="flex gap-2 text-lg items-center">
-                  <FileText className="h-5 w-5 text-primary" /> Listing Title
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <FormField
-                  control={form.control}
-                  name="title" // Changed from description to title
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Title</FormLabel>
-                      <FormControl>
-                        <Input 
-                          placeholder="e.g. 3 room Apartment for Sale in Tbilisi" 
-                          {...field} 
-                        />
-                      </FormControl>
-                      <p className="text-[10px] text-muted-foreground mt-1">
-                        Tip: A clear title helps your property sell faster.
-                      </p>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </CardContent>
-            <CardHeader><CardTitle className="flex gap-2 text-lg items-center"><FileText className="h-5 w-5 text-primary" /> Listing Details</CardTitle></CardHeader>
-            <CardContent className="space-y-4">
-              <FormField control={form.control} name="description" render={({ field }) => (
-                <FormItem><FormLabel>Description</FormLabel><FormControl><Textarea rows={4} placeholder="Tell us about the property..." {...field} /></FormControl><FormMessage /></FormItem>
-              )} />
+              <CardTitle className="flex gap-2 text-lg items-center">
+                <FileText className="h-5 w-5 text-primary" /> Property Description
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Tabs defaultValue="ka" className="w-full">
+                <TabsList className="grid w-full grid-cols-3 mb-4">
+                  <TabsTrigger value="ka">Georgian (KA)</TabsTrigger>
+                  <TabsTrigger value="en">English (EN)</TabsTrigger>
+                  <TabsTrigger value="ru">Russian (RU)</TabsTrigger>
+                </TabsList>
+
+                {/* Georgian Input */}
+                <TabsContent value="ka">
+                  <FormField
+                    control={form.control}
+                    name="description.ka"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>აღწერა</FormLabel>
+                        <FormControl>
+                          <Textarea
+                            rows={6}
+                            placeholder="აღწერეთ ქონება დეტალურად..."
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </TabsContent>
+
+                {/* English Input */}
+                <TabsContent value="en">
+                  <FormField
+                    control={form.control}
+                    name="description.en"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Description (English)</FormLabel>
+                        <FormControl>
+                          <Textarea
+                            rows={6}
+                            placeholder="Describe the property in English..."
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </TabsContent>
+
+                {/* Russian Input */}
+                <TabsContent value="ru">
+                  <FormField
+                    control={form.control}
+                    name="description.ru"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Описание (Russian)</FormLabel>
+                        <FormControl>
+                          <Textarea
+                            rows={6}
+                            placeholder="Опишите недвижимость на русском..."
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </TabsContent>
+              </Tabs>
             </CardContent>
           </Card>
           <Card>
@@ -1180,7 +1229,7 @@ const onSubmit = async (values: any) => {
               </DndContext>
             </CardContent>
           </Card>
-  <PricingCard form={form} />
+          <PricingCard form={form} />
           <Card>
             <CardHeader><CardTitle className="flex gap-2 text-lg items-center"><MapPin className="h-5 w-5 text-primary" /> Location</CardTitle></CardHeader>
             <CardContent className="space-y-4">

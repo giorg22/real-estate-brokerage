@@ -77,7 +77,7 @@ export function ListingDetailModal2({
 
   // Accessing the URL property from your image objects
   const images = listing.images || [];
-  const currentImage = images[currentImageIndex]?.url;
+  const currentImage = images.length != 0 ? images[currentImageIndex]?.url : null;
   console.log("Current Image URL:", images);
 
   const nextImage = () => {

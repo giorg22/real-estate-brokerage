@@ -8,7 +8,6 @@ export function useApartmentForm() {
     resolver: zodResolver(apartmentSchema),
     defaultValues: {
       title: "",
-      description: "",
       address: { coords: null }
     }
   });
