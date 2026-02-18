@@ -39,13 +39,18 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "@/hooks/use-toast";
 import { useApartmentForm } from "@/hooks/useApartmentForm";
 
-import locationData from "@/data/locations.json";
+import locationDataKa from "@/data/location.ka.json";
+import locationDataEn from "@/data/location.en.json";
 import statusData from "@/data/status.json";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { propertyTypes, dealTypes, LocationItem } from "@/lib/property-config";
+import { propertyTypes, dealTypes } from "@/lib/property-config";
+import { LocationItem } from "@/types/LocationItem";
 
 import PricingCard from "@/components/forms/PricingCard";
+import { useLocale } from "next-intl";
+
+
 
 
 export default function AddApartmentPage() {
@@ -73,6 +78,8 @@ export default function AddApartmentPage() {
   const listingType = form.watch("listingType");
   const rooms = form.watch("rooms");
 
+  const locale = useLocale();
+
   const generateDynamicTitle = (values: any) => {
     const { rooms, type, listingType, address } = values;
 
@@ -95,30 +102,6 @@ export default function AddApartmentPage() {
     return `${roomText} ${typeLabel} ${dealLabel} in ${streetName}`.trim();
   };
 
-
-  const watchedValues = form.watch(["rooms", "type", "listingType", "address.streetId"]);
-
-  useEffect(() => {
-    const { rooms, type, listingType, address } = form.getValues();
-
-    // Find labels from your TypeScript constants/JSON
-    const typeLabel = propertyTypes.find(t => t.id === Number(type))?.label || "";
-    const dealLabel = dealTypes.find(d => d.id === Number(listingType))?.name || "";
-    const streetLabel = groupedStreets
-      .flatMap(g => g.streets)
-      .find(s => s.streetId === address?.streetId)?.streetTitle || "";
-
-    // Formatting logic
-    const roomText = rooms ? `${rooms} room` : "";
-    const generatedTitle = `${roomText} ${typeLabel} ${dealLabel} ${streetLabel ? `in ${streetLabel}` : ""}`.trim();
-
-    // 2. Only update if the user hasn't manually changed the title yet
-    // or if the title field is currently empty
-    if (generatedTitle && (!form.getValues("title") || form.getFieldState("title").isDirty === false)) {
-      form.setValue("title", generatedTitle.replace(/\s+/g, ' '));
-    }
-  }, [watchedValues, form]);
-
   useEffect(() => {
     const uploadedImages = previews
       .filter((p) => !p.isUploading && p.url)
@@ -140,10 +123,17 @@ export default function AddApartmentPage() {
     setMapFlyCoords(undefined);
   }, [selectedLocId, form]);
 
+
+  
+  const locationData = useMemo(
+  () => (locale === "ka" ? locationDataKa : locationDataEn),
+  [locale]
+  );
+
   const ALL_LOCATIONS: LocationItem[] = useMemo(() => [
-    ...locationData.locations.visibleCities.map((c: any) => ({ id: c.cityId, title: c.cityTitle, type: "city" as const, group: "Main Cities", isSuburb: false, districts: c.districts })),
+    ...locationData.locations.visibleCities.map((c: any) => ({ id: c.cityId, title: c.cityTitle, type: "city" as const, group: "Main Cities", isSuburb: false, districts: c.districts  })),
     ...locationData.locations.suburb.flatMap((m: any) => m.cities.map((c: any) => ({ id: c.id, title: c.title, type: "municipality" as const, group: m.municipalityTitle, isSuburb: true }))),
-    ...locationData.locations.municipality.flatMap((m: any) => m.cities.map((c: any) => ({ id: c.id, title: c.title, type: "municipality" as const, group: m.municipalityTitle, isSuburb: false })))
+    ...locationData.locations.municipality.flatMap((m: any) => m.cities.map((c: any) => ({ id: c.id, title: c.title, type: "municipality" as const, group: m.municipalityTitle, municipalityId: m.municipalityId, isSuburb: false })))
   ], []);
 
   const currentCity = useMemo(() => ALL_LOCATIONS.find((l) => l.id === selectedLocId), [selectedLocId, ALL_LOCATIONS]);
@@ -207,6 +197,31 @@ export default function AddApartmentPage() {
         .flatMap(g => g.streets)
         .find(s => s.streetId === values.address.streetId)?.streetTitle || "";
 
+      var mainId = currentCity?.type == "city" ? values.address.streetId : values.address.locationId;
+      let districtId: number | null = null;
+      let subDistrictId: number | null = null;
+
+      if (currentCity?.type === "city") {
+        const district = currentCity.districts?.find((d: any) =>
+          d.subDistricts.some((sd: any) =>
+            sd.streets.some((st: any) => st.streetId === values.address.streetId)
+          )
+        );
+
+        if (district) {
+          districtId = district.districtId;
+
+          const subDistrict = district.subDistricts.find((sd: any) =>
+            sd.streets.some((st: any) => st.streetId === values.address.streetId)
+          );
+
+          if (subDistrict) {
+            subDistrictId = subDistrict.subDistrictId;
+          }
+        }
+      }
+
+
       const payload = {
         title: values.title,
         price: Number(values.price),
@@ -214,8 +229,11 @@ export default function AddApartmentPage() {
         status: Number(values.status), // Listing Status (Draft/Published)
 
         address: {
-          street: streetTitle,
-          city: currentCity?.title || "",
+          address1: ALL_LOCATIONS.find((l) => l.id === values.address.locationId)?.id,
+          address2: districtId,
+          address3: subDistrictId,
+          address4:  mainId,
+          city: currentCity?.id || "",
           state: currentCity?.group || "",
           country: "Georgia",
           zipCode: "",

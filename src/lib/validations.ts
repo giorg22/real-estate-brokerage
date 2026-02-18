@@ -1,7 +1,6 @@
 import * as z from "zod";
 
 export const apartmentSchema = z.object({
-  title: z.string().min(5, "Title required"),
   listingType: z.coerce.number(),
   type: z.coerce.number(),
   price: z.coerce.number(),
@@ -9,7 +8,7 @@ export const apartmentSchema = z.object({
   yardArea: z.coerce.number().optional(),
   rooms: z.coerce.number(),
   bedrooms: z.coerce.number(),
-  floor: z.coerce.number(),
+  floor: z.coerce.number().optional(),
   totalFloors: z.coerce.number(),
   condition: z.coerce.number(),
   period: z.coerce.number().optional(),

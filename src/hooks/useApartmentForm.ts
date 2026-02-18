@@ -7,7 +7,6 @@ export function useApartmentForm() {
   return useForm<z.infer<typeof apartmentSchema>>({
     resolver: zodResolver(apartmentSchema),
     defaultValues: {
-      title: "",
       address: { coords: null }
     }
   });

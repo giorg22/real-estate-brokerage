@@ -11,13 +11,14 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useTranslations } from 'next-intl';
+import { LocaleSwitcher } from "./locale-switcher";
 
 const navigation = [
   { name: "Home", href: "/" },
   { name: "Add Apartment", href: "/dashboard/add" },
   { name: "Login", href: "/account/login" },
   { name: "Listings", href: "/listings" },
-  { name: "My Listings", href: "/my-listings" },
+  { name: "Apartments", href: "/apartments" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -58,6 +59,7 @@ export function Navbar() {
 
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center space-x-4">
+          <LocaleSwitcher />
           <ThemeToggle />
           <Button asChild variant="ghost">
             <Link href="/contact">{t("contact-us")}</Link>
@@ -69,6 +71,7 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         <div className="flex items-center space-x-4 md:hidden">
+          <LocaleSwitcher />
           <ThemeToggle />
           <Sheet>
             <SheetTrigger asChild>

@@ -18,12 +18,3 @@ export const dealTypes = [
   { id: 2, name: "Daily rent", icon: CalendarClock },
   { id: 3, name: "Leasehold Mortgage", icon: FileKey2 },
 ];
-
-export interface LocationItem {
-  id: number;
-  title: string;
-  type: "city" | "municipality";
-  group: string;
-  isSuburb: boolean;
-  districts?: any[];
-}
