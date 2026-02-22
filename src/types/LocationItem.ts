@@ -1,8 +1,16 @@
 export interface LocationItem {
   id: number;
   title: string;
-  type: "city" | "municipality";
-  group: string;
-  isSuburb: boolean;
-  districts?: any[];
+  latitude: number | null;
+  longitude: number | null;
+  cities?: LocationItem[];
 }
+
+export interface LocationNode {
+  id: number;
+  title: string;
+  type: number;
+  cities?: LocationNode[]; 
+}
+
+export type LocationData = LocationNode[];

@@ -1,0 +1,6458 @@
+[
+  {
+    "id": 1,
+    "title": "Тбилиси",
+    "latitude": null,
+    "longitude": null,
+    "cities": [
+      {
+        "id": 2,
+        "title": "Ваке-Сабуртало",
+        "latitude": null,
+        "longitude": null,
+        "cities": [
+          {
+            "id": 3,
+            "title": "Плато Нуцубидзе",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 4,
+                "title": "ул. Е. Амашукели",
+                "latitude": 41.735493,
+                "longitude": 44.747425,
+                "cities": []
+              },
+              {
+                "id": 5,
+                "title": "ул.Бандзеладзе",
+                "latitude": 41.734234,
+                "longitude": 44.730644,
+                "cities": []
+              },
+              {
+                "id": 6,
+                "title": "III микрорайон Нуцубидзе",
+                "latitude": 41.73066,
+                "longitude": 44.731094,
+                "cities": []
+              },
+              {
+                "id": 7,
+                "title": "IV микрорайон Нуцубидзе",
+                "latitude": 41.736343,
+                "longitude": 44.7243,
+                "cities": []
+              },
+              {
+                "id": 8,
+                "title": "I микрорайон Нуцубидзе",
+                "latitude": 41.730976,
+                "longitude": 44.724335,
+                "cities": []
+              },
+              {
+                "id": 9,
+                "title": "V микрорайон Нуцубидзе",
+                "latitude": 41.733646,
+                "longitude": 44.720264,
+                "cities": []
+              },
+              {
+                "id": 10,
+                "title": "Ул. П. Датуашвили",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 11,
+                "title": "ул.Левана Асатиани",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 12,
+                "title": "II микрорайон Нуцубидзе",
+                "latitude": 41.727966,
+                "longitude": 44.72841,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 219,
+            "title": "Багеби",
+            "latitude": 41.707319,
+            "longitude": 44.73495,
+            "cities": [
+              {
+                "id": 220,
+                "title": "В. Таблиашвили ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 221,
+                "title": "Джансуг Кордзая ул. ",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 222,
+                "title": "Цкнетская трасса I переулок",
+                "latitude": 41.710083,
+                "longitude": 44.731003,
+                "cities": []
+              },
+              {
+                "id": 223,
+                "title": "Миндальных садов Ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 224,
+                "title": "А. Амаглобели ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 225,
+                "title": "Долидзе ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 226,
+                "title": "И. Мачабли ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 227,
+                "title": "ул. Зура Саканделидзе",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 228,
+                "title": "ул. Дима Батиашвили",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 229,
+                "title": "ул. Саканделидзе",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 230,
+                "title": "ул.Мцхета",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 231,
+                "title": "II пер. Учанеишвили",
+                "latitude": 41.710278,
+                "longitude": 44.792374,
+                "cities": []
+              },
+              {
+                "id": 232,
+                "title": "I пер. Учанеишвили",
+                "latitude": 41.71365,
+                "longitude": 44.71521,
+                "cities": []
+              },
+              {
+                "id": 233,
+                "title": "ул. Учанеишвили",
+                "latitude": 41.705856,
+                "longitude": 44.728806,
+                "cities": []
+              },
+              {
+                "id": 234,
+                "title": "ул.Имедадзе",
+                "latitude": 41.71365,
+                "longitude": 44.71521,
+                "cities": []
+              },
+              {
+                "id": 235,
+                "title": "Цкнетское шоссе",
+                "latitude": 41.710083,
+                "longitude": 44.731003,
+                "cities": []
+              },
+              {
+                "id": 236,
+                "title": "Учанейшвили III переулок",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 237,
+                "title": "ул.Каклеби",
+                "latitude": 41.712063,
+                "longitude": 44.701656,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 238,
+            "title": "Диди Дигоми",
+            "latitude": 41.78747,
+            "longitude": 44.748962,
+            "cities": [
+              {
+                "id": 273,
+                "title": "ул.Парсадани",
+                "latitude": 41.784058,
+                "longitude": 44.76628,
+                "cities": []
+              },
+              {
+                "id": 282,
+                "title": "ул.Хатаети",
+                "latitude": 41.78008,
+                "longitude": 44.75743,
+                "cities": []
+              },
+              {
+                "id": 283,
+                "title": "ул.Гаинриха Клапроти",
+                "latitude": 41.784912,
+                "longitude": 44.740604,
+                "cities": []
+              },
+              {
+                "id": 284,
+                "title": "ул.Страбони",
+                "latitude": 41.786922,
+                "longitude": 44.744556,
+                "cities": []
+              },
+              {
+                "id": 285,
+                "title": "ул. Андроникашвили",
+                "latitude": 41.779133,
+                "longitude": 44.7411,
+                "cities": []
+              },
+              {
+                "id": 286,
+                "title": "ул.Шермадини",
+                "latitude": 41.779064,
+                "longitude": 44.75164,
+                "cities": []
+              },
+              {
+                "id": 287,
+                "title": "ул.Кристиан Стивени",
+                "latitude": 41.785828,
+                "longitude": 44.73819,
+                "cities": []
+              },
+              {
+                "id": 288,
+                "title": "ул.Яков Раинегса",
+                "latitude": 41.78421,
+                "longitude": 44.749126,
+                "cities": []
+              },
+              {
+                "id": 289,
+                "title": "пл. Царя Парнаваза",
+                "latitude": 41.792316,
+                "longitude": 44.764595,
+                "cities": []
+              },
+              {
+                "id": 290,
+                "title": "ул.Фатмани",
+                "latitude": 41.782642,
+                "longitude": 44.758846,
+                "cities": []
+              },
+              {
+                "id": 291,
+                "title": "ул.Барон де бая",
+                "latitude": 41.784615,
+                "longitude": 44.73058,
+                "cities": []
+              },
+              {
+                "id": 292,
+                "title": "Григола Чхиквадзе ул. ",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 293,
+                "title": "Жозеф Турнефор ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 294,
+                "title": "Зухбая ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 295,
+                "title": "Аллея грузино-американской дружбы",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 296,
+                "title": "Дигомисцкали ул. ",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 297,
+                "title": "ул. Каталикоса Абражама I",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 298,
+                "title": "Макашвили ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 299,
+                "title": "Джон-Малхаза Шаликашвили ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 300,
+                "title": "Тависуфлебис ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 301,
+                "title": "Миха Хелашвили ул. ",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 302,
+                "title": "ул. В.Цинцадзе",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 303,
+                "title": "ул. Давид Батонишвили",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 304,
+                "title": "ул.Л.Рчеулишвили",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 305,
+                "title": "ул. Ильи Шеклашвили",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 306,
+                "title": "ул. Тинатина Вирсаладзе",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 307,
+                "title": "Ахалцихели ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 308,
+                "title": "Георгия Накулбакеви ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 309,
+                "title": "Эквтиме Хеладзе ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 310,
+                "title": "ул. Сванишвили",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 311,
+                "title": "Бендукидзе",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 312,
+                "title": "ул. Данибегашвили",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 313,
+                "title": "ул. Оскара Шмерлинга",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 314,
+                "title": "ул. Рене Шмерлинга",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 315,
+                "title": "ул. Эредви",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 316,
+                "title": "I. shakarishvili st.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 317,
+                "title": "ул. Деметре Тавдадебули",
+                "latitude": 41.796524,
+                "longitude": 44.756977,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 318,
+            "title": "Дигоми 1-9",
+            "latitude": 41.807024,
+            "longitude": 44.777282,
+            "cities": [
+              {
+                "id": 319,
+                "title": "Н. Берадзе ул. ",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 320,
+                "title": "Дигоми 7",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 321,
+                "title": "ул. Г. Перадзе",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 322,
+                "title": "ул. Лаша Лашхия",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 323,
+                "title": "ул. В.Нозадзе",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 324,
+                "title": "ул. Гиви Квичидзе",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 325,
+                "title": "ул. Г.Чохели",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 326,
+                "title": "Дигоми 1",
+                "latitude": 41.790276,
+                "longitude": 44.75996,
+                "cities": []
+              },
+              {
+                "id": 327,
+                "title": "Дигоми 2",
+                "latitude": 41.790276,
+                "longitude": 44.75996,
+                "cities": []
+              },
+              {
+                "id": 328,
+                "title": "Дигоми 3",
+                "latitude": 41.78805,
+                "longitude": 44.74883,
+                "cities": []
+              },
+              {
+                "id": 329,
+                "title": "Дигоми 4",
+                "latitude": 41.789104,
+                "longitude": 44.74329,
+                "cities": []
+              },
+              {
+                "id": 330,
+                "title": "Дигоми 6",
+                "latitude": 41.761337,
+                "longitude": 44.772823,
+                "cities": []
+              },
+              {
+                "id": 331,
+                "title": "Дигоми 5",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 332,
+                "title": "Дигоми 8",
+                "latitude": 41.81718,
+                "longitude": 44.7717,
+                "cities": []
+              },
+              {
+                "id": 333,
+                "title": "Дигоми 9",
+                "latitude": 41.82396,
+                "longitude": 44.76759,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 334,
+            "title": "Ваке",
+            "latitude": 41.708394,
+            "longitude": 44.758591,
+            "cities": [
+              {
+                "id": 335,
+                "title": "пов. Церетели",
+                "latitude": 41.71289,
+                "longitude": 44.748505,
+                "cities": []
+              },
+              {
+                "id": 336,
+                "title": "ул. Мишвеладзе",
+                "latitude": 41.70987,
+                "longitude": 44.753605,
+                "cities": []
+              },
+              {
+                "id": 337,
+                "title": "ул. Мосашвили",
+                "latitude": 41.710667,
+                "longitude": 44.75568,
+                "cities": []
+              },
+              {
+                "id": 338,
+                "title": "ул. Мцхета",
+                "latitude": 41.70624,
+                "longitude": 44.7721,
+                "cities": []
+              },
+              {
+                "id": 339,
+                "title": "ул. Н. Жвания",
+                "latitude": 41.70153,
+                "longitude": 44.770344,
+                "cities": []
+              },
+              {
+                "id": 340,
+                "title": "ул. Р.Еристави",
+                "latitude": 41.70909,
+                "longitude": 44.774555,
+                "cities": []
+              },
+              {
+                "id": 341,
+                "title": "ул. Саджая",
+                "latitude": 41.721546,
+                "longitude": 44.76341,
+                "cities": []
+              },
+              {
+                "id": 342,
+                "title": "ул. Т.Табидзе",
+                "latitude": 41.708424,
+                "longitude": 44.793964,
+                "cities": []
+              },
+              {
+                "id": 343,
+                "title": "ул. Палиашвили",
+                "latitude": 41.70957,
+                "longitude": 44.756878,
+                "cities": []
+              },
+              {
+                "id": 344,
+                "title": "ул. Кипшидзе",
+                "latitude": 41.711285,
+                "longitude": 44.75633,
+                "cities": []
+              },
+              {
+                "id": 345,
+                "title": "ул. Кутателадзе",
+                "latitude": 41.723953,
+                "longitude": 44.743828,
+                "cities": []
+              },
+              {
+                "id": 346,
+                "title": "ул. Шатберашвили",
+                "latitude": 41.703705,
+                "longitude": 44.772457,
+                "cities": []
+              },
+              {
+                "id": 347,
+                "title": "ул. Шови",
+                "latitude": 41.7096,
+                "longitude": 44.756886,
+                "cities": []
+              },
+              {
+                "id": 348,
+                "title": "ул. Шроша",
+                "latitude": 41.701927,
+                "longitude": 44.768368,
+                "cities": []
+              },
+              {
+                "id": 349,
+                "title": "ул. Чолокашвили",
+                "latitude": 41.711002,
+                "longitude": 44.743946,
+                "cities": []
+              },
+              {
+                "id": 350,
+                "title": "ул. Цхведвадзе",
+                "latitude": 41.707996,
+                "longitude": 44.761658,
+                "cities": []
+              },
+              {
+                "id": 351,
+                "title": "ул. Цкнети",
+                "latitude": 41.713905,
+                "longitude": 44.751648,
+                "cities": []
+              },
+              {
+                "id": 352,
+                "title": "ул. Абашели",
+                "latitude": 41.705833,
+                "longitude": 44.764015,
+                "cities": []
+              },
+              {
+                "id": 353,
+                "title": "ул. Аракишвили",
+                "latitude": 41.708607,
+                "longitude": 44.767574,
+                "cities": []
+              },
+              {
+                "id": 354,
+                "title": "ул. Л.Микеладзе",
+                "latitude": 41.694954,
+                "longitude": 44.79471,
+                "cities": []
+              },
+              {
+                "id": 355,
+                "title": "ул. Арешидзе",
+                "latitude": 41.707863,
+                "longitude": 44.763767,
+                "cities": []
+              },
+              {
+                "id": 356,
+                "title": "ул. Базалети",
+                "latitude": 41.707973,
+                "longitude": 44.773014,
+                "cities": []
+              },
+              {
+                "id": 357,
+                "title": "ул. Тамарашвили (ваке)",
+                "latitude": 41.723953,
+                "longitude": 44.743828,
+                "cities": []
+              },
+              {
+                "id": 358,
+                "title": "Ул. Тактакишвили",
+                "latitude": 41.708862,
+                "longitude": 44.764996,
+                "cities": []
+              },
+              {
+                "id": 359,
+                "title": "ул.Р.Чхиквадзе",
+                "latitude": 41.729393,
+                "longitude": 44.733276,
+                "cities": []
+              },
+              {
+                "id": 360,
+                "title": "ул.Абуладзе",
+                "latitude": 41.73233,
+                "longitude": 44.747166,
+                "cities": []
+              },
+              {
+                "id": 361,
+                "title": "ул. Сванидзе",
+                "latitude": 41.72348,
+                "longitude": 44.738384,
+                "cities": []
+              },
+              {
+                "id": 362,
+                "title": "ул. А.Размадзе",
+                "latitude": 41.72263,
+                "longitude": 44.74424,
+                "cities": []
+              },
+              {
+                "id": 363,
+                "title": "ул. Радиани",
+                "latitude": 41.70739,
+                "longitude": 44.769592,
+                "cities": []
+              },
+              {
+                "id": 364,
+                "title": "ул. Н. Рамишвили",
+                "latitude": 41.711327,
+                "longitude": 44.768204,
+                "cities": []
+              },
+              {
+                "id": 365,
+                "title": "ш.Чабуа Амиреджиби",
+                "latitude": 41.7144,
+                "longitude": 44.76374,
+                "cities": []
+              },
+              {
+                "id": 366,
+                "title": "ул. Габашвили",
+                "latitude": 41.714554,
+                "longitude": 44.75666,
+                "cities": []
+              },
+              {
+                "id": 367,
+                "title": "ул. Кобулети",
+                "latitude": 41.704853,
+                "longitude": 44.774963,
+                "cities": []
+              },
+              {
+                "id": 368,
+                "title": "ул. Буркиашвили",
+                "latitude": 41.7096,
+                "longitude": 44.756886,
+                "cities": []
+              },
+              {
+                "id": 369,
+                "title": "ул. Гр.Абашидзе",
+                "latitude": 41.707863,
+                "longitude": 44.763767,
+                "cities": []
+              },
+              {
+                "id": 370,
+                "title": "ул. Гр. Мухадзе",
+                "latitude": 41.70916,
+                "longitude": 44.756718,
+                "cities": []
+              },
+              {
+                "id": 371,
+                "title": "ул.Атени",
+                "latitude": 41.710102,
+                "longitude": 44.773697,
+                "cities": []
+              },
+              {
+                "id": 372,
+                "title": "ул. Кавсадзе",
+                "latitude": 41.71018,
+                "longitude": 44.761986,
+                "cities": []
+              },
+              {
+                "id": 373,
+                "title": "ул. Напареули",
+                "latitude": 41.708282,
+                "longitude": 44.776905,
+                "cities": []
+              },
+              {
+                "id": 374,
+                "title": "Тенгиз Ахметели ул. ",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 375,
+                "title": "Гогоберидзе ул. ",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 376,
+                "title": "Л. Билефельд ул. ",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 377,
+                "title": "Авалишвили ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 378,
+                "title": "ул.Хабеишвили",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 379,
+                "title": "ул. Шошитаишвили",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 380,
+                "title": "Ул. Джанашвили",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 381,
+                "title": "пр. И.Чавчавадзе",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 382,
+                "title": "ул. Бердзенишвили",
+                "latitude": 41.70946,
+                "longitude": 44.759068,
+                "cities": []
+              },
+              {
+                "id": 383,
+                "title": "ул. Дариали",
+                "latitude": 41.711334,
+                "longitude": 44.75583,
+                "cities": []
+              },
+              {
+                "id": 384,
+                "title": "ул. Е.Такаишвили",
+                "latitude": 41.71473,
+                "longitude": 44.757782,
+                "cities": []
+              },
+              {
+                "id": 385,
+                "title": "ул. Варазисхеви",
+                "latitude": 41.71153,
+                "longitude": 44.781055,
+                "cities": []
+              },
+              {
+                "id": 386,
+                "title": "ул. Земо Ваке",
+                "latitude": 41.7096,
+                "longitude": 44.756886,
+                "cities": []
+              },
+              {
+                "id": 387,
+                "title": "ул. И.Абашидзе",
+                "latitude": 41.70859,
+                "longitude": 44.756073,
+                "cities": []
+              },
+              {
+                "id": 388,
+                "title": "ул. Кекелидзе",
+                "latitude": 41.70803,
+                "longitude": 44.77836,
+                "cities": []
+              },
+              {
+                "id": 389,
+                "title": "ул. К.Клдиашвили",
+                "latitude": 41.7096,
+                "longitude": 44.756886,
+                "cities": []
+              },
+              {
+                "id": 390,
+                "title": "ул. Лежава",
+                "latitude": 41.7096,
+                "longitude": 44.756886,
+                "cities": []
+              },
+              {
+                "id": 391,
+                "title": "ул. М.Абашидзе",
+                "latitude": 41.707863,
+                "longitude": 44.763767,
+                "cities": []
+              },
+              {
+                "id": 392,
+                "title": "ул. Марабда",
+                "latitude": 41.70397,
+                "longitude": 44.77329,
+                "cities": []
+              },
+              {
+                "id": 393,
+                "title": "ул. Героев Марухи",
+                "latitude": 41.704876,
+                "longitude": 44.768265,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 394,
+            "title": "Вашлиджвари",
+            "latitude": 41.754993,
+            "longitude": 44.76547,
+            "cities": [
+              {
+                "id": 395,
+                "title": "ул.Арзакан Емухвари",
+                "latitude": 41.753628,
+                "longitude": 44.75756,
+                "cities": []
+              },
+              {
+                "id": 396,
+                "title": "ул. Броцеули",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 397,
+                "title": "И. Фарджиани ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 398,
+                "title": "ул. В.Топуридзе",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 399,
+                "title": "ул. П.Сараджишвили",
+                "latitude": 41.755276,
+                "longitude": 44.768337,
+                "cities": []
+              },
+              {
+                "id": 400,
+                "title": "II пер. Годзиашвили",
+                "latitude": 41.724354,
+                "longitude": 44.754776,
+                "cities": []
+              },
+              {
+                "id": 401,
+                "title": "I пер. Годзиашвили",
+                "latitude": 41.753906,
+                "longitude": 44.7649,
+                "cities": []
+              },
+              {
+                "id": 402,
+                "title": "ул. Годзиашвили",
+                "latitude": 41.753906,
+                "longitude": 44.7649,
+                "cities": []
+              },
+              {
+                "id": 403,
+                "title": "ул. Кванталиани",
+                "latitude": 41.758717,
+                "longitude": 44.75236,
+                "cities": []
+              },
+              {
+                "id": 404,
+                "title": "ул.Мухран Мачавариани",
+                "latitude": 41.75387,
+                "longitude": 44.76019,
+                "cities": []
+              },
+              {
+                "id": 405,
+                "title": "Ул. Ясамана",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 406,
+                "title": "пр. Геловани",
+                "latitude": 41.74577,
+                "longitude": 44.769535,
+                "cities": []
+              },
+              {
+                "id": 407,
+                "title": "III пер. Годзиашвили",
+                "latitude": 41.724354,
+                "longitude": 44.754776,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 408,
+            "title": "Ведзиси",
+            "latitude": 41.732662,
+            "longitude": 44.758934,
+            "cities": [
+              {
+                "id": 409,
+                "title": "ул. М.Геловани",
+                "latitude": 41.74577,
+                "longitude": 44.769535,
+                "cities": []
+              },
+              {
+                "id": 410,
+                "title": "ул. Осетинская",
+                "latitude": 41.719852,
+                "longitude": 44.72922,
+                "cities": []
+              },
+              {
+                "id": 411,
+                "title": "ул.А.Андроникашвили",
+                "latitude": 41.772823,
+                "longitude": 44.766254,
+                "cities": []
+              },
+              {
+                "id": 412,
+                "title": "ул. Сахокиа",
+                "latitude": 41.736393,
+                "longitude": 44.769028,
+                "cities": []
+              },
+              {
+                "id": 413,
+                "title": "ул. Ломоносова",
+                "latitude": 41.731213,
+                "longitude": 44.753647,
+                "cities": []
+              },
+              {
+                "id": 414,
+                "title": "ул. Мгалоблишвили",
+                "latitude": 41.732533,
+                "longitude": 44.767384,
+                "cities": []
+              },
+              {
+                "id": 415,
+                "title": "ул. Ониашвили",
+                "latitude": 41.731487,
+                "longitude": 44.763725,
+                "cities": []
+              },
+              {
+                "id": 416,
+                "title": "ул. Одеская",
+                "latitude": 41.73269,
+                "longitude": 44.76386,
+                "cities": []
+              },
+              {
+                "id": 417,
+                "title": "ул. Львова",
+                "latitude": 41.73357,
+                "longitude": 44.757435,
+                "cities": []
+              },
+              {
+                "id": 418,
+                "title": "ул. Земо Ведзиси",
+                "latitude": 41.73357,
+                "longitude": 44.757435,
+                "cities": []
+              },
+              {
+                "id": 419,
+                "title": "I туп. Земо Ведзиси",
+                "latitude": 41.73357,
+                "longitude": 44.757435,
+                "cities": []
+              },
+              {
+                "id": 420,
+                "title": "ул. Е.Черкезишвили",
+                "latitude": 41.735153,
+                "longitude": 44.76959,
+                "cities": []
+              },
+              {
+                "id": 421,
+                "title": "ул. Ардазиани",
+                "latitude": 41.731213,
+                "longitude": 44.753647,
+                "cities": []
+              },
+              {
+                "id": 422,
+                "title": "ул. Апхаидзе",
+                "latitude": 41.731213,
+                "longitude": 44.753647,
+                "cities": []
+              },
+              {
+                "id": 423,
+                "title": "ул. Г.Абашидзе",
+                "latitude": 41.707863,
+                "longitude": 44.763767,
+                "cities": []
+              },
+              {
+                "id": 424,
+                "title": "Артмелидзе ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 425,
+                "title": "ул. Илия Одишелидзе",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 426,
+                "title": "ул.Мамиа Аласания",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 427,
+                "title": "ул. Вазисубани",
+                "latitude": 41.699852,
+                "longitude": 44.849922,
+                "cities": []
+              },
+              {
+                "id": 428,
+                "title": "II туп. Земо Ведзиси",
+                "latitude": 41.73357,
+                "longitude": 44.757435,
+                "cities": []
+              },
+              {
+                "id": 429,
+                "title": "ул. Зоврети",
+                "latitude": 41.73357,
+                "longitude": 44.757435,
+                "cities": []
+              },
+              {
+                "id": 430,
+                "title": "ул. Имедашвили",
+                "latitude": 41.720924,
+                "longitude": 44.786823,
+                "cities": []
+              },
+              {
+                "id": 431,
+                "title": "ул. Исакадзе",
+                "latitude": 41.734287,
+                "longitude": 44.769703,
+                "cities": []
+              },
+              {
+                "id": 432,
+                "title": "ул. Левандовскии",
+                "latitude": 41.731213,
+                "longitude": 44.753647,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 433,
+            "title": "Тхинвали",
+            "latitude": 41.743684,
+            "longitude": 44.697361,
+            "cities": [
+              {
+                "id": 434,
+                "title": "ул. И.Кечакмадзе",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 435,
+                "title": "Тхинвали",
+                "latitude": 41.743034,
+                "longitude": 44.692875,
+                "cities": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1229,
+        "title": "Дидубе-Чугурети",
+        "latitude": null,
+        "longitude": null,
+        "cities": [
+          {
+            "id": 1230,
+            "title": "Дидубе",
+            "latitude": 41.74998,
+            "longitude": 44.780945,
+            "cities": [
+              {
+                "id": 1231,
+                "title": "набережная Космонавтов",
+                "latitude": 41.731606,
+                "longitude": 44.775955,
+                "cities": []
+              },
+              {
+                "id": 1232,
+                "title": "ул. Зугдиди",
+                "latitude": 41.767017,
+                "longitude": 44.780483,
+                "cities": []
+              },
+              {
+                "id": 1233,
+                "title": "ул. В.Багратиони",
+                "latitude": 41.72791,
+                "longitude": 44.789417,
+                "cities": []
+              },
+              {
+                "id": 1234,
+                "title": "ул. А.Курдиани",
+                "latitude": 41.7183,
+                "longitude": 44.806263,
+                "cities": []
+              },
+              {
+                "id": 1235,
+                "title": "ул. Бакрадзе",
+                "latitude": 41.736835,
+                "longitude": 44.78213,
+                "cities": []
+              },
+              {
+                "id": 1236,
+                "title": "ул. М.Лебанидзе",
+                "latitude": 41.750168,
+                "longitude": 44.779984,
+                "cities": []
+              },
+              {
+                "id": 1237,
+                "title": "ул. Эгнате и Вахтанг  Пипиа",
+                "latitude": 41.722748,
+                "longitude": 44.792103,
+                "cities": []
+              },
+              {
+                "id": 1238,
+                "title": "ул. Гаприндаули",
+                "latitude": 41.750168,
+                "longitude": 44.779984,
+                "cities": []
+              },
+              {
+                "id": 1239,
+                "title": "ул. Дидубе",
+                "latitude": 41.752014,
+                "longitude": 44.77904,
+                "cities": []
+              },
+              {
+                "id": 1240,
+                "title": "ул. Евдошвили",
+                "latitude": 41.715137,
+                "longitude": 44.827095,
+                "cities": []
+              },
+              {
+                "id": 1241,
+                "title": "ул. Вани",
+                "latitude": 41.734303,
+                "longitude": 44.784824,
+                "cities": []
+              },
+              {
+                "id": 1242,
+                "title": "ул. Воронина",
+                "latitude": 41.715137,
+                "longitude": 44.827095,
+                "cities": []
+              },
+              {
+                "id": 1243,
+                "title": "Б. Паичадзе ул. ",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 1244,
+                "title": "ул. Поти",
+                "latitude": 41.7275,
+                "longitude": 44.789722,
+                "cities": []
+              },
+              {
+                "id": 1245,
+                "title": "ул. Баги",
+                "latitude": 41.724483,
+                "longitude": 44.789158,
+                "cities": []
+              },
+              {
+                "id": 1246,
+                "title": "ул. Генерала Квинитадзе",
+                "latitude": 41.71824,
+                "longitude": 44.790348,
+                "cities": []
+              },
+              {
+                "id": 1247,
+                "title": "ул.Д.Кифиани",
+                "latitude": 41.7247,
+                "longitude": 44.78535,
+                "cities": []
+              },
+              {
+                "id": 1248,
+                "title": "ул. Хошараули",
+                "latitude": 41.732277,
+                "longitude": 44.779224,
+                "cities": []
+              },
+              {
+                "id": 1249,
+                "title": "ул.Т.Пипиа",
+                "latitude": 41.731544,
+                "longitude": 44.79142,
+                "cities": []
+              },
+              {
+                "id": 1250,
+                "title": "ул. Цкалтубо",
+                "latitude": 41.744797,
+                "longitude": 44.776295,
+                "cities": []
+              },
+              {
+                "id": 1251,
+                "title": "ул. Т.Еристави (Дидубе)",
+                "latitude": 41.74721,
+                "longitude": 44.77841,
+                "cities": []
+              },
+              {
+                "id": 1252,
+                "title": "пр. А.Церетели",
+                "latitude": 41.74736,
+                "longitude": 44.777534,
+                "cities": []
+              },
+              {
+                "id": 1253,
+                "title": "ул. Станиславского",
+                "latitude": 41.739544,
+                "longitude": 44.780586,
+                "cities": []
+              },
+              {
+                "id": 1254,
+                "title": "ул. Тевдоре Мгвдели",
+                "latitude": 41.72496,
+                "longitude": 44.79393,
+                "cities": []
+              },
+              {
+                "id": 1255,
+                "title": "ул. Кедия",
+                "latitude": 41.728188,
+                "longitude": 44.78749,
+                "cities": []
+              },
+              {
+                "id": 1256,
+                "title": "ул. Абастумани",
+                "latitude": 41.721527,
+                "longitude": 44.793827,
+                "cities": []
+              },
+              {
+                "id": 1257,
+                "title": "ул. Мирцхулава",
+                "latitude": 41.745148,
+                "longitude": 44.77341,
+                "cities": []
+              },
+              {
+                "id": 1258,
+                "title": "ул. Иаманидзе",
+                "latitude": 41.725414,
+                "longitude": 44.786102,
+                "cities": []
+              },
+              {
+                "id": 1259,
+                "title": "ул. Гудаута",
+                "latitude": 41.752014,
+                "longitude": 44.77904,
+                "cities": []
+              },
+              {
+                "id": 1260,
+                "title": "ул. С.Метревели",
+                "latitude": 41.750168,
+                "longitude": 44.779984,
+                "cities": []
+              },
+              {
+                "id": 1261,
+                "title": "ул. Маяковского",
+                "latitude": 41.75834,
+                "longitude": 44.77259,
+                "cities": []
+              },
+              {
+                "id": 1262,
+                "title": "ул. Самтредия",
+                "latitude": 41.743725,
+                "longitude": 44.778645,
+                "cities": []
+              },
+              {
+                "id": 1263,
+                "title": "ул. Сохуми",
+                "latitude": 41.752014,
+                "longitude": 44.77904,
+                "cities": []
+              },
+              {
+                "id": 1264,
+                "title": "ул. Транспорта",
+                "latitude": 41.752014,
+                "longitude": 44.77904,
+                "cities": []
+              },
+              {
+                "id": 1265,
+                "title": "ул. Кутаиси",
+                "latitude": 41.728188,
+                "longitude": 44.78749,
+                "cities": []
+              },
+              {
+                "id": 1266,
+                "title": "ул. Цабадзе",
+                "latitude": 41.724392,
+                "longitude": 44.79195,
+                "cities": []
+              },
+              {
+                "id": 1267,
+                "title": "ул. Цеми",
+                "latitude": 41.73154,
+                "longitude": 44.79038,
+                "cities": []
+              },
+              {
+                "id": 1268,
+                "title": "ул. Каралети",
+                "latitude": 41.752014,
+                "longitude": 44.77904,
+                "cities": []
+              },
+              {
+                "id": 1269,
+                "title": "ул. А.Кереселидзе",
+                "latitude": 41.73143,
+                "longitude": 44.784508,
+                "cities": []
+              },
+              {
+                "id": 1270,
+                "title": "ул. Агладзе",
+                "latitude": 41.73594,
+                "longitude": 44.7776,
+                "cities": []
+              },
+              {
+                "id": 1271,
+                "title": "ул. Батуми",
+                "latitude": 41.725487,
+                "longitude": 44.786755,
+                "cities": []
+              },
+              {
+                "id": 1272,
+                "title": "ул. Гветадзе",
+                "latitude": 41.73011,
+                "longitude": 44.78614,
+                "cities": []
+              },
+              {
+                "id": 1273,
+                "title": "ул. Гори",
+                "latitude": 41.72541,
+                "longitude": 44.79108,
+                "cities": []
+              },
+              {
+                "id": 1274,
+                "title": "ул. Гоголаури",
+                "latitude": 41.73249,
+                "longitude": 44.781757,
+                "cities": []
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "type": 0
+  },
+  {
+    "id": 2114,
+    "title": "Кутаиси",
+    "latitude": null,
+    "longitude": null,
+    "cities": [
+      {
+        "id": 2115,
+        "title": "Районы Кутаиси",
+        "latitude": null,
+        "longitude": null,
+        "cities": [
+          {
+            "id": 2116,
+            "title": "Поселок Авангарди",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2117,
+                "title": "",
+                "latitude": 42.250492,
+                "longitude": 42.67681,
+                "cities": []
+              },
+              {
+                "id": 2118,
+                "title": "",
+                "latitude": 42.23454,
+                "longitude": 42.663635,
+                "cities": []
+              },
+              {
+                "id": 2119,
+                "title": "Т. Шевченко ул .",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2120,
+            "title": "Поселок Автокархана",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2121,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2122,
+                "title": "",
+                "latitude": 42.159927,
+                "longitude": 42.33677,
+                "cities": []
+              },
+              {
+                "id": 2123,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2124,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2125,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2126,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2127,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2128,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2129,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2130,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2131,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2132,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2133,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2134,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2135,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2136,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2137,
+                "title": "",
+                "latitude": 42.262028,
+                "longitude": 42.634296,
+                "cities": []
+              },
+              {
+                "id": 2138,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2139,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2140,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2141,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2142,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2143,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2144,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2145,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2146,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2147,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2148,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2149,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2150,
+                "title": "",
+                "latitude": 42.26006,
+                "longitude": 42.63125,
+                "cities": []
+              },
+              {
+                "id": 2151,
+                "title": "",
+                "latitude": 42.255043,
+                "longitude": 42.649033,
+                "cities": []
+              },
+              {
+                "id": 2152,
+                "title": "",
+                "latitude": 42.25677,
+                "longitude": 42.639812,
+                "cities": []
+              },
+              {
+                "id": 2153,
+                "title": "Дадиани ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2154,
+                "title": "Толстого ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2155,
+                "title": "Орбелиани  ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2156,
+                "title": "Мусхелишвили  ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2157,
+            "title": "Поселок Асатиани",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2158,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2159,
+                "title": "",
+                "latitude": 42.265205,
+                "longitude": 42.724773,
+                "cities": []
+              },
+              {
+                "id": 2160,
+                "title": "",
+                "latitude": 42.25486,
+                "longitude": 42.70058,
+                "cities": []
+              },
+              {
+                "id": 2161,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2162,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2163,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2164,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2165,
+                "title": "",
+                "latitude": 42.249138,
+                "longitude": 42.69343,
+                "cities": []
+              },
+              {
+                "id": 2166,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2167,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2168,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2169,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2170,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2171,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2172,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2173,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2174,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2175,
+                "title": "",
+                "latitude": 42.25194,
+                "longitude": 42.662956,
+                "cities": []
+              },
+              {
+                "id": 2176,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2177,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2178,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2179,
+                "title": "Л. Асатиани ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2180,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2181,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2182,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2183,
+            "title": "Поселок Агмашенебели",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2184,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2185,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2186,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2187,
+                "title": "И. Абашидзе ул. ",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2188,
+                "title": "",
+                "latitude": 42.261765,
+                "longitude": 42.691833,
+                "cities": []
+              },
+              {
+                "id": 2189,
+                "title": "",
+                "latitude": 42.2617,
+                "longitude": 42.681526,
+                "cities": []
+              },
+              {
+                "id": 2190,
+                "title": "",
+                "latitude": 42.249138,
+                "longitude": 42.69343,
+                "cities": []
+              },
+              {
+                "id": 2191,
+                "title": "",
+                "latitude": 42.265602,
+                "longitude": 42.692528,
+                "cities": []
+              },
+              {
+                "id": 2192,
+                "title": "",
+                "latitude": 42.26144,
+                "longitude": 42.704624,
+                "cities": []
+              },
+              {
+                "id": 2193,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2194,
+                "title": "",
+                "latitude": 41.72349,
+                "longitude": 44.757175,
+                "cities": []
+              },
+              {
+                "id": 2195,
+                "title": "",
+                "latitude": 42.261723,
+                "longitude": 42.69491,
+                "cities": []
+              },
+              {
+                "id": 2196,
+                "title": "",
+                "latitude": 42.261723,
+                "longitude": 42.69491,
+                "cities": []
+              },
+              {
+                "id": 2197,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2198,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2199,
+                "title": "",
+                "latitude": 42.261723,
+                "longitude": 42.69491,
+                "cities": []
+              },
+              {
+                "id": 2200,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2201,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2202,
+                "title": "",
+                "latitude": 42.258892,
+                "longitude": 42.642483,
+                "cities": []
+              },
+              {
+                "id": 2203,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2204,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2205,
+                "title": "",
+                "latitude": 41.67383,
+                "longitude": 44.827,
+                "cities": []
+              },
+              {
+                "id": 2206,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2207,
+                "title": "",
+                "latitude": 42.249138,
+                "longitude": 42.69343,
+                "cities": []
+              },
+              {
+                "id": 2208,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2209,
+                "title": "",
+                "latitude": 42.246227,
+                "longitude": 42.7121,
+                "cities": []
+              },
+              {
+                "id": 2210,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2211,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2212,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2213,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2214,
+                "title": "",
+                "latitude": 42.261723,
+                "longitude": 42.69491,
+                "cities": []
+              },
+              {
+                "id": 2215,
+                "title": "",
+                "latitude": 42.272343,
+                "longitude": 42.705837,
+                "cities": []
+              },
+              {
+                "id": 2216,
+                "title": "",
+                "latitude": 42.26719,
+                "longitude": 42.682125,
+                "cities": []
+              },
+              {
+                "id": 2217,
+                "title": "",
+                "latitude": 42.272343,
+                "longitude": 42.705837,
+                "cities": []
+              },
+              {
+                "id": 2218,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2219,
+                "title": "",
+                "latitude": 42.266502,
+                "longitude": 42.68412,
+                "cities": []
+              },
+              {
+                "id": 2220,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2221,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2222,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2223,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2224,
+                "title": "",
+                "latitude": 42.2614,
+                "longitude": 42.71215,
+                "cities": []
+              },
+              {
+                "id": 2225,
+                "title": "",
+                "latitude": 42.506157,
+                "longitude": 41.872276,
+                "cities": []
+              },
+              {
+                "id": 2226,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2227,
+                "title": "ул. Бесики",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2228,
+                "title": "Бесики ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2229,
+                "title": "Парнаваз Мепе ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2230,
+                "title": "Ш. Нуцубидзе ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2231,
+                "title": "Марджанишвили ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2232,
+                "title": "Ломоури ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2233,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2234,
+            "title": "Балахвани",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2235,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2236,
+                "title": "",
+                "latitude": 42.260864,
+                "longitude": 42.70942,
+                "cities": []
+              },
+              {
+                "id": 2237,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2238,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2239,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2240,
+                "title": "",
+                "latitude": 42.260864,
+                "longitude": 42.70942,
+                "cities": []
+              },
+              {
+                "id": 2241,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2242,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2243,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2244,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2245,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2246,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2247,
+                "title": "Леонидзе ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2248,
+                "title": "Церетели ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2249,
+                "title": "Некрасова  ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2250,
+                "title": "Царицы Тамары ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2251,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2252,
+                "title": "",
+                "latitude": 42.23386,
+                "longitude": 42.674473,
+                "cities": []
+              },
+              {
+                "id": 2253,
+                "title": "",
+                "latitude": 42.260864,
+                "longitude": 42.70942,
+                "cities": []
+              },
+              {
+                "id": 2254,
+                "title": "",
+                "latitude": 42.260864,
+                "longitude": 42.70942,
+                "cities": []
+              },
+              {
+                "id": 2255,
+                "title": "",
+                "latitude": 42.260864,
+                "longitude": 42.70942,
+                "cities": []
+              },
+              {
+                "id": 2256,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2257,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2258,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2259,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2260,
+            "title": "Бжолеби",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2261,
+                "title": " Г. Табидзе ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2262,
+                "title": "Н. Думбадзе ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2263,
+                "title": "",
+                "latitude": 42.265533,
+                "longitude": 42.710255,
+                "cities": []
+              },
+              {
+                "id": 2264,
+                "title": "",
+                "latitude": 42.265533,
+                "longitude": 42.710255,
+                "cities": []
+              },
+              {
+                "id": 2265,
+                "title": "",
+                "latitude": 42.265533,
+                "longitude": 42.710255,
+                "cities": []
+              },
+              {
+                "id": 2266,
+                "title": "",
+                "latitude": 42.26875,
+                "longitude": 42.69676,
+                "cities": []
+              },
+              {
+                "id": 2267,
+                "title": "",
+                "latitude": 42.241463,
+                "longitude": 42.665604,
+                "cities": []
+              },
+              {
+                "id": 2268,
+                "title": "",
+                "latitude": 42.265533,
+                "longitude": 42.710255,
+                "cities": []
+              },
+              {
+                "id": 2269,
+                "title": "",
+                "latitude": 42.265533,
+                "longitude": 42.710255,
+                "cities": []
+              },
+              {
+                "id": 2270,
+                "title": "",
+                "latitude": 42.265533,
+                "longitude": 42.710255,
+                "cities": []
+              },
+              {
+                "id": 2271,
+                "title": "",
+                "latitude": 42.265533,
+                "longitude": 42.710255,
+                "cities": []
+              },
+              {
+                "id": 2272,
+                "title": "",
+                "latitude": 42.265533,
+                "longitude": 42.710255,
+                "cities": []
+              },
+              {
+                "id": 2273,
+                "title": "",
+                "latitude": 42.265533,
+                "longitude": 42.710255,
+                "cities": []
+              },
+              {
+                "id": 2274,
+                "title": "",
+                "latitude": 42.265533,
+                "longitude": 42.710255,
+                "cities": []
+              },
+              {
+                "id": 2275,
+                "title": "",
+                "latitude": 42.25712,
+                "longitude": 42.716797,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2276,
+            "title": "Холм Габашвили ",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2277,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2278,
+                "title": "",
+                "latitude": 42.269253,
+                "longitude": 42.69281,
+                "cities": []
+              },
+              {
+                "id": 2279,
+                "title": "",
+                "latitude": 42.268486,
+                "longitude": 42.695732,
+                "cities": []
+              },
+              {
+                "id": 2280,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2281,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2282,
+                "title": "",
+                "latitude": 42.271477,
+                "longitude": 42.69648,
+                "cities": []
+              },
+              {
+                "id": 2283,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2284,
+                "title": "",
+                "latitude": 42.26422,
+                "longitude": 42.677063,
+                "cities": []
+              },
+              {
+                "id": 2285,
+                "title": "",
+                "latitude": 42.26422,
+                "longitude": 42.677063,
+                "cities": []
+              },
+              {
+                "id": 2286,
+                "title": "",
+                "latitude": 42.279106,
+                "longitude": 42.704224,
+                "cities": []
+              },
+              {
+                "id": 2287,
+                "title": "",
+                "latitude": 42.279106,
+                "longitude": 42.704224,
+                "cities": []
+              },
+              {
+                "id": 2288,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2289,
+                "title": "",
+                "latitude": 41.720222,
+                "longitude": 44.72035,
+                "cities": []
+              },
+              {
+                "id": 2290,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2291,
+                "title": "",
+                "latitude": 42.273094,
+                "longitude": 42.696476,
+                "cities": []
+              },
+              {
+                "id": 2292,
+                "title": "",
+                "latitude": 42.271477,
+                "longitude": 42.69648,
+                "cities": []
+              },
+              {
+                "id": 2293,
+                "title": "",
+                "latitude": 42.271477,
+                "longitude": 42.69648,
+                "cities": []
+              },
+              {
+                "id": 2294,
+                "title": "",
+                "latitude": 42.27297,
+                "longitude": 42.694855,
+                "cities": []
+              },
+              {
+                "id": 2295,
+                "title": "",
+                "latitude": 42.27297,
+                "longitude": 42.694855,
+                "cities": []
+              },
+              {
+                "id": 2296,
+                "title": "",
+                "latitude": 42.271835,
+                "longitude": 42.70604,
+                "cities": []
+              },
+              {
+                "id": 2297,
+                "title": "",
+                "latitude": 42.279106,
+                "longitude": 42.704224,
+                "cities": []
+              },
+              {
+                "id": 2298,
+                "title": "",
+                "latitude": 42.271477,
+                "longitude": 42.69648,
+                "cities": []
+              },
+              {
+                "id": 2299,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2300,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2301,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2302,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2303,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2304,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2305,
+                "title": "Киквидзе ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2306,
+                "title": "",
+                "latitude": 42.273422,
+                "longitude": 42.689262,
+                "cities": []
+              },
+              {
+                "id": 2307,
+                "title": "",
+                "latitude": 42.27297,
+                "longitude": 42.694855,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2308,
+            "title": "Гора Сакуслиа",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2309,
+                "title": "",
+                "latitude": 42.252964,
+                "longitude": 42.66076,
+                "cities": []
+              },
+              {
+                "id": 2310,
+                "title": "М. Тамарашвили ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2311,
+                "title": "Мачабели ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2312,
+                "title": "М. Лебанидзе ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2313,
+                "title": "Очамчире ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2314,
+                "title": "",
+                "latitude": 42.267124,
+                "longitude": 42.625008,
+                "cities": []
+              },
+              {
+                "id": 2315,
+                "title": "",
+                "latitude": 42.27297,
+                "longitude": 42.694855,
+                "cities": []
+              },
+              {
+                "id": 2316,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2317,
+                "title": "",
+                "latitude": 42.252964,
+                "longitude": 42.66076,
+                "cities": []
+              },
+              {
+                "id": 2318,
+                "title": "",
+                "latitude": 42.273094,
+                "longitude": 42.696476,
+                "cities": []
+              },
+              {
+                "id": 2319,
+                "title": "",
+                "latitude": 42.260666,
+                "longitude": 42.671326,
+                "cities": []
+              },
+              {
+                "id": 2320,
+                "title": "",
+                "latitude": 42.273094,
+                "longitude": 42.696476,
+                "cities": []
+              },
+              {
+                "id": 2321,
+                "title": "",
+                "latitude": 42.273094,
+                "longitude": 42.696476,
+                "cities": []
+              },
+              {
+                "id": 2322,
+                "title": "",
+                "latitude": 42.279106,
+                "longitude": 42.704224,
+                "cities": []
+              },
+              {
+                "id": 2323,
+                "title": "",
+                "latitude": 42.279106,
+                "longitude": 42.704224,
+                "cities": []
+              },
+              {
+                "id": 2324,
+                "title": "",
+                "latitude": 42.252964,
+                "longitude": 42.66076,
+                "cities": []
+              },
+              {
+                "id": 2325,
+                "title": "",
+                "latitude": 42.279106,
+                "longitude": 42.704224,
+                "cities": []
+              },
+              {
+                "id": 2326,
+                "title": "",
+                "latitude": 42.252964,
+                "longitude": 42.66076,
+                "cities": []
+              },
+              {
+                "id": 2327,
+                "title": "",
+                "latitude": 42.279106,
+                "longitude": 42.704224,
+                "cities": []
+              },
+              {
+                "id": 2328,
+                "title": "",
+                "latitude": 42.252964,
+                "longitude": 42.66076,
+                "cities": []
+              },
+              {
+                "id": 2329,
+                "title": "",
+                "latitude": 42.252964,
+                "longitude": 42.66076,
+                "cities": []
+              },
+              {
+                "id": 2330,
+                "title": "",
+                "latitude": 42.279106,
+                "longitude": 42.704224,
+                "cities": []
+              },
+              {
+                "id": 2331,
+                "title": "",
+                "latitude": 42.27297,
+                "longitude": 42.694855,
+                "cities": []
+              },
+              {
+                "id": 2332,
+                "title": "",
+                "latitude": 42.279106,
+                "longitude": 42.704224,
+                "cities": []
+              },
+              {
+                "id": 2333,
+                "title": "",
+                "latitude": 42.279106,
+                "longitude": 42.704224,
+                "cities": []
+              },
+              {
+                "id": 2334,
+                "title": "",
+                "latitude": 42.252964,
+                "longitude": 42.66076,
+                "cities": []
+              },
+              {
+                "id": 2335,
+                "title": "",
+                "latitude": 42.252964,
+                "longitude": 42.66076,
+                "cities": []
+              },
+              {
+                "id": 2336,
+                "title": "",
+                "latitude": 42.252964,
+                "longitude": 42.66076,
+                "cities": []
+              },
+              {
+                "id": 2337,
+                "title": "",
+                "latitude": 42.273094,
+                "longitude": 42.696476,
+                "cities": []
+              },
+              {
+                "id": 2338,
+                "title": "",
+                "latitude": 42.279106,
+                "longitude": 42.704224,
+                "cities": []
+              },
+              {
+                "id": 2339,
+                "title": "",
+                "latitude": 42.26028,
+                "longitude": 42.634407,
+                "cities": []
+              },
+              {
+                "id": 2340,
+                "title": "",
+                "latitude": 42.260666,
+                "longitude": 42.671326,
+                "cities": []
+              },
+              {
+                "id": 2341,
+                "title": "",
+                "latitude": 42.273094,
+                "longitude": 42.696476,
+                "cities": []
+              },
+              {
+                "id": 2342,
+                "title": "Г. Николадзе  ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2343,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2344,
+                "title": "",
+                "latitude": 42.26981,
+                "longitude": 42.702362,
+                "cities": []
+              },
+              {
+                "id": 2345,
+                "title": "",
+                "latitude": 42.279106,
+                "longitude": 42.704224,
+                "cities": []
+              },
+              {
+                "id": 2346,
+                "title": "",
+                "latitude": 42.265293,
+                "longitude": 42.70749,
+                "cities": []
+              },
+              {
+                "id": 2347,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2348,
+                "title": "",
+                "latitude": 42.252964,
+                "longitude": 42.66076,
+                "cities": []
+              },
+              {
+                "id": 2349,
+                "title": "",
+                "latitude": 42.26452,
+                "longitude": 42.711826,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2350,
+            "title": "Гуматгеси",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2351,
+                "title": "",
+                "latitude": 42.320625,
+                "longitude": 42.7051,
+                "cities": []
+              },
+              {
+                "id": 2352,
+                "title": "",
+                "latitude": 42.320625,
+                "longitude": 42.7051,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2353,
+            "title": "Вакисубани",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2354,
+                "title": "",
+                "latitude": 42.268368,
+                "longitude": 42.69951,
+                "cities": []
+              },
+              {
+                "id": 2355,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2356,
+                "title": "",
+                "latitude": 42.26719,
+                "longitude": 42.682125,
+                "cities": []
+              },
+              {
+                "id": 2357,
+                "title": "",
+                "latitude": 42.26748,
+                "longitude": 42.69785,
+                "cities": []
+              },
+              {
+                "id": 2358,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2359,
+                "title": "",
+                "latitude": 42.270275,
+                "longitude": 42.70381,
+                "cities": []
+              },
+              {
+                "id": 2360,
+                "title": "",
+                "latitude": 42.271378,
+                "longitude": 42.704872,
+                "cities": []
+              },
+              {
+                "id": 2361,
+                "title": "",
+                "latitude": 42.25016,
+                "longitude": 42.687008,
+                "cities": []
+              },
+              {
+                "id": 2362,
+                "title": "",
+                "latitude": 42.264782,
+                "longitude": 42.668133,
+                "cities": []
+              },
+              {
+                "id": 2363,
+                "title": "",
+                "latitude": 42.268368,
+                "longitude": 42.69951,
+                "cities": []
+              },
+              {
+                "id": 2364,
+                "title": "",
+                "latitude": 42.26719,
+                "longitude": 42.682125,
+                "cities": []
+              },
+              {
+                "id": 2365,
+                "title": "",
+                "latitude": 42.268368,
+                "longitude": 42.69951,
+                "cities": []
+              },
+              {
+                "id": 2366,
+                "title": "",
+                "latitude": 42.268368,
+                "longitude": 42.69951,
+                "cities": []
+              },
+              {
+                "id": 2367,
+                "title": "",
+                "latitude": 42.234455,
+                "longitude": 42.69107,
+                "cities": []
+              },
+              {
+                "id": 2368,
+                "title": "",
+                "latitude": 42.234455,
+                "longitude": 42.69107,
+                "cities": []
+              },
+              {
+                "id": 2369,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2370,
+                "title": "",
+                "latitude": 42.26719,
+                "longitude": 42.682125,
+                "cities": []
+              },
+              {
+                "id": 2371,
+                "title": "",
+                "latitude": 42.25194,
+                "longitude": 42.662956,
+                "cities": []
+              },
+              {
+                "id": 2372,
+                "title": "К. Гамсахурдиа ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2373,
+                "title": "Шарвашидзе ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2374,
+                "title": "",
+                "latitude": 42.26719,
+                "longitude": 42.682125,
+                "cities": []
+              },
+              {
+                "id": 2375,
+                "title": "",
+                "latitude": 42.26719,
+                "longitude": 42.682125,
+                "cities": []
+              },
+              {
+                "id": 2376,
+                "title": "",
+                "latitude": 42.25194,
+                "longitude": 42.662956,
+                "cities": []
+              },
+              {
+                "id": 2377,
+                "title": "",
+                "latitude": 42.234455,
+                "longitude": 42.69107,
+                "cities": []
+              },
+              {
+                "id": 2378,
+                "title": "",
+                "latitude": 42.271812,
+                "longitude": 42.70275,
+                "cities": []
+              },
+              {
+                "id": 2379,
+                "title": "",
+                "latitude": 42.271378,
+                "longitude": 42.704872,
+                "cities": []
+              },
+              {
+                "id": 2380,
+                "title": "",
+                "latitude": 42.270275,
+                "longitude": 42.70381,
+                "cities": []
+              },
+              {
+                "id": 2381,
+                "title": "",
+                "latitude": 42.22881,
+                "longitude": 42.69566,
+                "cities": []
+              },
+              {
+                "id": 2382,
+                "title": "",
+                "latitude": 42.271378,
+                "longitude": 42.704872,
+                "cities": []
+              },
+              {
+                "id": 2383,
+                "title": "",
+                "latitude": 42.268368,
+                "longitude": 42.69951,
+                "cities": []
+              },
+              {
+                "id": 2384,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2385,
+            "title": "Застава",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2386,
+                "title": "Н. Бараташвили ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2387,
+                "title": "1-й переулок Бараташвили",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2388,
+                "title": "",
+                "latitude": 42.268482,
+                "longitude": 42.66954,
+                "cities": []
+              },
+              {
+                "id": 2389,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2390,
+                "title": "Звиада Гамсахурдия ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2391,
+                "title": "Аракишвили ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2392,
+                "title": "Джавахишвили ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2393,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2394,
+                "title": "Шартава ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2395,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2396,
+                "title": "",
+                "latitude": 42.309055,
+                "longitude": 42.60188,
+                "cities": []
+              },
+              {
+                "id": 2397,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2398,
+                "title": "",
+                "latitude": 42.260666,
+                "longitude": 42.671326,
+                "cities": []
+              },
+              {
+                "id": 2399,
+                "title": "",
+                "latitude": 42.270435,
+                "longitude": 42.704933,
+                "cities": []
+              },
+              {
+                "id": 2400,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2401,
+                "title": "",
+                "latitude": 42.269596,
+                "longitude": 42.7008,
+                "cities": []
+              },
+              {
+                "id": 2402,
+                "title": "",
+                "latitude": 42.269596,
+                "longitude": 42.7008,
+                "cities": []
+              },
+              {
+                "id": 2403,
+                "title": "",
+                "latitude": 42.320175,
+                "longitude": 42.601345,
+                "cities": []
+              },
+              {
+                "id": 2404,
+                "title": "",
+                "latitude": 42.268482,
+                "longitude": 42.66954,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2405,
+            "title": "Мепесубани",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2406,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2407,
+                "title": "З. Палиашвили ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2408,
+                "title": "А. Пушкинская ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2409,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2410,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2411,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2412,
+                "title": "",
+                "latitude": 42.261463,
+                "longitude": 42.71061,
+                "cities": []
+              },
+              {
+                "id": 2413,
+                "title": "",
+                "latitude": 42.260933,
+                "longitude": 42.686836,
+                "cities": []
+              },
+              {
+                "id": 2414,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2415,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2416,
+                "title": "",
+                "latitude": 42.272686,
+                "longitude": 42.702896,
+                "cities": []
+              },
+              {
+                "id": 2417,
+                "title": "",
+                "latitude": 42.270275,
+                "longitude": 42.70381,
+                "cities": []
+              },
+              {
+                "id": 2418,
+                "title": "",
+                "latitude": 42.27275,
+                "longitude": 42.706665,
+                "cities": []
+              },
+              {
+                "id": 2419,
+                "title": "",
+                "latitude": 42.260086,
+                "longitude": 42.710552,
+                "cities": []
+              },
+              {
+                "id": 2420,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2421,
+                "title": "",
+                "latitude": 42.274742,
+                "longitude": 42.705456,
+                "cities": []
+              },
+              {
+                "id": 2422,
+                "title": "",
+                "latitude": 42.27049,
+                "longitude": 42.699234,
+                "cities": []
+              },
+              {
+                "id": 2423,
+                "title": "",
+                "latitude": 42.271374,
+                "longitude": 42.70546,
+                "cities": []
+              },
+              {
+                "id": 2424,
+                "title": "",
+                "latitude": 42.268,
+                "longitude": 42.704693,
+                "cities": []
+              },
+              {
+                "id": 2425,
+                "title": "",
+                "latitude": 42.27139,
+                "longitude": 42.699303,
+                "cities": []
+              },
+              {
+                "id": 2426,
+                "title": "",
+                "latitude": 42.260666,
+                "longitude": 42.671326,
+                "cities": []
+              },
+              {
+                "id": 2427,
+                "title": "",
+                "latitude": 42.27512,
+                "longitude": 42.70345,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2428,
+            "title": "Мцванеквавила",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2429,
+                "title": "",
+                "latitude": 42.27464,
+                "longitude": 42.720432,
+                "cities": []
+              },
+              {
+                "id": 2430,
+                "title": "",
+                "latitude": 42.27464,
+                "longitude": 42.720432,
+                "cities": []
+              },
+              {
+                "id": 2431,
+                "title": "",
+                "latitude": 42.27464,
+                "longitude": 42.720432,
+                "cities": []
+              },
+              {
+                "id": 2432,
+                "title": "",
+                "latitude": 42.27464,
+                "longitude": 42.720432,
+                "cities": []
+              },
+              {
+                "id": 2433,
+                "title": "",
+                "latitude": 42.27464,
+                "longitude": 42.720432,
+                "cities": []
+              },
+              {
+                "id": 2434,
+                "title": "",
+                "latitude": 42.27464,
+                "longitude": 42.720432,
+                "cities": []
+              },
+              {
+                "id": 2435,
+                "title": "",
+                "latitude": 42.27464,
+                "longitude": 42.720432,
+                "cities": []
+              },
+              {
+                "id": 2436,
+                "title": "",
+                "latitude": 42.27464,
+                "longitude": 42.720432,
+                "cities": []
+              },
+              {
+                "id": 2437,
+                "title": "",
+                "latitude": 42.27464,
+                "longitude": 42.720432,
+                "cities": []
+              },
+              {
+                "id": 2438,
+                "title": "",
+                "latitude": 42.27464,
+                "longitude": 42.720432,
+                "cities": []
+              },
+              {
+                "id": 2439,
+                "title": "",
+                "latitude": 42.27464,
+                "longitude": 42.720432,
+                "cities": []
+              },
+              {
+                "id": 2440,
+                "title": "",
+                "latitude": 42.27464,
+                "longitude": 42.720432,
+                "cities": []
+              },
+              {
+                "id": 2441,
+                "title": "",
+                "latitude": 42.27464,
+                "longitude": 42.720432,
+                "cities": []
+              },
+              {
+                "id": 2442,
+                "title": "",
+                "latitude": 42.27464,
+                "longitude": 42.720432,
+                "cities": []
+              },
+              {
+                "id": 2443,
+                "title": "",
+                "latitude": 42.27464,
+                "longitude": 42.720432,
+                "cities": []
+              },
+              {
+                "id": 2444,
+                "title": "",
+                "latitude": 42.27464,
+                "longitude": 42.720432,
+                "cities": []
+              },
+              {
+                "id": 2445,
+                "title": "",
+                "latitude": 42.27464,
+                "longitude": 42.720432,
+                "cities": []
+              },
+              {
+                "id": 2446,
+                "title": "",
+                "latitude": 42.27464,
+                "longitude": 42.720432,
+                "cities": []
+              },
+              {
+                "id": 2447,
+                "title": "",
+                "latitude": 42.27464,
+                "longitude": 42.720432,
+                "cities": []
+              },
+              {
+                "id": 2448,
+                "title": "",
+                "latitude": 42.27464,
+                "longitude": 42.720432,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2449,
+            "title": "Поселок Никея",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2450,
+                "title": "",
+                "latitude": 42.237667,
+                "longitude": 42.692062,
+                "cities": []
+              },
+              {
+                "id": 2451,
+                "title": "",
+                "latitude": 42.2404,
+                "longitude": 42.688347,
+                "cities": []
+              },
+              {
+                "id": 2452,
+                "title": "",
+                "latitude": 42.22681,
+                "longitude": 42.68649,
+                "cities": []
+              },
+              {
+                "id": 2453,
+                "title": "",
+                "latitude": 42.237667,
+                "longitude": 42.692062,
+                "cities": []
+              },
+              {
+                "id": 2454,
+                "title": "",
+                "latitude": 42.234455,
+                "longitude": 42.69107,
+                "cities": []
+              },
+              {
+                "id": 2455,
+                "title": "Ломури ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2456,
+            "title": "Ниноцминда",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2457,
+                "title": "Георгия Брцкинвале ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2458,
+                "title": "",
+                "latitude": 41.732243,
+                "longitude": 45.297295,
+                "cities": []
+              },
+              {
+                "id": 2459,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2460,
+                "title": "",
+                "latitude": 41.732243,
+                "longitude": 45.297295,
+                "cities": []
+              },
+              {
+                "id": 2461,
+                "title": "",
+                "latitude": 42.260666,
+                "longitude": 42.671326,
+                "cities": []
+              },
+              {
+                "id": 2462,
+                "title": "",
+                "latitude": 42.260666,
+                "longitude": 42.671326,
+                "cities": []
+              },
+              {
+                "id": 2463,
+                "title": "",
+                "latitude": 41.27137,
+                "longitude": 43.58794,
+                "cities": []
+              },
+              {
+                "id": 2464,
+                "title": "",
+                "latitude": 42.260666,
+                "longitude": 42.671326,
+                "cities": []
+              },
+              {
+                "id": 2465,
+                "title": "",
+                "latitude": 41.732243,
+                "longitude": 45.297295,
+                "cities": []
+              },
+              {
+                "id": 2466,
+                "title": "",
+                "latitude": 42.260666,
+                "longitude": 42.671326,
+                "cities": []
+              },
+              {
+                "id": 2467,
+                "title": "",
+                "latitude": 41.732243,
+                "longitude": 45.297295,
+                "cities": []
+              },
+              {
+                "id": 2468,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2469,
+                "title": "",
+                "latitude": 42.260666,
+                "longitude": 42.671326,
+                "cities": []
+              },
+              {
+                "id": 2470,
+                "title": "",
+                "latitude": 41.732243,
+                "longitude": 45.297295,
+                "cities": []
+              },
+              {
+                "id": 2471,
+                "title": "",
+                "latitude": 42.11988,
+                "longitude": 44.783665,
+                "cities": []
+              },
+              {
+                "id": 2472,
+                "title": "",
+                "latitude": 41.732243,
+                "longitude": 45.297295,
+                "cities": []
+              },
+              {
+                "id": 2473,
+                "title": "",
+                "latitude": 41.732243,
+                "longitude": 45.297295,
+                "cities": []
+              },
+              {
+                "id": 2474,
+                "title": "",
+                "latitude": 41.732243,
+                "longitude": 45.297295,
+                "cities": []
+              },
+              {
+                "id": 2475,
+                "title": "",
+                "latitude": 41.732243,
+                "longitude": 45.297295,
+                "cities": []
+              },
+              {
+                "id": 2476,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2477,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2478,
+                "title": "",
+                "latitude": 42.260666,
+                "longitude": 42.671326,
+                "cities": []
+              },
+              {
+                "id": 2479,
+                "title": "",
+                "latitude": 41.732243,
+                "longitude": 45.297295,
+                "cities": []
+              },
+              {
+                "id": 2480,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2481,
+                "title": "",
+                "latitude": 41.732243,
+                "longitude": 45.297295,
+                "cities": []
+              },
+              {
+                "id": 2482,
+                "title": "",
+                "latitude": 41.732243,
+                "longitude": 45.297295,
+                "cities": []
+              },
+              {
+                "id": 2483,
+                "title": "",
+                "latitude": 41.723278,
+                "longitude": 44.732662,
+                "cities": []
+              },
+              {
+                "id": 2484,
+                "title": "",
+                "latitude": 41.732243,
+                "longitude": 45.297295,
+                "cities": []
+              },
+              {
+                "id": 2485,
+                "title": "",
+                "latitude": 42.2614,
+                "longitude": 42.71215,
+                "cities": []
+              },
+              {
+                "id": 2486,
+                "title": "",
+                "latitude": 42.260666,
+                "longitude": 42.671326,
+                "cities": []
+              },
+              {
+                "id": 2487,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2488,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2489,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2490,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2491,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2492,
+                "title": "Чехова ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2493,
+                "title": "Сухуми  ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2494,
+                "title": "Иоселиани ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2495,
+                "title": "Д. Бердзенадзе ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2496,
+            "title": "Поселок Рионгеси",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2497,
+                "title": "",
+                "latitude": 42.20144,
+                "longitude": 42.72507,
+                "cities": []
+              },
+              {
+                "id": 2498,
+                "title": "",
+                "latitude": 42.250347,
+                "longitude": 42.681763,
+                "cities": []
+              },
+              {
+                "id": 2499,
+                "title": "",
+                "latitude": 42.209194,
+                "longitude": 42.71674,
+                "cities": []
+              },
+              {
+                "id": 2500,
+                "title": "",
+                "latitude": 42.270275,
+                "longitude": 42.70381,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2501,
+            "title": "Сафичхия",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2502,
+                "title": "",
+                "latitude": 42.273144,
+                "longitude": 42.722454,
+                "cities": []
+              },
+              {
+                "id": 2503,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2504,
+                "title": "",
+                "latitude": 42.27189,
+                "longitude": 42.7042,
+                "cities": []
+              },
+              {
+                "id": 2505,
+                "title": "",
+                "latitude": 42.27189,
+                "longitude": 42.7042,
+                "cities": []
+              },
+              {
+                "id": 2506,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2507,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2508,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2509,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2510,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2511,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2512,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2513,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2514,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2515,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2516,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2517,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2518,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2519,
+                "title": "",
+                "latitude": 42.268723,
+                "longitude": 42.719112,
+                "cities": []
+              },
+              {
+                "id": 2520,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2521,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2522,
+                "title": "",
+                "latitude": 42.260666,
+                "longitude": 42.671326,
+                "cities": []
+              },
+              {
+                "id": 2523,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2524,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2525,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2526,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2527,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2528,
+                "title": "",
+                "latitude": 42.268063,
+                "longitude": 42.7066,
+                "cities": []
+              },
+              {
+                "id": 2529,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2530,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2531,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2532,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2533,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2534,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2535,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2536,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2537,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2538,
+                "title": "",
+                "latitude": 42.273243,
+                "longitude": 42.71902,
+                "cities": []
+              },
+              {
+                "id": 2539,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2540,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2541,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2542,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2543,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2544,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2545,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2546,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2547,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2548,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2549,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2550,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2551,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2552,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2553,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2554,
+                "title": "",
+                "latitude": 42.256313,
+                "longitude": 42.715202,
+                "cities": []
+              },
+              {
+                "id": 2555,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2556,
+                "title": "",
+                "latitude": 42.256313,
+                "longitude": 42.715202,
+                "cities": []
+              },
+              {
+                "id": 2557,
+                "title": "",
+                "latitude": 42.256313,
+                "longitude": 42.715202,
+                "cities": []
+              },
+              {
+                "id": 2558,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2559,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2560,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2561,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2562,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2563,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2564,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2565,
+                "title": "",
+                "latitude": 42.27041,
+                "longitude": 42.70606,
+                "cities": []
+              },
+              {
+                "id": 2566,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2567,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2568,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2569,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2570,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2571,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2572,
+                "title": "",
+                "latitude": 42.34141,
+                "longitude": 42.994164,
+                "cities": []
+              },
+              {
+                "id": 2573,
+                "title": "",
+                "latitude": 42.34141,
+                "longitude": 42.994164,
+                "cities": []
+              },
+              {
+                "id": 2574,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2575,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2576,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2577,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2578,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2579,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2580,
+                "title": "",
+                "latitude": 42.261456,
+                "longitude": 42.72002,
+                "cities": []
+              },
+              {
+                "id": 2581,
+                "title": "",
+                "latitude": 42.261456,
+                "longitude": 42.72002,
+                "cities": []
+              },
+              {
+                "id": 2582,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2583,
+                "title": "Батуми ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2584,
+                "title": "26 Мая ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2585,
+                "title": "Тбилисская ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2586,
+                "title": "М. Костава ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2587,
+                "title": "Д. Тавдадебули ул. ",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2588,
+                "title": " Д. Клдиашвили ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2589,
+                "title": "Иашвили ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2590,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2591,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2592,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2593,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2594,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2595,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2596,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2597,
+                "title": "Тамары Мепе ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2598,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2599,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2600,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2601,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2602,
+                "title": "",
+                "latitude": 42.268845,
+                "longitude": 42.715336,
+                "cities": []
+              },
+              {
+                "id": 2603,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2604,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2605,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2606,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2607,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2608,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2609,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2610,
+                "title": "",
+                "latitude": 42.26624,
+                "longitude": 42.718014,
+                "cities": []
+              },
+              {
+                "id": 2611,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2612,
+            "title": "Сагориа",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2613,
+                "title": "",
+                "latitude": 42.2353,
+                "longitude": 42.7113,
+                "cities": []
+              },
+              {
+                "id": 2614,
+                "title": "Баланчивадзе ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2615,
+                "title": "Гори ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2616,
+                "title": "Джорджиашвили ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2617,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2618,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2619,
+                "title": "",
+                "latitude": 42.256916,
+                "longitude": 42.62037,
+                "cities": []
+              },
+              {
+                "id": 2620,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2621,
+                "title": "",
+                "latitude": 42.2353,
+                "longitude": 42.7113,
+                "cities": []
+              },
+              {
+                "id": 2622,
+                "title": "",
+                "latitude": 42.2353,
+                "longitude": 42.7113,
+                "cities": []
+              },
+              {
+                "id": 2623,
+                "title": "",
+                "latitude": 42.265198,
+                "longitude": 42.69775,
+                "cities": []
+              },
+              {
+                "id": 2624,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2625,
+                "title": "",
+                "latitude": 42.2353,
+                "longitude": 42.7113,
+                "cities": []
+              },
+              {
+                "id": 2626,
+                "title": "",
+                "latitude": 42.246227,
+                "longitude": 42.7121,
+                "cities": []
+              },
+              {
+                "id": 2627,
+                "title": "",
+                "latitude": 42.260666,
+                "longitude": 42.671326,
+                "cities": []
+              },
+              {
+                "id": 2628,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2629,
+                "title": "",
+                "latitude": 42.24953,
+                "longitude": 42.690247,
+                "cities": []
+              },
+              {
+                "id": 2630,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2631,
+                "title": "",
+                "latitude": 42.268723,
+                "longitude": 42.719112,
+                "cities": []
+              },
+              {
+                "id": 2632,
+                "title": "",
+                "latitude": 42.271374,
+                "longitude": 42.70546,
+                "cities": []
+              },
+              {
+                "id": 2633,
+                "title": "",
+                "latitude": 42.24953,
+                "longitude": 42.690247,
+                "cities": []
+              },
+              {
+                "id": 2634,
+                "title": "",
+                "latitude": 42.2353,
+                "longitude": 42.7113,
+                "cities": []
+              },
+              {
+                "id": 2635,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2636,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2637,
+                "title": "",
+                "latitude": 42.23386,
+                "longitude": 42.674473,
+                "cities": []
+              },
+              {
+                "id": 2638,
+                "title": "",
+                "latitude": 42.2353,
+                "longitude": 42.7113,
+                "cities": []
+              },
+              {
+                "id": 2639,
+                "title": "",
+                "latitude": 42.264782,
+                "longitude": 42.668133,
+                "cities": []
+              },
+              {
+                "id": 2640,
+                "title": "",
+                "latitude": 42.26934,
+                "longitude": 42.698704,
+                "cities": []
+              },
+              {
+                "id": 2641,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2642,
+            "title": "Укемириони",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2643,
+                "title": "",
+                "latitude": 42.271835,
+                "longitude": 42.70604,
+                "cities": []
+              },
+              {
+                "id": 2644,
+                "title": "",
+                "latitude": 41.72425,
+                "longitude": 44.720325,
+                "cities": []
+              },
+              {
+                "id": 2645,
+                "title": "",
+                "latitude": 42.271915,
+                "longitude": 42.70446,
+                "cities": []
+              },
+              {
+                "id": 2646,
+                "title": "",
+                "latitude": 42.27322,
+                "longitude": 42.706966,
+                "cities": []
+              },
+              {
+                "id": 2647,
+                "title": "",
+                "latitude": 42.271835,
+                "longitude": 42.70604,
+                "cities": []
+              },
+              {
+                "id": 2648,
+                "title": "А. Казбеги ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2649,
+                "title": "Кетевана Цамебули ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2650,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2651,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2652,
+                "title": "",
+                "latitude": 42.278625,
+                "longitude": 42.696743,
+                "cities": []
+              },
+              {
+                "id": 2653,
+                "title": "",
+                "latitude": 42.27743,
+                "longitude": 42.697502,
+                "cities": []
+              },
+              {
+                "id": 2654,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2655,
+                "title": "",
+                "latitude": 42.270275,
+                "longitude": 42.70381,
+                "cities": []
+              },
+              {
+                "id": 2656,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2657,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2658,
+                "title": "",
+                "latitude": 42.277233,
+                "longitude": 42.704296,
+                "cities": []
+              },
+              {
+                "id": 2659,
+                "title": "",
+                "latitude": 42.306942,
+                "longitude": 42.60766,
+                "cities": []
+              },
+              {
+                "id": 2660,
+                "title": "",
+                "latitude": 42.277233,
+                "longitude": 42.704296,
+                "cities": []
+              },
+              {
+                "id": 2661,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2662,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2663,
+                "title": "",
+                "latitude": 42.250065,
+                "longitude": 42.686966,
+                "cities": []
+              },
+              {
+                "id": 2664,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2665,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2666,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2667,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2668,
+                "title": "",
+                "latitude": 42.274902,
+                "longitude": 42.687393,
+                "cities": []
+              },
+              {
+                "id": 2669,
+                "title": "",
+                "latitude": 42.28015,
+                "longitude": 42.689533,
+                "cities": []
+              },
+              {
+                "id": 2670,
+                "title": "",
+                "latitude": 42.274902,
+                "longitude": 42.687393,
+                "cities": []
+              },
+              {
+                "id": 2671,
+                "title": "",
+                "latitude": 42.26422,
+                "longitude": 42.677063,
+                "cities": []
+              },
+              {
+                "id": 2672,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2673,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2674,
+                "title": "",
+                "latitude": 42.274784,
+                "longitude": 42.69943,
+                "cities": []
+              },
+              {
+                "id": 2675,
+                "title": "",
+                "latitude": 42.274784,
+                "longitude": 42.69943,
+                "cities": []
+              },
+              {
+                "id": 2676,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2677,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2678,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2679,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2680,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2681,
+                "title": "",
+                "latitude": 42.260933,
+                "longitude": 42.686836,
+                "cities": []
+              },
+              {
+                "id": 2682,
+                "title": "",
+                "latitude": 42.27512,
+                "longitude": 42.70345,
+                "cities": []
+              },
+              {
+                "id": 2683,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2684,
+                "title": "",
+                "latitude": 42.274902,
+                "longitude": 42.687393,
+                "cities": []
+              },
+              {
+                "id": 2685,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2686,
+                "title": "",
+                "latitude": 42.24988,
+                "longitude": 42.698853,
+                "cities": []
+              },
+              {
+                "id": 2687,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2688,
+            "title": "Хроника",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2689,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2690,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2691,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2692,
+            "title": "Поселок Чавчавадзе",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2693,
+                "title": "",
+                "latitude": 42.03651,
+                "longitude": 41.93624,
+                "cities": []
+              },
+              {
+                "id": 2694,
+                "title": "",
+                "latitude": 42.03651,
+                "longitude": 41.93624,
+                "cities": []
+              },
+              {
+                "id": 2695,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2696,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2697,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2698,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2699,
+                "title": "",
+                "latitude": 42.261402,
+                "longitude": 42.71277,
+                "cities": []
+              },
+              {
+                "id": 2700,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2701,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2702,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2703,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2704,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2705,
+                "title": "",
+                "latitude": 42.26454,
+                "longitude": 42.675507,
+                "cities": []
+              },
+              {
+                "id": 2706,
+                "title": "",
+                "latitude": 42.26454,
+                "longitude": 42.675507,
+                "cities": []
+              },
+              {
+                "id": 2707,
+                "title": "",
+                "latitude": 42.271824,
+                "longitude": 42.70604,
+                "cities": []
+              },
+              {
+                "id": 2708,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2709,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2710,
+                "title": "",
+                "latitude": 42.258816,
+                "longitude": 42.637566,
+                "cities": []
+              },
+              {
+                "id": 2711,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2712,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2713,
+                "title": "Либерти Лейн II",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2714,
+                "title": "Гамсхурдия ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2715,
+                "title": "Ниношвили ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2716,
+                "title": "",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2717,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2718,
+                "title": "Ниношвили XVI Аллея ",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2719,
+                "title": "Пиросмани ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2720,
+                "title": "Марджанишвили ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2721,
+                "title": "",
+                "latitude": 42.266243,
+                "longitude": 42.718002,
+                "cities": []
+              },
+              {
+                "id": 2722,
+                "title": "",
+                "latitude": 41.688843,
+                "longitude": 44.820393,
+                "cities": []
+              },
+              {
+                "id": 2723,
+                "title": "",
+                "latitude": 42.266098,
+                "longitude": 42.718204,
+                "cities": []
+              },
+              {
+                "id": 2724,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              },
+              {
+                "id": 2725,
+                "title": "",
+                "latitude": 41.697495,
+                "longitude": 44.791386,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2726,
+            "title": "Чома",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2727,
+                "title": "",
+                "latitude": 42.260933,
+                "longitude": 42.686836,
+                "cities": []
+              },
+              {
+                "id": 2728,
+                "title": "",
+                "latitude": 42.260933,
+                "longitude": 42.686836,
+                "cities": []
+              },
+              {
+                "id": 2729,
+                "title": "тупик Леселидзе",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2730,
+                "title": "1-й тупик Леселидзе",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2731,
+                "title": "Леселидзе ул.",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              },
+              {
+                "id": 2732,
+                "title": "",
+                "latitude": 42.260933,
+                "longitude": 42.686836,
+                "cities": []
+              },
+              {
+                "id": 2733,
+                "title": "",
+                "latitude": 42.240734,
+                "longitude": 42.679207,
+                "cities": []
+              },
+              {
+                "id": 2734,
+                "title": "",
+                "latitude": 42.28222,
+                "longitude": 42.714336,
+                "cities": []
+              }
+            ]
+          },
+          {
+            "id": 2735,
+            "title": "Копитнари",
+            "latitude": null,
+            "longitude": null,
+            "cities": [
+              {
+                "id": 2736,
+                "title": "Копитнари",
+                "latitude": null,
+                "longitude": null,
+                "cities": []
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "type": 0
+  },
+  {
+    "id": 2897,
+    "title": "Поти",
+    "latitude": null,
+    "longitude": null,
+    "cities": [],
+    "type": 0
+  },
+  {
+    "id": 2898,
+    "title": "Окрестности Тбилиси",
+    "latitude": null,
+    "longitude": null,
+    "cities": [
+      {
+        "id": 2899,
+        "title": "Табахмела",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      }
+      {
+        "id": 2909,
+        "title": "Агараки",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2910,
+        "title": "Тхинвала",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2911,
+        "title": "Квесети",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2912,
+        "title": "Дидгори",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2913,
+        "title": "Зургована",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2914,
+        "title": "Теловани",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2915,
+        "title": "Кошигора",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2916,
+        "title": "Насагури",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2917,
+        "title": "Цинубани",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2918,
+        "title": "Диди Лило",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2919,
+        "title": "Коджори",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2920,
+        "title": "Гиоргицминда",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      }
+    ],
+    "type": 1
+  },
+  {
+    "id": 2921,
+    "title": "Кедский Муниципалитет",
+    "latitude": null,
+    "longitude": null,
+    "cities": [
+      {
+        "id": 2922,
+        "title": "Кеда",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2923,
+        "title": "Арсенаули",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2924,
+        "title": "Акуца",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2925,
+        "title": "Хункуда",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2926,
+        "title": "Баладзееби",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2927,
+        "title": "Гогиашвилеби",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2928,
+        "title": "Мосиашвилеби",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2949,
+        "title": "Гаретке",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2950,
+        "title": "Гундаури",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2951,
+        "title": "Инашаридзееби",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2952,
+        "title": "Намонастреви",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2953,
+        "title": "Силибаури",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2954,
+        "title": "Сихалидзееби",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2955,
+        "title": "Октомбери",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2956,
+        "title": "Агота",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2957,
+        "title": "Гогинидзееби",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2958,
+        "title": "Кучула",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2959,
+        "title": "Медзибна",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2960,
+        "title": "Пирвели Маиси",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2961,
+        "title": "Зеда Агара",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2962,
+        "title": "Колотаури",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2963,
+        "title": "Кведа Агара",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2964,
+        "title": "Цхмориси",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2965,
+        "title": "Ахо",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2966,
+        "title": "Гегелидзееби",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2967,
+        "title": "Гобронети",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2968,
+        "title": "Кокотаури",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2969,
+        "title": "Четкидзееби",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2970,
+        "title": "Цониариси",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2971,
+        "title": "Абукета",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2972,
+        "title": "Варджаниси",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2973,
+        "title": "Кантаури",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2974,
+        "title": "Сабадури",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2975,
+        "title": "Сасадилокели",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2976,
+        "title": "Тибета",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2977,
+        "title": "Гулеби",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2978,
+        "title": "Зендиди",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2979,
+        "title": "Коромхети",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2980,
+        "title": "Орцва",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2981,
+        "title": "Шевабури",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2982,
+        "title": "Цхемна",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2983,
+        "title": "Дзенцмани",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2984,
+        "title": "Дандало",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      },
+      {
+        "id": 2985,
+        "title": "Хараула",
+        "latitude": null,
+        "longitude": null,
+        "cities": []
+      }
+    ],
+    "type": 2
+  }
+]

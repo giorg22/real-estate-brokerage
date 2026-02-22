@@ -45,20 +45,18 @@ import statusData from "@/data/status.json";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { propertyTypes, dealTypes } from "@/lib/property-config";
-import { LocationItem } from "@/types/LocationItem";
+import { LocationItem, LocationNode } from "@/types/LocationItem";
 
 import PricingCard from "@/components/forms/PricingCard";
 import { useLocale } from "next-intl";
+import { useLocationData } from "@/hooks/useLocationData";
+import { LocationSection } from "@/components/forms/LocationSection";
 
 
 
 
 export default function AddApartmentPage() {
   const [previews, setPreviews] = useState<ImageItem[]>([]);
-  const [cityOpen, setCityOpen] = useState(false);
-  const [streetOpen, setStreetOpen] = useState(false);
-  const [cityQuery, setCityQuery] = useState("");
-  const [streetQuery, setStreetQuery] = useState("");
   const [mapFlyCoords, setMapFlyCoords] = useState<{ lat: number; lng: number } | undefined>(undefined);
 
   const uploadMutation = useUploadImage();
@@ -80,28 +78,6 @@ export default function AddApartmentPage() {
 
   const locale = useLocale();
 
-  const generateDynamicTitle = (values: any) => {
-    const { rooms, type, listingType, address } = values;
-
-    // 1. Logic for "Studio" vs "X Room"
-    const roomCount = Number(rooms);
-    const roomText = roomCount === 0 ? "Studio" : `${roomCount} room`;
-
-    // 2. Get Label from your propertyTypes JSON
-    const typeLabel = propertyTypes.find(p => p.id === Number(type))?.label || "";
-
-    // 3. Get Deal Name (For sale / For rent) from your dealTypes JSON
-    const dealLabel = dealTypes.find(d => d.id === Number(listingType))?.name.toLowerCase() || "";
-
-    // 4. Get Location Name (from your street search logic)
-    const streetName = groupedStreets
-      .flatMap(g => g.streets)
-      .find(s => s.streetId === address?.streetId)?.streetTitle || "";
-
-    // Construct the result
-    return `${roomText} ${typeLabel} ${dealLabel} in ${streetName}`.trim();
-  };
-
   useEffect(() => {
     const uploadedImages = previews
       .filter((p) => !p.isUploading && p.url)
@@ -111,7 +87,6 @@ export default function AddApartmentPage() {
       }
       ));
 
-    // Update the hidden form field
     form.setValue("images", uploadedImages, {
       shouldValidate: form.formState.isSubmitted // Only show red error if they already tried to submit
     });
@@ -123,42 +98,7 @@ export default function AddApartmentPage() {
     setMapFlyCoords(undefined);
   }, [selectedLocId, form]);
 
-
   
-  const locationData = useMemo(
-  () => (locale === "ka" ? locationDataKa : locationDataEn),
-  [locale]
-  );
-
-  const ALL_LOCATIONS: LocationItem[] = useMemo(() => [
-    ...locationData.locations.visibleCities.map((c: any) => ({ id: c.cityId, title: c.cityTitle, type: "city" as const, group: "Main Cities", isSuburb: false, districts: c.districts  })),
-    ...locationData.locations.suburb.flatMap((m: any) => m.cities.map((c: any) => ({ id: c.id, title: c.title, type: "municipality" as const, group: m.municipalityTitle, isSuburb: true }))),
-    ...locationData.locations.municipality.flatMap((m: any) => m.cities.map((c: any) => ({ id: c.id, title: c.title, type: "municipality" as const, group: m.municipalityTitle, municipalityId: m.municipalityId, isSuburb: false })))
-  ], []);
-
-  const currentCity = useMemo(() => ALL_LOCATIONS.find((l) => l.id === selectedLocId), [selectedLocId, ALL_LOCATIONS]);
-  const PINNED_CITY_IDs = [95, 96, 97, 98, 100, 99, 101];
-
-  const filteredCities = useMemo(() => {
-    const q = cityQuery.toLowerCase().trim();
-    const base = q ? ALL_LOCATIONS.filter(l => l.title.toLowerCase().includes(q)) : ALL_LOCATIONS;
-    return [...base].sort((a, b) => {
-      const aP = PINNED_CITY_IDs.indexOf(a.id), bP = PINNED_CITY_IDs.indexOf(b.id);
-      if (aP !== -1 || bP !== -1) return (aP === -1 ? 9999 : aP) - (bP === -1 ? 9999 : bP);
-      return a.isSuburb ? -1 : 1;
-    });
-  }, [cityQuery, ALL_LOCATIONS]);
-
-  const groupedStreets = useMemo(() => (currentCity?.districts?.flatMap((d: any) => d.subDistricts) || []) as any[], [currentCity]);
-
-  const filteredGroups = useMemo(() => {
-    const q = streetQuery.toLowerCase().trim();
-    return groupedStreets.map(g => ({
-      ...g,
-      streets: g.streets.filter((s: any) => !q || s.streetTitle.toLowerCase().includes(q))
-    })).filter(g => g.streets.length > 0).slice(0, 30);
-  }, [streetQuery, groupedStreets]);
-
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
     const files = Array.from(e.target.files);
@@ -187,39 +127,34 @@ export default function AddApartmentPage() {
   };
 
 
-  console.log(form.formState.errors);
 
   const onSubmit = async (values: any) => {
     try {
       if (previews.some(p => p.isUploading)) return;
 
-      const streetTitle = groupedStreets
-        .flatMap(g => g.streets)
-        .find(s => s.streetId === values.address.streetId)?.streetTitle || "";
+      // var mainId = currentCity?.type == "city" ? values.address.streetId : values.address.locationId;
+      // let districtId: number | null = null;
+      // let subDistrictId: number | null = null;
 
-      var mainId = currentCity?.type == "city" ? values.address.streetId : values.address.locationId;
-      let districtId: number | null = null;
-      let subDistrictId: number | null = null;
+      // if (currentCity?.type === "city") {
+      //   const district = currentCity.districts?.find((d: any) =>
+      //     d.subDistricts.some((sd: any) =>
+      //       sd.streets.some((st: any) => st.streetId === values.address.streetId)
+      //     )
+      //   );
 
-      if (currentCity?.type === "city") {
-        const district = currentCity.districts?.find((d: any) =>
-          d.subDistricts.some((sd: any) =>
-            sd.streets.some((st: any) => st.streetId === values.address.streetId)
-          )
-        );
+      //   if (district) {
+      //     districtId = district.districtId;
 
-        if (district) {
-          districtId = district.districtId;
+      //     const subDistrict = district.subDistricts.find((sd: any) =>
+      //       sd.streets.some((st: any) => st.streetId === values.address.streetId)
+      //     );
 
-          const subDistrict = district.subDistricts.find((sd: any) =>
-            sd.streets.some((st: any) => st.streetId === values.address.streetId)
-          );
-
-          if (subDistrict) {
-            subDistrictId = subDistrict.subDistrictId;
-          }
-        }
-      }
+      //     if (subDistrict) {
+      //       subDistrictId = subDistrict.subDistrictId;
+      //     }
+      //   }
+      // }
 
 
       const payload = {
@@ -228,18 +163,18 @@ export default function AddApartmentPage() {
         type: Number(values.type),
         status: Number(values.status), // Listing Status (Draft/Published)
 
-        address: {
-          address1: ALL_LOCATIONS.find((l) => l.id === values.address.locationId)?.id,
-          address2: districtId,
-          address3: subDistrictId,
-          address4:  mainId,
-          city: currentCity?.id || "",
-          state: currentCity?.group || "",
-          country: "Georgia",
-          zipCode: "",
-          latitude: values.address.coords.lat,
-          longitude: values.address.coords.lng
-        },
+        // address: {
+        //   address1: ALL_LOCATIONS.find((l) => l.id === values.address.locationId)?.id,
+        //   address2: districtId,
+        //   address3: subDistrictId,
+        //   address4:  mainId,
+        //   city: currentCity?.id || "",
+        //   state: currentCity?.group || "",
+        //   country: "Georgia",
+        //   zipCode: "",
+        //   latitude: values.address.coords.lat,
+        //   longitude: values.address.coords.lng
+        // },
 
         description: {
           en: values.description.en || "",
@@ -1251,56 +1186,7 @@ export default function AddApartmentPage() {
           <Card>
             <CardHeader><CardTitle className="flex gap-2 text-lg items-center"><MapPin className="h-5 w-5 text-primary" /> Location</CardTitle></CardHeader>
             <CardContent className="space-y-4">
-              <FormField name="address.locationId" render={({ field }) => (
-                <FormItem className="flex flex-col"><FormLabel>City / Municipality</FormLabel>
-                  <Popover open={cityOpen} onOpenChange={setCityOpen}>
-                    <PopoverTrigger asChild><Button variant="outline" className="justify-between w-full font-normal">{field.value ? ALL_LOCATIONS.find(l => l.id === field.value)?.title : "Select City"}<ChevronsUpDown className="ml-2 h-4 w-4 opacity-50" /></Button></PopoverTrigger>
-                    <PopoverContent className="p-0 w-[var(--radix-popover-trigger-width)]" align="start">
-                      <Command shouldFilter={false}>
-                        <CommandInput placeholder="Search cities..." value={cityQuery} onValueChange={setCityQuery} /><CommandList><CommandEmpty>No results found.</CommandEmpty>
-                          {filteredCities.slice(0, 29).map(l => (
-                            <CommandItem key={l.id} onSelect={() => {
-                              field.onChange(l.id);
-                              setCityOpen(false);
-                            }}>
-                              <Check className={cn("mr-2 h-4 w-4", field.value === l.id ? "opacity-100" : "opacity-0")} /> {l.title}
-                            </CommandItem>
-                          ))}
-                        </CommandList>
-                      </Command>
-                    </PopoverContent>
-                  </Popover>
-                  <FormMessage />
-                </FormItem>
-              )} />
-              <>
-                {currentCity?.type == "city" && (
-                  <FormField name="address.streetId" render={({ field }) => (
-                    <FormItem className="flex flex-col"><FormLabel>Street / Area</FormLabel>
-                      <Popover open={streetOpen} onOpenChange={setStreetOpen}>
-                        <PopoverTrigger asChild><Button variant="outline" className="justify-between w-full font-normal">{groupedStreets.flatMap(g => g.streets).find(s => s.streetId === field.value)?.streetTitle || "Select Street"}<ChevronsUpDown className="ml-2 h-4 w-4 opacity-50" /></Button></PopoverTrigger>
-                        <PopoverContent className="p-0 w-[var(--radix-popover-trigger-width)]" align="start">
-                          <Command shouldFilter={false}>
-                            <CommandInput placeholder="Search streets..." value={streetQuery} onValueChange={setStreetQuery} /><CommandList>
-                              {filteredGroups.map((g: any) => (<CommandGroup key={g.subDistrictId} heading={g.subDistrictTitle}>{g.streets.map((s: any) => (<CommandItem key={s.streetId} onSelect={() => { field.onChange(s.streetId); setStreetOpen(false); }}>{s.streetTitle}</CommandItem>))}</CommandGroup>))}
-                            </CommandList>
-                          </Command>
-                        </PopoverContent>
-                      </Popover>
-                    </FormItem>
-                  )} />
-                )}
-                {(currentCity && ((currentCity?.type !== "city") || (currentCity.type === "city" && selectedStrId))) && (
-                  <FormField name="address.coords" render={({ field }) => (
-                    <FormItem className="pt-2">
-                      <FormLabel>Building Location</FormLabel>
-                      <FormControl><MapPicker value={field.value} onChange={field.onChange} flyToCoords={mapFlyCoords} /></FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )} />
-                )}
-              </>
-
+            <LocationSection locale={locale} />
             </CardContent>
           </Card>
           <Button type="submit" size="lg" className="w-full h-14 text-lg font-bold" disabled={createMutation.isPending || previews.some(p => p.isUploading)}>
