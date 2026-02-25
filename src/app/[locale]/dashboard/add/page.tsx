@@ -26,7 +26,7 @@ import { SortablePhoto, ImageItem } from "@/components/forms/ImageUploader";
 
 // Hooks & UI
 import { useUploadImage } from "@/hooks/useCloudinary";
-import { useCreateApartment } from "@/hooks/useApartments";
+import { useCreateApartment } from "@/hooks/useCreateApartment";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
@@ -52,6 +52,8 @@ import { useLocale } from "next-intl";
 import { useLocationData } from "@/hooks/useLocationData";
 import { LocationSection } from "@/components/forms/LocationSection";
 
+import { useApartmentSubmit } from "@/hooks/useApartmentSubmit";
+
 
 
 
@@ -60,7 +62,6 @@ export default function AddApartmentPage() {
   const [mapFlyCoords, setMapFlyCoords] = useState<{ lat: number; lng: number } | undefined>(undefined);
 
   const uploadMutation = useUploadImage();
-  const createMutation = useCreateApartment();
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
@@ -69,6 +70,9 @@ export default function AddApartmentPage() {
   );
 
   const form = useApartmentForm();
+
+  const createMutation = useCreateApartment();
+  const { handleFormSubmit, isSubmitting } = useApartmentSubmit(previews);
 
   const selectedLocId = form.watch("address.locationId");
   const selectedStrId = form.watch("address.streetId");
@@ -248,7 +252,7 @@ export default function AddApartmentPage() {
     <div className="max-w-4xl mx-auto py-10 px-4">
       <h1 className="text-3xl font-bold mb-8 text-foreground/90 tracking-tight">Add New Listing</h1>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(handleFormSubmit)} className="space-y-8">
           <Card className="border-primary/20 shadow-md">
             <CardContent className="space-y-10 pt-6">
               {/* SECTION 1: PROPERTY TYPE */}
@@ -1189,8 +1193,8 @@ export default function AddApartmentPage() {
             <LocationSection locale={locale} />
             </CardContent>
           </Card>
-          <Button type="submit" size="lg" className="w-full h-14 text-lg font-bold" disabled={createMutation.isPending || previews.some(p => p.isUploading)}>
-            {createMutation.isPending ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Creating...</> : "Publish Property"}
+          <Button type="submit" size="lg" className="w-full h-14 text-lg font-bold" disabled={isSubmitting || previews.some(p => p.isUploading)}>
+            {isSubmitting ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Creating...</> : "Publish Property"}
           </Button>
         </form>
       </Form>

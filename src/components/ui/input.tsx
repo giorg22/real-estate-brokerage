@@ -5,7 +5,7 @@ export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, ...props }, ref) => {
+  ({ className, type, value, ...props }, ref) => {
     return (
       <input
         type={type}
@@ -14,6 +14,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           className
         )}
         ref={ref}
+        /**
+         * The Fix: By using (value ?? ""), we ensure the input is always 
+         * "controlled" by React. This prevents the "uncontrolled to 
+         * controlled" warning if the form state starts as undefined.
+         */
+        value={value ?? ""}
         {...props}
       />
     );
