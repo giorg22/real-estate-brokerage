@@ -139,7 +139,6 @@ export function ListingDetailModal2({ listing, isOpen }: { listing: Apartment; i
                 <span>{listing.address.city}, {listing.address.street}</span>
               </div>
             </div>
-
             <div className="grid grid-cols-3 gap-4 rounded-lg bg-muted p-4">
               <div className="text-center">
                 <Bed className="mx-auto mb-2 h-6 w-6 text-primary" />

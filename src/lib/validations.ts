@@ -1,7 +1,7 @@
 import * as z from "zod";
 
 export const apartmentSchema = z.object({
-  listingType: z.coerce.number(),
+  dealType: z.coerce.number(),
   type: z.coerce.number(),
   price: z.coerce.number(),
   area: z.coerce.number(),

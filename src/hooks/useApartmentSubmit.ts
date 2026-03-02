@@ -27,6 +27,7 @@ export const useApartmentSubmit = (previews: any[]) => {
         title: values.title,
         price: Number(values.price),
         type: Number(values.type),
+        dealType: Number(values.dealType),
         status: Number(values.status),
         description: values.description,
 
@@ -41,8 +42,6 @@ export const useApartmentSubmit = (previews: any[]) => {
         },
 
         specifications: {
-          listingType: Number(values.listingType),
-          type: Number(values.type),
           area: Number(values.area),
           rooms: Number(values.rooms),
           bedrooms: Number(values.bedrooms),

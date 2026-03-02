@@ -8,7 +8,7 @@ export default function Layout({
   return (
     <>
       {children}
-      {modal} {/* This is where the (.)[id] page gets injected */}
+      {modal} 
     </>
   );
 }

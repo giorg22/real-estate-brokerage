@@ -77,7 +77,7 @@ export default function AddApartmentPage() {
   const selectedLocId = form.watch("address.locationId");
   const selectedStrId = form.watch("address.streetId");
   const type = form.watch("type");
-  const listingType = form.watch("listingType");
+  const dealType = form.watch("dealType");
   const rooms = form.watch("rooms");
 
   const locale = useLocale();
@@ -131,123 +131,6 @@ export default function AddApartmentPage() {
   };
 
 
-
-  const onSubmit = async (values: any) => {
-    try {
-      if (previews.some(p => p.isUploading)) return;
-
-      // var mainId = currentCity?.type == "city" ? values.address.streetId : values.address.locationId;
-      // let districtId: number | null = null;
-      // let subDistrictId: number | null = null;
-
-      // if (currentCity?.type === "city") {
-      //   const district = currentCity.districts?.find((d: any) =>
-      //     d.subDistricts.some((sd: any) =>
-      //       sd.streets.some((st: any) => st.streetId === values.address.streetId)
-      //     )
-      //   );
-
-      //   if (district) {
-      //     districtId = district.districtId;
-
-      //     const subDistrict = district.subDistricts.find((sd: any) =>
-      //       sd.streets.some((st: any) => st.streetId === values.address.streetId)
-      //     );
-
-      //     if (subDistrict) {
-      //       subDistrictId = subDistrict.subDistrictId;
-      //     }
-      //   }
-      // }
-
-
-      const payload = {
-        title: values.title,
-        price: Number(values.price),
-        type: Number(values.type),
-        status: Number(values.status), // Listing Status (Draft/Published)
-
-        // address: {
-        //   address1: ALL_LOCATIONS.find((l) => l.id === values.address.locationId)?.id,
-        //   address2: districtId,
-        //   address3: subDistrictId,
-        //   address4:  mainId,
-        //   city: currentCity?.id || "",
-        //   state: currentCity?.group || "",
-        //   country: "Georgia",
-        //   zipCode: "",
-        //   latitude: values.address.coords.lat,
-        //   longitude: values.address.coords.lng
-        // },
-
-        description: {
-          en: values.description.en || "",
-          ka: values.description.ka || "",
-          ru: values.description.ru || ""
-        },
-
-        specifications: {
-          // --- Core Numeric Fields ---
-          listingType: Number(values.listingType),
-          type: Number(values.type),
-          area: Number(values.area),
-          rooms: Number(values.rooms),
-          bedrooms: Number(values.bedrooms),
-          floor: Number(values.floor),
-          totalFloors: Number(values.totalFloors),
-          condition: Number(values.condition),
-          status: Number(values.status), // Property Status (Renovated/Black Frame etc)
-
-          // --- Optional Numeric/Area Fields ---
-          yardArea: values.yardArea ? Number(values.yardArea) : null,
-          kitchenArea: values.kitchenArea ? Number(values.kitchenArea) : null,
-          bathrooms: values.bathrooms ? Number(values.bathrooms) : null,
-          balconyCount: values.balconyCount ? Number(values.balconyCount) : null,
-          balconyArea: values.balconyArea ? Number(values.balconyArea) : null,
-          verandaArea: values.verandaArea ? Number(values.verandaArea) : null,
-          loggiaArea: values.loggiaArea ? Number(values.loggiaArea) : null,
-          waitingArea: values.waitingArea ? Number(values.waitingArea) : null,
-          buildYear: values.buildYear ? Number(values.buildYear) : null,
-          ceilingHeight: values.ceilingHeight ? Number(values.ceilingHeight) : null,
-          livingRoomArea: values.livingRoomArea ? Number(values.livingRoomArea) : null,
-          storageArea: values.storageArea ? Number(values.storageArea) : null,
-
-          // --- Single Select / Toggle Integers ---
-          period: values.period ? Number(values.period) : null,
-          project: values.project ? Number(values.project) : null,
-          leaseType: values.leaseType ? Number(values.leaseType) : null,
-          typeofCRE: values.typeofCRE ? Number(values.typeofCRE) : null,
-          parking: values.parking ? Number(values.parking) : null,
-          heating: values.heating ? Number(values.heating) : null,
-          hotWater: values.hotWater ? Number(values.hotWater) : null,
-          buildingMaterial: values.buildingMaterial ? Number(values.buildingMaterial) : null,
-          doorWindow: values.doorWindow ? Number(values.doorWindow) : null,
-
-          // --- Bitwise Sums (Already numbers from our ToggleGroup logic) ---
-          propertyCharacteristics: values.propertyCharacteristics || 0,
-          furnitureAndAppliances: values.furnitureAndAppliances || 0,
-          buldingParameters: values.buldingParameters || 0,
-          badges: values.badges || 0,
-        },
-
-        images: previews.map((p, i) => ({
-          url: p.url || "",
-          publicId: p.publicId || "",
-          displayOrder: i,
-          isPrimary: i === 0
-        }))
-      };
-
-      await createMutation.mutateAsync(payload);
-      toast({ title: "Listing Created Successfully!" });
-
-      // Optional: form.reset(); setPreviews([]);
-    } catch (error) {
-      console.error("Submission Error:", error);
-      toast({ title: "Submission Error", variant: "destructive" });
-    }
-  };
-
   return (
     <div className="max-w-4xl mx-auto py-10 px-4">
       <h1 className="text-3xl font-bold mb-8 text-foreground/90 tracking-tight">Add New Listing</h1>
@@ -300,7 +183,7 @@ export default function AddApartmentPage() {
                 <h3 className="text-lg font-bold tracking-tight">Select deal type</h3>
                 <FormField
                   control={form.control}
-                  name="listingType"
+                  name="dealType"
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
@@ -336,7 +219,7 @@ export default function AddApartmentPage() {
                 />
               </div>
             </CardContent>
-            {[1].includes(listingType) && (
+            {[1].includes(dealType) && (
               <CardContent>
                 <FormField
                   control={form.control}
@@ -368,7 +251,7 @@ export default function AddApartmentPage() {
                   )}
                 />
               </CardContent>)}
-            {[2].includes(listingType) && (
+            {[2].includes(dealType) && (
               <CardContent>
                 <FormField
                   control={form.control}
@@ -403,7 +286,7 @@ export default function AddApartmentPage() {
                   )}
                 />
               </CardContent>)}
-            {[3].includes(listingType) && (
+            {[3].includes(dealType) && (
               <>
                 <CardContent>
                   <FormField
