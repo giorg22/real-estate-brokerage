@@ -25,14 +25,55 @@ import { Apartment } from "@/types/Apartment";
 import { useRouter } from "next/navigation";
 import { getApartmentTitle } from "@/utils/listing-helpers";
 import { useLocale } from "next-intl"; 
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import axios from "axios";
+import { useFavoriteStore } from "@/store/FavoriteStore"; // Ensure this path is correct
+import { useAuthStore } from "@/store/useAuthStore";
 
 export function ListingDetailModal2({ listing, isOpen }: { listing: Apartment; isOpen: boolean }) {
-  const locale = useLocale();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isLiked, setIsLiked] = useState(false);
   const router = useRouter();
+  const queryClient = useQueryClient();
+  const locale = useLocale();
+
+  // 1. Get Auth Token
+  const token = useAuthStore((state) => state.user?.token);
+
+  // 2. Connect to Zustand Favorites Store
+  const { favorites, toggleLocalFavorite } = useFavoriteStore();
+  
+  // 3. THIS IS THE KEY FIX: Derive isLiked directly from the store
+  const isLiked = !!favorites[listing?.id];
 
   const displayTitle = getApartmentTitle(listing, locale);
+
+  // 4. Mutation with Auth Headers
+  const { mutate: toggleFavorite } = useMutation({
+    mutationFn: async (id: string) => {
+      return axios.post(
+        `https://localhost:7075/Apartment/toggle-favorite/${id}`,
+        {}, 
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+        }
+      );
+    },
+    onMutate: () => {
+      // Optimistic Update: Change UI immediately in the store
+      toggleLocalFavorite(listing.id);
+    },
+    onError: (err) => {
+      // Revert store state if server fails
+      toggleLocalFavorite(listing.id);
+      console.error("Failed to save favorite:", err);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user-favorites"] });
+    }
+  });
 
   if (!listing) return null;
 
@@ -44,6 +85,19 @@ export function ListingDetailModal2({ listing, isOpen }: { listing: Apartment; i
     setCurrentImageIndex((prev) => (prev === 0 ? listing.images.length - 1 : prev - 1));
   };
 
+  const handleFavoriteClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    // Safety check: Don't allow guest users to trigger mutation
+    if (!token) {
+        alert("Please log in to save favorites");
+        return;
+    }
+
+    toggleFavorite(listing.id);
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={() => router.back()}>
       <DialogContent className="max-w-4xl h-[90vh] overflow-y-auto">
@@ -51,13 +105,11 @@ export function ListingDetailModal2({ listing, isOpen }: { listing: Apartment; i
           <DialogTitle className="text-2xl font-bold">
             {displayTitle}
           </DialogTitle>
-          {/* Added Description for accessibility warnings */}
           <DialogDescription>
             Detailed specifications for this property listing.
           </DialogDescription>
         </DialogHeader>
 
-        {/* Image Gallery */}
         <div className="relative h-96 mb-6 overflow-hidden rounded-lg bg-muted">
           <AnimatePresence mode="wait">
               <motion.div
@@ -67,24 +119,22 @@ export function ListingDetailModal2({ listing, isOpen }: { listing: Apartment; i
                 exit={{ opacity: 0 }}
                 className="absolute inset-0"
               >
-                {/* 1. The Blurred Background Layer */}
                 <div className="absolute inset-0 z-0">
                   <Image
                     src={listing.images[currentImageIndex]?.url || "/placeholder-property.jpg"}
                     alt="Background Blur"
                     fill
-                    className="object-cover blur-[90px] opacity-50 scale-110" // scale prevents white edges during blur
+                    className="object-cover blur-[90px] opacity-50 scale-110"
                     priority
                   />
                 </div>
 
-                {/* 2. The Main Sharp Foreground Layer */}
                 <div className="relative z-10 h-full w-full">
                   <Image
                     src={listing.images[currentImageIndex]?.url || "/placeholder-property.jpg"}
                     alt={`Property view ${currentImageIndex + 1}`}
                     fill
-                    className="object-contain" // Shows the full image without cropping
+                    className="object-contain"
                     sizes="(max-width: 1024px) 100vw, 800px"
                     priority
                   />
@@ -114,9 +164,10 @@ export function ListingDetailModal2({ listing, isOpen }: { listing: Apartment; i
               size="icon"
               variant="secondary"
               className="h-10 w-10 rounded-full bg-white/90 hover:bg-white"
-              onClick={() => setIsLiked(!isLiked)}
+              onClick={handleFavoriteClick}
             >
-              <Heart className={`h-5 w-5 ${isLiked ? "fill-red-500 text-red-500" : ""}`} />
+              {/* Icon color now changes based on the derived isLiked value */}
+              <Heart className={`h-5 w-5 transition-colors ${isLiked ? "fill-red-500 text-red-500" : "text-gray-600"}`} />
             </Button>
             <Button
               size="icon"
@@ -128,6 +179,7 @@ export function ListingDetailModal2({ listing, isOpen }: { listing: Apartment; i
           </div>
         </div>
 
+        {/* ... Rest of your component (Price, Specs, Description) ... */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           <div className="space-y-6 md:col-span-2">
             <div>
@@ -136,9 +188,10 @@ export function ListingDetailModal2({ listing, isOpen }: { listing: Apartment; i
               </h2>
               <div className="flex items-center text-muted-foreground">
                 <MapPin className="mr-1 h-4 w-4" />
-                <span>{listing.address.city}, {listing.address.street}</span>
+                <span>{displayTitle}</span>
               </div>
             </div>
+            {/* ... specifications grid ... */}
             <div className="grid grid-cols-3 gap-4 rounded-lg bg-muted p-4">
               <div className="text-center">
                 <Bed className="mx-auto mb-2 h-6 w-6 text-primary" />
@@ -159,14 +212,6 @@ export function ListingDetailModal2({ listing, isOpen }: { listing: Apartment; i
               <p className="text-muted-foreground leading-relaxed">
                 {listing.description.en || listing.description.ka}
               </p>
-            </div>
-          </div>
-          
-          <div className="space-y-4">
-            <div className="rounded-lg border p-4">
-               <h4 className="font-semibold mb-4">Interested in this property?</h4>
-               <Button className="w-full mb-2">Request Details</Button>
-               <Button variant="outline" className="w-full">Schedule a Tour</Button>
             </div>
           </div>
         </div>

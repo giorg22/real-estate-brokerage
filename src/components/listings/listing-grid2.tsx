@@ -3,13 +3,14 @@
 import { Apartment } from "@/types/Apartment";
 import { ListingCard2 } from "./listing-card2";
 
-// Define the shape of the props object
+// 1. Update the interface to include onCardClick
 interface ListingGridProps {
   listings: Apartment[];
+  onCardClick?: (apartment: Apartment) => void; // Add this line
 }
 
-// Destructure { listings } from the props object
-export function ListingGrid2({ listings }: ListingGridProps) {
+// 2. Destructure onCardClick from props
+export function ListingGrid2({ listings, onCardClick }: ListingGridProps) {
   if (!listings || listings.length === 0) {
     return (
       <div className="h-64 flex items-center justify-center border-2 border-dashed rounded-lg w-full">
@@ -24,6 +25,8 @@ export function ListingGrid2({ listings }: ListingGridProps) {
         <ListingCard2
           key={listing.id}
           listing={listing}
+          // 3. Ensure ListingCard2 is also ready to receive an onClick
+          onClick={() => onCardClick?.(listing)} 
         />
       ))}
     </div>

@@ -21,7 +21,9 @@ export default async  function ApartmentsPage() {
         <h1 className="text-3xl font-bold tracking-tight">Property Listings</h1>
         <p className="text-muted-foreground">Explore our available properties.</p>
       </header>
-      <ListingGrid2 listings={apartments} />
+      <div className="max-w-7xl mx-auto">
+        <ListingGrid2 listings={apartments} />
+      </div>
     </div>
   );
 }

@@ -57,3 +57,20 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Styling the hover mini-card popup */
+.maplibregl-popup-content {
+  padding: 0 !important; /* Removes white border around your card */
+  border-radius: 12px !important;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+  border: none !important;
+}
+
+.maplibregl-popup-tip {
+  border-top-color: white !important; /* Matches card bottom */
+}
+
+.maplibregl-popup {
+  pointer-events: none;
+}

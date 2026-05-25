@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import { useParams } from "next/navigation";
-import { 
-  MapPin, Ruler, DollarSign, ChevronDown, 
-  Loader2, Search, Home, Tag 
+import {
+  MapPin, Ruler, DollarSign, ChevronDown,
+  Loader2, Search, Home, Tag, LayoutGrid, Map as MapIcon
 } from "lucide-react";
 
 // Data & Config
@@ -19,16 +19,21 @@ import { useSearchStore } from "@/store/useSearchStore";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
 import { cn } from "@/lib/utils";
 import { ListingGrid2 } from "@/components/listings/listing-grid2";
+import { ResultsMap } from "@/components/maps/ResultsMap"; // Ensure this is created
+import { useTranslations } from 'next-intl';
+
 
 const locationMaps: Record<string, any> = { en: locationEn, ka: locationKa, ru: locationRu };
 
 export default function SearchPage() {
   const { locale } = useParams();
   const currentData = locationMaps[locale as string] || locationEn;
-  
+  const t = useTranslations('searchPage');
+
   const [isLocationOpen, setIsLocationOpen] = useState(false);
   const [isTypeOpen, setIsTypeOpen] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
+  const [viewMode, setViewMode] = useState<"grid" | "map">("grid");
 
   const store = useSearchStore();
 
@@ -47,7 +52,8 @@ export default function SearchPage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <section className="bg-slate-900 pt-12 pb-20 px-4 rounded-b-[40px]">
+      {/* --- HERO / SEARCH SECTION --- */}
+      <section className="bg-slate-900 pt-12 pb-20 px-4 rounded-b-[40px] shadow-2xl relative z-20">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-white text-3xl md:text-4xl font-bold text-center mb-8">Find Your Place</h1>
 
@@ -68,10 +74,8 @@ export default function SearchPage() {
             ))}
           </div>
 
-          {/* COMPACT Search Bar Container */}
-          <div className="bg-white p-1.5 rounded-2xl shadow-xl flex flex-col lg:flex-row items-center gap-0.5">
-            
-            {/* 1. Property Type */}
+          {/* COMPACT Search Bar */}
+          <div className="bg-white p-1.5 rounded-2xl shadow-xl flex flex-col lg:row items-center gap-0.5 lg:flex-row">
             <div className="relative w-full lg:w-48">
               <div onClick={() => setIsTypeOpen(!isTypeOpen)} className="p-2.5 hover:bg-slate-50 rounded-xl cursor-pointer flex items-center gap-2 transition-colors">
                 <div className="p-1.5 bg-blue-50 text-blue-600 rounded-md">
@@ -96,7 +100,6 @@ export default function SearchPage() {
 
             <Divider />
 
-            {/* 2. Location */}
             <div className="flex-1 w-full p-2.5 hover:bg-slate-50 rounded-xl cursor-pointer flex items-center gap-2 transition-colors" onClick={() => setIsLocationOpen(true)}>
               <div className="p-1.5 bg-blue-50 text-blue-600 rounded-md"><MapPin size={16} /></div>
               <div className="flex flex-col">
@@ -108,52 +111,84 @@ export default function SearchPage() {
             </div>
 
             <Divider />
-
-            {/* 3. Area Range */}
             <RangeInput label="Area" icon={<Ruler size={16} />} minField="minArea" maxField="maxArea" unit="m²" />
-
             <Divider />
-
-            {/* 4. Price Range */}
             <RangeInput label="Price" icon={<DollarSign size={16} />} minField="minPrice" maxField="maxPrice" unit="$" />
 
-            {/* Compact Find Button */}
-            <button 
-              onClick={() => setHasSearched(true)}
+            <button
+              onClick={() => { setHasSearched(true); setViewMode("grid"); }}
               disabled={isFetching}
-              className="w-full lg:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-md ml-1"
+              className="w-full lg:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-md ml-1"
             >
               {isFetching ? <Loader2 className="animate-spin" size={16} /> : <Search size={16} />}
-              <span className="text-sm">{isFetching ? "..." : "Find"}</span>
+              <span className="text-sm">{t("find")}</span>
             </button>
           </div>
         </div>
       </section>
 
-      <LocationModal 
-        isOpen={isLocationOpen} data={currentData} selectedItems={store.locations} 
-        onClose={() => setIsLocationOpen(false)} onSelect={(val: any) => store.setField("locations", val)} 
-      />
+      {/* --- RESULTS SECTION --- */}
+      <div className="container mx-auto py-8 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center justify-between mb-8 border-b pb-4">
+            <div>
+              <h2 className="text-2xl font-bold text-slate-800">Available Properties</h2>
+              <p className="text-sm text-slate-500">{results?.length || 0} listings found</p>
+            </div>
 
-          <div className="container mx-auto py-8">
-            <header className="mb-8">
-              <h1 className="text-3xl font-bold tracking-tight">Property Listings</h1>
-              <p className="text-muted-foreground">Explore our available properties.</p>
-            </header>
-            <ListingGrid2 listings={results} />
+            {/* View Toggler */}
+            <div className="flex bg-white border border-slate-200 rounded-xl p-1 shadow-sm">
+              <button
+                onClick={() => setViewMode("grid")}
+                className={cn("px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2",
+                  viewMode === "grid" ? "bg-slate-900 text-white" : "text-slate-500 hover:bg-slate-50")}
+              >
+                <LayoutGrid size={14} /> Grid
+              </button>
+              <button
+                onClick={() => setViewMode("map")}
+                className={cn("px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2",
+                  viewMode === "map" ? "bg-slate-900 text-white" : "text-slate-500 hover:bg-slate-50")}
+              >
+                <MapIcon size={14} /> Map
+              </button>
+            </div>
           </div>
+
+          {isFetching && !results ? (
+            <div className="flex flex-col items-center justify-center py-20 gap-4">
+              <Loader2 className="animate-spin text-blue-600" size={40} />
+              <p className="text-slate-400 font-medium">Loading properties...</p>
+            </div>
+          ) : (
+            <div className="w-full">
+              {viewMode === "grid" ? (
+                <ListingGrid2 listings={results || []} />
+              ) : (
+                <div className="h-[75vh] w-full relative rounded-3xl overflow-hidden border-4 border-white shadow-2xl">
+                  <ResultsMap listings={results || []}/>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+
+      <LocationModal
+        isOpen={isLocationOpen} data={currentData} selectedItems={store.locations}
+        onClose={() => setIsLocationOpen(false)} onSelect={(val: any) => store.setField("locations", val)}
+      />
     </div>
   );
 }
 
-// --- COMPACT SUB COMPONENTS ---
+// --- SUB COMPONENTS ---
 
 function Divider() { return <div className="hidden lg:block w-[1px] h-8 bg-slate-100 mx-0.5" />; }
 
 function RangeInput({ label, icon, minField, maxField, unit }: any) {
   const store: any = useSearchStore();
   const [isOpen, setIsOpen] = useState(false);
-  
   const min = store[minField];
   const max = store[maxField];
 
@@ -172,14 +207,14 @@ function RangeInput({ label, icon, minField, maxField, unit }: any) {
         <>
           <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />
           <div className="absolute top-full mt-1 left-0 w-56 bg-white border p-4 shadow-xl rounded-xl z-50">
-            <div className="flex items-center justify-between mb-2">
-              <span className="font-bold text-[11px] text-slate-800">Set {label} ({unit})</span>
-              <button onClick={() => {store.setField(minField, ""); store.setField(maxField, "");}} className="text-[10px] text-blue-600 font-bold">Reset</button>
+            <div className="flex items-center justify-between mb-3">
+              <span className="font-bold text-[11px] text-slate-800 uppercase tracking-wider">Set {label}</span>
+              <button onClick={() => { store.setField(minField, ""); store.setField(maxField, ""); }} className="text-[10px] text-red-500 font-bold hover:underline">Clear</button>
             </div>
-            <div className="flex gap-1.5 items-center">
-              <input type="number" placeholder="Min" className="w-full bg-slate-50 p-1.5 rounded-md outline-none ring-blue-500 focus:ring-1 text-xs" value={min} onChange={(e) => store.setField(minField, e.target.value)} />
+            <div className="flex gap-2 items-center">
+              <input type="number" placeholder="Min" className="w-full bg-slate-50 border border-slate-100 p-2 rounded-lg outline-none ring-blue-500 focus:ring-2 text-xs transition-all" value={min} onChange={(e) => store.setField(minField, e.target.value)} />
               <span className="text-slate-300 text-xs">-</span>
-              <input type="number" placeholder="Max" className="w-full bg-slate-50 p-1.5 rounded-md outline-none ring-blue-500 focus:ring-1 text-xs" value={max} onChange={(e) => store.setField(maxField, e.target.value)} />
+              <input type="number" placeholder="Max" className="w-full bg-slate-50 border border-slate-100 p-2 rounded-lg outline-none ring-blue-500 focus:ring-2 text-xs transition-all" value={max} onChange={(e) => store.setField(maxField, e.target.value)} />
             </div>
           </div>
         </>

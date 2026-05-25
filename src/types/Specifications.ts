@@ -1,6 +1,4 @@
 export interface Specifications {
-  listingType: number;
-  type: number;
   area: number;
   rooms?: number;
   bedrooms?: number;

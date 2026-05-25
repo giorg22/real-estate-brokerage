@@ -1,7 +1,26 @@
 {
   "Navbar": {
-    "title": "Hello World",
+    "add": "Add Listing",
     "about": "About Us",
     "contact-us": "Contact Us"
+  },
+  "searchPage": {
+    "find": "Find",
+    "results": "Results",
+    "no-results": "No results found.",
+    "price": "Price",
+    "monthly-fee": "Monthly Fee",
+    "specifications": "Specifications",
+    "location": "Location"
+  },
+  "addPage": {
+    "add-listing": "Add Listing",
+    "title": "Title",
+    "description": "Description",
+    "price": "Price",
+    "monthly-fee": "Monthly Fee",
+    "specifications": "Specifications",
+    "location": "Location",
+    "submit": "Submit"
   }
 }

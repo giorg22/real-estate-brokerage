@@ -14,7 +14,7 @@ import { useTranslations } from 'next-intl';
 import { LocaleSwitcher } from "./locale-switcher";
 
 const navigation = [
-  { name: "Home", href: "/" },
+  { name: "Search", href: "/searchpage" },
   { name: "Add Apartment", href: "/dashboard/add" },
   { name: "Login", href: "/account/login" },
   { name: "Listings", href: "/listings" },

@@ -1,7 +1,16 @@
 {
   "Navbar": {
-    "title": "Hello World",
-    "about": "About Us",
+    "add": "განთავსება",
+    "about": "ჩვენს შესახებ",
     "contact-us": "დამაკონტაკტე"
+  },
+  "searchPage": {
+    "find": "ძებნა",
+    "results": "Results",
+    "no-results": "No results found.",
+    "price": "Price",
+    "monthly-fee": "Monthly Fee",
+    "specifications": "Specifications",
+    "location": "Location"
   }
 }

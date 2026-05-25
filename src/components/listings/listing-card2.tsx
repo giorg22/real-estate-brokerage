@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import Image from "next/image";
 import { useLocale } from "next-intl"; 
@@ -9,17 +7,22 @@ import { Button } from "@/components/ui/button";
 import { Apartment } from "@/types/Apartment";
 import { getApartmentTitle } from "@/utils/listing-helpers"; 
 import { Link } from "@/i18n/routing";
+import locationEn from "@/data/location.en.json";
+import locationKa from "@/data/location.ka.json";
+import locationRu from "@/data/location.ru.json";
 
 interface ListingCardProps {
   listing: Apartment;
+  onClick?: () => void;
 }
 
 export function ListingCard2({ listing }: ListingCardProps) {
+  
   const locale = useLocale();
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
 
-  // 1. Generate the dynamic title based on specifications and locale
   const displayTitle = getApartmentTitle(listing, locale);
 
   // 2. Fallback for images
@@ -105,7 +108,7 @@ export function ListingCard2({ listing }: ListingCardProps) {
         <div className="flex items-center gap-1 text-gray-500 dark:text-gray-400 mb-4">
           <MapPin className="w-3.5 h-3.5" />
           <span className="text-xs truncate">
-            {listing.address.street}, {listing.address.city}
+            {displayTitle}
           </span>
         </div>
 

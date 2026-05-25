@@ -5,8 +5,9 @@ export interface Apartment {
   id: string; // Guid
   price: number;
   monthlyFee?: number;
-  status: number; // Enum: Draft, etc.
-  type: number;   // Enum: Apartment, etc.
+  status: number;
+  type: number; 
+  dealType: number;
   ownerId: string;
   address: Address;
   specifications: Specifications;

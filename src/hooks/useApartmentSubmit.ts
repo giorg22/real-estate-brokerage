@@ -41,10 +41,48 @@ export const useApartmentSubmit = (previews: any[]) => {
           longitude: values.address.coords.lng
         },
 
-        specifications: {
-          area: Number(values.area),
-          rooms: Number(values.rooms),
-          bedrooms: Number(values.bedrooms),
+      specifications: {
+          // Basic Info
+          area: Number(values.area) || 0,
+          rooms: Number(values.rooms) || 0,
+          bedrooms: Number(values.bedrooms) || 0,
+          floor: Number(values.floor) || 0,
+          totalFloors: Number(values.totalFloors) || 0,
+          condition: Number(values.condition) || 0,
+          status: Number(values.status) || 0,
+
+          // Detailed Areas
+          yardArea: Number(values.yardArea) || 0,
+          kitchenArea: Number(values.kitchenArea) || 0,
+          balconyArea: Number(values.balconyArea) || 0,
+          verandaArea: Number(values.verandaArea) || 0,
+          loggiaArea: Number(values.loggiaArea) || 0,
+          waitingArea: Number(values.waitingArea) || 0,
+          livingRoomArea: Number(values.livingRoomArea) || 0,
+          storageArea: Number(values.storageArea) || 0,
+
+          // Construction & Layout
+          ceilingHeight: Number(values.ceilingHeight) || 0,
+          bathrooms: Number(values.bathrooms) || 0,
+          balconyCount: Number(values.balconyCount) || 0,
+          buildYear: Number(values.buildYear) || 0,
+          period: Number(values.period) || 0,
+          project: Number(values.project) || 0,
+
+          // Utility & Features
+          leaseType: Number(values.leaseType) || 0,
+          typeofCRE: Number(values.typeofCRE) || 0,
+          parking: Number(values.parking) || 0,
+          heating: Number(values.heating) || 0,
+          hotWater: Number(values.hotWater) || 0,
+          buildingMaterial: Number(values.buildingMaterial) || 0,
+          doorWindow: Number(values.doorWindow) || 0,
+
+          // Multi-Select / Flag Groups
+          propertyCharacteristics: Number(values.propertyCharacteristics) || 0,
+          furnitureAndAppliances: Number(values.furnitureAndAppliances) || 0,
+          buldingParameters: Number(values.buldingParameters) || 0,
+          badges: Number(values.badges) || 0,
         },
 
         images: previews.map((p, i) => ({
